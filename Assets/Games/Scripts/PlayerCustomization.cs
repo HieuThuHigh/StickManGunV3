@@ -47,10 +47,14 @@ public class PlayerCustomization : MonoBehaviour
         body.transform.position = bodyPosition;
         leftArm.transform.position = leftArmPosition;
         gun.transform.position = gunPosition;
+
+       
         rightArm.transform.position = rightArmPosition;
         leftLeg.transform.position = leftLegPosition;
         rightLeg.transform.position = rightLegPosition;
     }
+
+
     // Hàm thay đổi đầu của nhân vật
     public void ChangeHat(int index)
     {
