@@ -14,10 +14,11 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject splPopup;  
     [SerializeField] private Button creditButton;
     [SerializeField] private GameObject creditPopup;
+    [SerializeField] private Button compButton;
+    [SerializeField] private GameObject compPopup;
     [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
     [SerializeField] private Button soundButton;
-    
     private void Start()
     {
         soundButton.onClick.AddListener(SoundEvent);
@@ -26,6 +27,7 @@ public class SplController : MonoBehaviour
         gameSetupButton.onClick.AddListener(GameSetup);
         weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
+        compButton.onClick.AddListener(ComplainEvent);
     }
 
     void SoundEvent()
@@ -50,5 +52,10 @@ public class SplController : MonoBehaviour
     void GameSetup()
     {
         gameSetupPopup.gameObject.SetActive(true);
+    }
+
+    void ComplainEvent()
+    {
+        compPopup.gameObject.SetActive(true);
     }
 }

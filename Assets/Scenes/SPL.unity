@@ -1786,6 +1786,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2429552389579214879, guid: e014a5a17bec2ab4cb9c4416f65d62a5, type: 3}
   m_PrefabInstance: {fileID: 663159842}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &803012783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3077192891977862853, guid: 62cda45ebcd5cc64ba9c4df0df50f8ea, type: 3}
+  m_PrefabInstance: {fileID: 2846307986642403910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &855950018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3575,6 +3586,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6620506475787160722, guid: f38ee709b4e59d14eaa5fba594827e47, type: 3}
   m_PrefabInstance: {fileID: 1984489631880115885}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1585948570559750272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 136609655663237956, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
+  m_PrefabInstance: {fileID: 5437494346081295837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1932847466710996017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3897,7 +3913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2637293745018248940, guid: 62cda45ebcd5cc64ba9c4df0df50f8ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3464046970519361354, guid: 62cda45ebcd5cc64ba9c4df0df50f8ea, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3951,6 +3967,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.021
       objectReference: {fileID: 0}
+    - target: {fileID: 5409582476626835522, guid: 62cda45ebcd5cc64ba9c4df0df50f8ea, type: 3}
+      propertyPath: compPopup
+      value: 
+      objectReference: {fileID: 1585948570559750272}
+    - target: {fileID: 5409582476626835522, guid: 62cda45ebcd5cc64ba9c4df0df50f8ea, type: 3}
+      propertyPath: compButton
+      value: 
+      objectReference: {fileID: 803012783}
     - target: {fileID: 5409582476626835522, guid: 62cda45ebcd5cc64ba9c4df0df50f8ea, type: 3}
       propertyPath: creditPopup
       value: 
@@ -4105,6 +4129,10 @@ PrefabInstance:
     - target: {fileID: 136609655663237956, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
       propertyPath: m_Name
       value: Campaign
+      objectReference: {fileID: 0}
+    - target: {fileID: 136609655663237956, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 927267513959482770, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
       propertyPath: m_Sprite
