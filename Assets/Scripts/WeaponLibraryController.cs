@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using DefaultNamespace;
+using GameTool.Assistants.DesignPattern;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponLibraryController : MonoBehaviour
+public class WeaponLibraryController : SingletonMonoBehaviour<WeaponLibraryController>
 {
     [SerializeField] private Button[] buttons;
     [SerializeField] private Button backButton;
