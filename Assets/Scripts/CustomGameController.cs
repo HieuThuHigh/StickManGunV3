@@ -68,11 +68,13 @@ public class CustomGameController : MonoBehaviour
 
     void ToggleBoxImages()
     {
+        Debug.LogError("BoxClicked");
         ToggleImages(greenImageBox, redImageBox);
     }
 
     void ToggleHeartImages()
     {
+        Debug.LogError("HeartClicked");
         ToggleImages(greenImageHeart, gredImageHeart);
     }
 

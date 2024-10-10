@@ -16,12 +16,12 @@ namespace DefaultNamespace
             set => weaponInfo = value;
         }
 
-        private void Awake()
-        {
-            button.onClick.AddListener(() =>
-            {
-                
-            });
-        }
+        // private void Awake()
+        // {
+        //     button.onClick.AddListener(() =>
+        //     {
+        //         
+        //     });
+        // }
     }
 }
