@@ -1,33 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private int damage;
 
-    public float lifetime = 1f; // Thời gian tồn tại của đạn
-
-    private void Start()
+    public void SetDamage(int value)
     {
-        // Hủy đạn sau một khoảng thời gian
-        Destroy(gameObject, lifetime);
+        damage = value;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Xử lý va chạm hoặc sát thương tại đây
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Kiểm tra va chạm với đối tượng khác
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            // Ghi điểm hoặc xử lý logic tiêu diệt
-            Destroy(collision.gameObject); // Hủy enemy
-            Destroy(gameObject); // Hủy đạn
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
-        {
-            // Hủy đạn khi chạm đất
-            Destroy(gameObject);
-        }
+        // Kiểm tra và xử lý sát thương
+        // Ví dụ: collision.GetComponent<Health>().TakeDamage(damage);
     }
 }
-
-

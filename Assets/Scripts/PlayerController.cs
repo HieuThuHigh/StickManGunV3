@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private int _jumpCount = 0;              // Biến đếm số lần nhảy
     private int _maxJumps = 1;               // Số lần nhảy tối đa (2 lần)
     private bool _isGrounded;                // Kiểm tra xem nhân vật có chạm đất không
+
     private void Start()
     {
         // Lấy thành phần Rigidbody2D của nhân vật
