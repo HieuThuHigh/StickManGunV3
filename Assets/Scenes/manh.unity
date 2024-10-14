@@ -276,6 +276,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 129804743876435464, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 382aa375a7af33d4bb3117b9b2c649ae, type: 2}
+    - target: {fileID: 129804743876435464, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: guns.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 129804743876435464, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 382aa375a7af33d4bb3117b9b2c649ae, type: 2}
+    - target: {fileID: 129804743876435464, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 954a42480baf4114c91dc60e08207b37, type: 2}
+    - target: {fileID: 129804743876435464, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: guns.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
     - target: {fileID: 933976703859227699, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
       propertyPath: m_Camera
       value: 
@@ -359,6 +379,30 @@ PrefabInstance:
     - target: {fileID: 2880087253058671387, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894489093796422475, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: playerData.health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894489093796422475, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: playerData.GunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 382aa375a7af33d4bb3117b9b2c649ae, type: 2}
+    - target: {fileID: 2894489093796422475, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: playerData.maxJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894489093796422475, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: playerData.jumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894489093796422475, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: playerData.moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894489093796422475, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
+      propertyPath: playerData.characterName
+      value: manh
       objectReference: {fileID: 0}
     - target: {fileID: 4448249254921954385, guid: e8a9c6ce08590d747bad4af29d0ab505, type: 3}
       propertyPath: m_Name
@@ -452,7 +496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754383407}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65bba96c1c48df549ad925fcf7f0de09, type: 3}
   m_Name: 
