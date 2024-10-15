@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SplController : MonoBehaviour
@@ -28,7 +29,9 @@ public class SplController : MonoBehaviour
         weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
         compButton.onClick.AddListener(ComplainEvent);
+       
     }
+
 
     void SoundEvent()
     {
