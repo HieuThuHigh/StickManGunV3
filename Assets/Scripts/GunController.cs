@@ -9,6 +9,7 @@ public class GunController : MonoBehaviour
     public List<GunData> guns;       // Danh sách các khẩu súng
    // private int currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
     private int _currentBulletCount;   // Số lượng đạn còn lại
+    private int _currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
     public GunData gunData;          // Khẩu súng hiện tại
     private PlayerCustomization _playerCustomization;
     private PlayerController _playerController ;  
@@ -21,6 +22,9 @@ public class GunController : MonoBehaviour
         }
                                                                        // Khởi tạo số lượng đạn còn lại
             _currentBulletCount = gunData.bulletCount;
+        // Lấy PlayerController từ GameObject cha hoặc nơi nào đó
+        _playerController = GetComponent<PlayerController>();
+        UpdatePlayerGunData();
     }
     void Update()
     {
@@ -46,8 +50,23 @@ public class GunController : MonoBehaviour
         {
             Reload();
         }
+        // Thay đổi súng khi nhấn phím số (0-9)
+        for (int i = 0; i < guns.Count; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i) && i < guns.Count)
+            {
+                ChangeGun(i);
+                break; // Thoát khỏi vòng lặp sau khi thay đổi
+            }
+        }
     }
-
+    void UpdatePlayerGunData()
+    {
+        if (_playerController != null)
+        {
+            _playerController.UpdateGunData(gunData); // Cập nhật GunData cho PlayerController
+        }
+    }
     void Shoot()
     {
         if (shootingPoint != null && gunData != null)
@@ -62,13 +81,14 @@ public class GunController : MonoBehaviour
 
                     Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-                    // Lấy hướng mà viên đạn sẽ bay
-                     Vector2 shootDirection = shootingPoint.right; // Hướng bắn
-                 
-                   
+                // Lấy hướng mà viên đạn sẽ bay
+                Vector2 shootDirection = shootingPoint.right; // Hướng bắn
 
-                    // Đặt vận tốc cho đạn
-                    rb.velocity = shootDirection * bulletSpeed;
+
+
+
+                // Đặt vận tốc cho đạn
+                rb.velocity = shootDirection * bulletSpeed;
 
                
                     StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
@@ -109,7 +129,17 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(bullet); // Xóa viên đạn
     }
-
+     public void ChangeGun(int newGunIndex)
+    {
+        if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
+        {
+            _currentGunIndex = newGunIndex;
+            gunData = guns[_currentGunIndex]; // Cập nhật GunData
+            _currentBulletCount = gunData.bulletCount; // Cập nhật số lượng đạn
+            UpdatePlayerGunData(); // Cập nhật GunData trong PlayerController
+            Debug.Log("Đã thay đổi sang khẩu súng: " + gunData.gunName);
+        }
+    }
 }
 
 

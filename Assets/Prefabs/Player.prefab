@@ -801,10 +801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c209d67426322ad47bc85973ce224ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 4987774095787099573, guid: 9ad5ebf590da9aa499ed668d9aa64f35, type: 3}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  playerData: {fileID: 11400000, guid: f7bb58c55c027f7498c1b4ef734ef3fa, type: 2}
+  isFacingRight: 1
 --- !u!70 &4495945926904183766
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -878,6 +876,11 @@ MonoBehaviour:
   shootingPoint: {fileID: 1834483409758850207, guid: 406cef753390a42428ae83d293fc63e6, type: 3}
   bulletPrefab: {fileID: 7534063544991044676, guid: d2a94a0057fe29f4c987b7ae004a818f, type: 3}
   bulletSpeed: 10
+  guns:
+  - {fileID: 11400000, guid: 382aa375a7af33d4bb3117b9b2c649ae, type: 2}
+  - {fileID: 11400000, guid: 954a42480baf4114c91dc60e08207b37, type: 2}
+  - {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  gunData: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
 --- !u!1 &6608556504240347015
 GameObject:
   m_ObjectHideFlags: 0
