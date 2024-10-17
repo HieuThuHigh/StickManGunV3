@@ -4,20 +4,49 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform player; // Nhân vật mà camera sẽ theo dõi
-    [SerializeField] private Vector3 offset; // Khoảng cách giữa camera và nhân vật
-    [SerializeField] private float smoothSpeed = 0.125f; // Tốc độ chuyển động mượt mà
+    public GameObject player;
+    public float start, end,top , bot;
 
-    private void LateUpdate()
+    // Start is called before the first frame update
+    void Start()
     {
-        // Tính toán vị trí mong muốn của camera dựa trên vị trí của nhân vật và khoảng cách offset
-        Vector3 desiredPosition = player.position + offset;
 
-        // Sử dụng Vector3.Lerp để di chuyển camera từ vị trí hiện tại đến vị trí mong muốn một cách mượt mà
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+    }
 
-        // Cập nhật vị trí của camera
-        transform.position = smoothedPosition;
+    // Update is called once per frame
+    void Update()
+    {
+        var playerX = player.transform.position.x;
+        var playerY = player.transform.position.y;
+        var camX = transform.position.x;
+        var camY = transform.position.y;
+        var camZ = transform.position.z;
+        if (playerX > start && playerX < end)
+        {
+            camX = playerX;
+        }
+        else
+        {
+            if (playerX < start)
+            {
+                camX = start;
+            }
+            if (playerX > end)
+            {
+                camX = end;
+            }
+        }
+        if(playerY > bot && playerY < top)
+        {
+            camY = playerY;
+        }else{
+            if(playerY<bot){
+                camY = bot;
+            }
+            if(playerY>top){
+                camY = top;
+            }
+        }
+        transform.position = new Vector3(camX, camY, camZ);
     }
 }
-
