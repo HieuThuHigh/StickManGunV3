@@ -28,13 +28,15 @@ public class CustomGameController : MonoBehaviour
             int index = i;
             buttons[index].onClick.AddListener(() =>
             {
-                ResetButtonColors();
+                // Đổi màu trước, sau đó reset lại các màu khác
                 if (buttons[index].TryGetComponent(out Image clickedImage))
                 {
+                    ResetButtonColors(); // Reset tất cả nút về trắng trước
                     ColorUtility.TryParseHtmlString("#FF6600", out var color);
-                    clickedImage.color = color;
+                    clickedImage.color = color; // Sau đó đổi màu của nút hiện tại
                 }
 
+                // Hiển thị popup tùy theo nút bấm
                 if (index == 2)
                 {
                     mainPopup.SetActive(false);
@@ -54,6 +56,8 @@ public class CustomGameController : MonoBehaviour
         // Gán sự kiện cho nút heartButton
         heartButton.onClick.AddListener(ToggleHeartImages);
     }
+
+
 
     void ResetButtonColors()
     {

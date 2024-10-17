@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SplController : MonoBehaviour
@@ -20,6 +17,7 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
     [SerializeField] private Button soundButton;
+
     private void Start()
     {
         soundButton.onClick.AddListener(SoundEvent);
@@ -29,10 +27,7 @@ public class SplController : MonoBehaviour
         weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
         compButton.onClick.AddListener(ComplainEvent);
-       
     }
-
-
     void SoundEvent()
     {
         line.SetActive(!line.activeSelf);
@@ -40,25 +35,30 @@ public class SplController : MonoBehaviour
 
     void CreditaEvent()
     {
+        Debug.LogError("Credit");
         creditPopup.gameObject.SetActive(true);
     }
 
     void WeaponLib()
     {
+        Debug.LogError("Weapon");
         weaponLibPopup.gameObject.SetActive(true);
     }
 
     void Challenge()
     {
+        Debug.LogError("Challenge");
         challengPopup.gameObject.SetActive(true);
     }
     void GameSetup()
     {
+        Debug.LogError("GameSetup");
         gameSetupPopup.gameObject.SetActive(true);
     }
 
     void ComplainEvent()
     {
+        Debug.LogError("Complain");
         compPopup.gameObject.SetActive(true);
     }
 }

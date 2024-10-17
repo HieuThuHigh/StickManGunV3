@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 7728231261494360546}
   - component: {fileID: 4652405383026372966}
   - component: {fileID: 3803009414723928122}
-  - component: {fileID: 2239179077889492676}
-  - component: {fileID: 8816799742712764422}
   m_Layer: 0
   m_Name: Campaign
   m_TagString: Untagged
@@ -80,60 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2239179077889492676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136609655663237956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4531899ef64b6f14e93dd67d057e3b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  mainPopup: {fileID: 0}
-  otherPopup: {fileID: 0}
-  boxButton: {fileID: 0}
-  heartButton: {fileID: 0}
-  greenImageBox: {fileID: 0}
-  redImageBox: {fileID: 0}
-  greenImageHeart: {fileID: 0}
-  gredImageHeart: {fileID: 0}
---- !u!114 &8816799742712764422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136609655663237956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd45a83fc01d294a89666b3d5252f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  buttonPopup:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1372012323123953964
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +109,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4514971496056772693}
-  - {fileID: 6615585360561590337}
+  - {fileID: 5908361914660147027}
   m_Father: {fileID: 2905922864132946487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1138,8 +1082,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e014a5a17bec2ab4cb9c4416f65d62a5, type: 3}
---- !u!224 &6615585360561590337 stripped
+--- !u!224 &5908361914660147027 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3136318472005193485, guid: e014a5a17bec2ab4cb9c4416f65d62a5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2429552389579214879, guid: e014a5a17bec2ab4cb9c4416f65d62a5, type: 3}
   m_PrefabInstance: {fileID: 8091058529165762380}
   m_PrefabAsset: {fileID: 0}
