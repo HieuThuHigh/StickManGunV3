@@ -5,7 +5,7 @@ using UnityEngine;
 public class bomb : MonoBehaviour
 {
     public float explosionRadius = 5f;    // Bán kính vụ nổ
-    public float explosionForce = 700f;   // Lực nổ
+    public float explosionForce = 300f;   // Lực nổ
     public float delay = 3f;              // Thời gian chờ trước khi nổ
     public GameObject explosionEffect;    // Hiệu ứng vụ nổ
 

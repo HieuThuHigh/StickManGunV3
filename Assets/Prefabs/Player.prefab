@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 4495945926904183766}
   - component: {fileID: 933976703859227699}
   - component: {fileID: 129804743876435464}
+  - component: {fileID: 8684890190206922092}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -881,6 +882,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 954a42480baf4114c91dc60e08207b37, type: 2}
   - {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
   gunData: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+--- !u!114 &8684890190206922092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448249254921954385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b6f79b9c55f6b49a3580659fd63cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 3244379408777411512, guid: 165459edbf7ff984fae8af9966745c4c, type: 3}
+  throwPoint: {fileID: 1834483409758850207, guid: 406cef753390a42428ae83d293fc63e6, type: 3}
+  throwForce: 3.74
+  offset: 1
 --- !u!1 &6608556504240347015
 GameObject:
   m_ObjectHideFlags: 0

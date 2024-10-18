@@ -13,7 +13,7 @@ public class nembom : MonoBehaviour
     void Update()
     {
         // Kiểm tra nếu người chơi nhấn chuột trái để ném bom
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             ThrowBomb();
         }
