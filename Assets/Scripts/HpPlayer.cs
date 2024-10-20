@@ -6,12 +6,12 @@ public class HpPlayer : MonoBehaviour
 {
     public thanhMau thanhmau;
     public float luongMauHienTai;
-    public float luongMauToiDa = 100;
+    public float  health = 100;
     // Start is called before the first frame update
     void Start()
     {
-         luongMauHienTai = luongMauToiDa;
-        thanhmau.capNhatThanhMau(luongMauHienTai, luongMauToiDa);
+         luongMauHienTai =  health;
+        thanhmau.capNhatThanhMau(luongMauHienTai,  health);
     }
 
     // Update is called once per frame
