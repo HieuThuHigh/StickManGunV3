@@ -20,7 +20,7 @@ namespace DefaultNamespace
         {
             button.onClick.AddListener(() =>
             {
-                
+                WeaponLibraryController.Instance.ShowInfo(weaponInfo);
             });
         }
     }
