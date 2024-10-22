@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
             if (hitUp.collider != null)
             {
                 // Di chuyển player lên vị trí đỉnh của collider phía trên
-                transform.position = new Vector2(transform.position.x, hitUp.collider.bounds.max.y + 0.5f);
+                transform.position = new Vector2(transform.position.x, hitUp.collider.bounds.max.y + 0.7f);
                 Debug.Log("Di chuyển lên trên một lớp collider.");
             }
             else
