@@ -63,17 +63,67 @@ public class PlayerController : MonoBehaviour
     }
 
     // Hàm điều khiển nhân vật nhảy
+    //void Jump()
+    //{
+    //    // Nếu nhấn phím nhảy và số lần nhảy nhỏ hơn số lần nhảy tối đa
+    //    if (Input.GetKeyDown(KeyCode.W) && _jumpCount < playerData.maxJumps)
+    //    {
+    //        // Áp dụng lực nhảy theo trục Y dựa trên jumpForce từ PlayerData
+    //        _rb.velocity = new Vector2(_rb.velocity.x, playerData.jumpForce);
+    //        _jumpCount++;  // Tăng số lần nhảy lên
+    //        Debug.Log("Nhân vật đã nhảy! Số lần nhảy hiện tại: " + _jumpCount);
+    //    }
+    //}
+
     void Jump()
     {
-        // Nếu nhấn phím nhảy và số lần nhảy nhỏ hơn số lần nhảy tối đa
-        if (Input.GetKeyDown(KeyCode.W) && _jumpCount < playerData.maxJumps)
+        RaycastHit2D hitUp, hitDown;
+        float rayDistanceUp = 1f; // Khoảng cách ray ngắn hơn để chỉ phát hiện collider gần nhất
+        float rayDistanceDown = 0.2f;
+        Vector2 rayOrigin = transform.position;
+
+        // Di chuyển lên khi nhấn phím W
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            // Áp dụng lực nhảy theo trục Y dựa trên jumpForce từ PlayerData
-            _rb.velocity = new Vector2(_rb.velocity.x, playerData.jumpForce);
-            _jumpCount++;  // Tăng số lần nhảy lên
-            Debug.Log("Nhân vật đã nhảy! Số lần nhảy hiện tại: " + _jumpCount);
+            // Dùng raycast để kiểm tra collider ở trên, tính từ vị trí hiện tại
+            hitUp = Physics2D.Raycast(rayOrigin, Vector2.up, rayDistanceUp);
+            if (hitUp.collider != null)
+            {
+                // Di chuyển player lên vị trí đỉnh của collider phía trên
+                transform.position = new Vector2(transform.position.x, hitUp.collider.bounds.max.y + 0.5f);
+                Debug.Log("Di chuyển lên trên một lớp collider.");
+            }
+            else
+            {
+                // Không tìm thấy collider, không thể di chuyển lên
+                Debug.Log("Không còn lớp collider ở trên.");
+            }
+        }
+
+        // Di chuyển xuống khi nhấn phím S
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // Dùng raycast để kiểm tra collider ở dưới, tính từ vị trí hiện tại
+            hitDown = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistanceDown);
+            if (hitDown.collider != null)
+            {
+                // Di chuyển player xuống vị trí đáy của collider phía dưới
+                transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y - 0.2f);
+                Debug.Log("Di chuyển xuống dưới một lớp collider.");
+            }
+            else
+            {
+                // Không tìm thấy collider, không thể di chuyển xuống
+                Debug.Log("Không còn lớp collider ở dưới.");
+            }
         }
     }
+
+
+
+
+
+
 
     // Hàm kiểm tra máu của nhân vật
     void CheckHealth()
