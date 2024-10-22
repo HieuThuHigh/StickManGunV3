@@ -8,7 +8,6 @@ public class bomb : MonoBehaviour
     public float explosionForce = 300f;   // Lực nổ
     public float delay = 3f;              // Thời gian chờ trước khi nổ
     public GameObject explosionEffect;    // Hiệu ứng vụ nổ
-
     private float countdown;
     private bool hasExploded = false;
     private bool hasTouchedGround = false; // Cờ đánh dấu bom đã chạm đất

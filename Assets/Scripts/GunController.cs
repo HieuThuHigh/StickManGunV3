@@ -7,21 +7,21 @@ public class GunController : MonoBehaviour
     public GameObject bulletPrefab;  // Prefab của đạn
     public float bulletSpeed = 20f;  // Tốc độ đạn
     public List<GunData> guns;       // Danh sách các khẩu súng
-   // private int currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
+                                     // private int currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
     private int _currentBulletCount;   // Số lượng đạn còn lại
     private int _currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
     public GunData gunData;          // Khẩu súng hiện tại
     private PlayerCustomization _playerCustomization;
-    private PlayerController _playerController ;  
+    private PlayerController _playerController;
     void Start()
     {
         // Gán vị trí của shootingPoint bằng gunPosition
         if (shootingPoint != null)
         {
-           // shootingPoint.position = PlayerCustomization.gunPosition;  // Gán vị trí bắn
+            // shootingPoint.position = PlayerCustomization.gunPosition;  // Gán vị trí bắn
         }
-                                                                       // Khởi tạo số lượng đạn còn lại
-            _currentBulletCount = gunData.bulletCount;
+        // Khởi tạo số lượng đạn còn lại
+        _currentBulletCount = gunData.bulletCount;
         // Lấy PlayerController từ GameObject cha hoặc nơi nào đó
         _playerController = GetComponent<PlayerController>();
         UpdatePlayerGunData();
@@ -33,10 +33,15 @@ public class GunController : MonoBehaviour
         {
             // Giả sử player là Transform của nhân vật
             Transform playerTransform = transform; // Gán transform của nhân vật (hoặc bạn có thể chỉ định đối tượng nhân vật cụ thể)
-
+            Vector3 offset = new Vector3(0.5f, -0.3f, 0); // Tạo khoảng cách trước mặt nhân vật
+            if (transform.localScale.x < 0)
+            {
+                offset = new Vector3(-0.5f, -0.3f, 0); // Đổi chiều nếu nhân vật quay trái
+            }
+            shootingPoint.position = transform.position + offset; // Cập nhật vị trí của shootingPoint
             // Đặt vị trí của shootingPoint ở trước mặt player
-            shootingPoint.position = playerTransform.position + playerTransform.right * 0.5f + Vector3.down * 0.3f; /// 1.0f là khoảng cách từ player đến shootingPoint
-            shootingPoint.rotation = playerTransform.rotation; // Đặt hướng của shootingPoint  giống hướng của player
+            // shootingPoint.position = playerTransform.position + playerTransform.right * 0.5f + Vector3.down * 0.3f; // 1.0f là khoảng cách từ player đến shootingPoint
+            // shootingPoint.rotation = playerTransform.rotation; // Đặt hướng của shootingPoint  giống hướng của player
         }
 
 
@@ -76,23 +81,29 @@ public class GunController : MonoBehaviour
             {
                 //for (int i = 0; i < gunData.bulletCount; i++)
                 //{
-                    // GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-                    GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+                // GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+                GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
 
-                    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
                 // Lấy hướng mà viên đạn sẽ bay
-                Vector2 shootDirection = shootingPoint.right; // Hướng bắn
-
+                Vector2 shootDirection = transform.right; // Hướng bắn phải
+                if (transform.localScale.x < 0)
+                {
+                    shootDirection = -transform.right; // hướng bắn trái
+                }
+                // Xoay viên đạn theo hướng bắn
+                float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
+                bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
 
 
 
                 // Đặt vận tốc cho đạn
                 rb.velocity = shootDirection * bulletSpeed;
 
-               
-                    StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
-               // }
+
+                StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
+                // }
 
                 // Giảm số lượng đạn còn lại
                 _currentBulletCount--;
@@ -104,7 +115,7 @@ public class GunController : MonoBehaviour
                     Debug.Log("Hết đạn! Không thể bắn nữa.");
 
                 }
-               
+
             }
             else
             {
@@ -129,7 +140,7 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(bullet); // Xóa viên đạn
     }
-     public void ChangeGun(int newGunIndex)
+    public void ChangeGun(int newGunIndex)
     {
         if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
         {
