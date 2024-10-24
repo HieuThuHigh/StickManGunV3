@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,12 +12,23 @@ public class PlayerController : MonoBehaviour
     private int _jumpCount = 0;        // Biến đếm số lần nhảy
     private bool _isGrounded;          // Kiểm tra xem nhân vật có chạm đất không
     private GunController _gunController; // Điều khiển súng
+    private float moveInput = 0f;
+
+    public Button jumpButton; // Nút nhảy
+    public Button moveLeftButton; // Nút di chuyển trái
+    public Button moveRightButton; // Nút di chuyển phải
+    public Button jumpDownButton; // Nút nhảy xuống
+
+
+    private Vector2 _initialPosition; // Lưu trữ vị trí ban đầu của nhân vật
+    private bool _isStopped = false; // Kiểm tra trạng thái đứng im
 
     private void Start()
     {
         // Lấy thành phần Rigidbody2D của nhân vật
         _rb = GetComponent<Rigidbody2D>();
-
+        // Lưu trữ vị trí ban đầu của nhân vật
+        _initialPosition = transform.position;
         // Khởi tạo dữ liệu nhân vật với giá trị mặc định
         if (playerData == null)
         {
@@ -23,57 +36,90 @@ public class PlayerController : MonoBehaviour
         }
         // In ra tên và máu của nhân vật
         Debug.Log("Nhân vật: " + playerData.characterName + ", Máu: " + playerData.health);
+
+        jumpButton.onClick.AddListener(OnJumpButtonClicked);
+        moveLeftButton.onClick.AddListener(OnMoveLeftButtonClicked);
+        moveRightButton.onClick.AddListener(OnMoveRightButtonClicked);
+        jumpDownButton.onClick.AddListener(OnJumpDownButtonClicked); // Gán sự kiện cho nút nhảy xuống
     }
-   
+
 
     private void Update()
     {
         // Gọi hàm di chuyển
         Move();
-
         // Gọi hàm nhảy
         Jump();
 
         // Kiểm tra xem nhân vật có còn máu không
         CheckHealth();
+      
     }
     public void UpdateGunData(GunData newGunData)
     {
         playerData.GunData = newGunData; // Cập nhật GunData trong PlayerData
     }
     // Hàm điều khiển di chuyển nhân vật
-    void Move()
+    // Hàm điều khiển di chuyển nhân vật
+    private void Move()
     {
-        float moveInput = 0f;
+        moveInput = 0f; // Reset giá trị moveInput
 
-        // Kiểm tra phím A và D
+        // Kiểm tra bàn phím
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("suyedgfuyisefsf");
-            Flip();
             moveInput = -1f; // Di chuyển sang trái
+            Flip();
         }
         else if (Input.GetKey(KeyCode.D))
         {
             moveInput = 1f; // Di chuyển sang phải
+            Flip();
         }
 
-        // Cập nhật vị trí của nhân vật dựa trên moveSpeed từ PlayerData
+        // Cập nhật vị trí của nhân vật dựa trên moveInput
         transform.position += new Vector3(moveInput * playerData.moveSpeed * Time.deltaTime, 0f, 0f);
     }
 
-    // Hàm điều khiển nhân vật nhảy
-    //void Jump()
-    //{
-    //    // Nếu nhấn phím nhảy và số lần nhảy nhỏ hơn số lần nhảy tối đa
-    //    if (Input.GetKeyDown(KeyCode.W) && _jumpCount < playerData.maxJumps)
-    //    {
-    //        // Áp dụng lực nhảy theo trục Y dựa trên jumpForce từ PlayerData
-    //        _rb.velocity = new Vector2(_rb.velocity.x, playerData.jumpForce);
-    //        _jumpCount++;  // Tăng số lần nhảy lên
-    //        Debug.Log("Nhân vật đã nhảy! Số lần nhảy hiện tại: " + _jumpCount);
-    //    }
-    //}
+    private void OnJumpButtonClicked()
+    {
+        Jump();
+    }
+
+    private void OnMoveLeftButtonClicked()
+    {
+        moveInput = -1f; // Di chuyển trái
+        Flip();
+    }
+
+    private void OnMoveRightButtonClicked()
+    {
+        moveInput = 1f; // Di chuyển phải
+        Flip();
+    }
+    private void OnJumpDownButtonClicked()
+    {
+        JumpDown(); // Nhảy xuống
+    }
+    private void JumpDown()
+    {
+        RaycastHit2D hitDown;
+        float rayDistanceDown = 0.2f; // Khoảng cách ray để kiểm tra collider bên dưới
+        Vector2 rayOrigin = transform.position;
+
+        // Dùng raycast để kiểm tra collider ở dưới
+        hitDown = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistanceDown);
+        if (hitDown.collider != null)
+        {
+            // Di chuyển player xuống vị trí đáy của collider phía dưới
+            transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y - 0.2f);
+            Debug.Log("Nhân vật đã nhảy xuống một lớp collider.");
+        }
+        else
+        {
+            Debug.Log("Không còn lớp collider ở dưới.");
+        }
+    }
 
     void Jump()
     {
@@ -120,7 +166,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+   
 
 
 
@@ -164,5 +210,12 @@ public class PlayerController : MonoBehaviour
             _jumpCount = 0;  // Reset số lần nhảy về 0 khi chạm đất
             Debug.Log("Nhân vật đã chạm đất, reset số lần nhảy.");
         }
+        // Kiểm tra va chạm với đối tượng có tag "Wall"
+        if (collision.gameObject.CompareTag("wall"))
+        {
+            transform.position = _initialPosition; // Di chuyển về vị trí ban đầu
+            Debug.Log("Nhân vật đã va chạm với tường và quay về vị trí ban đầu.");
+        }
+       
     }
 }
