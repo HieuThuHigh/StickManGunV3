@@ -738,7 +738,6 @@ GameObject:
   - component: {fileID: 1822054654385877467}
   - component: {fileID: 8849536731416167790}
   - component: {fileID: 7360280286992128090}
-  - component: {fileID: 3838194183309663477}
   - component: {fileID: 7709764444715887591}
   - component: {fileID: 63426666385224170}
   m_Layer: 0
@@ -925,21 +924,6 @@ MonoBehaviour:
   Raycast2: {fileID: 1837524455433259103}
   Raycast3: {fileID: 2610979629136463691}
   jumpForce: 7
---- !u!114 &3838194183309663477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310579672476532325}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1a1d6bcbb1f0847b880ce95470d089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 1
-  stopDistance: 2
 --- !u!114 &7709764444715887591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,7 +931,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4310579672476532325}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c48a867f443757448722b54cbd98804, type: 3}
   m_Name: 

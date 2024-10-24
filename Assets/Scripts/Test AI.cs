@@ -53,7 +53,7 @@ public class TestAI : MonoBehaviour
                     jumpTimer <= 0&& hitDown.collider != null)
                 {
                     
-                    transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y + 0.3f);
+                    transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y + 0.2f);
                 }
             }
         }
