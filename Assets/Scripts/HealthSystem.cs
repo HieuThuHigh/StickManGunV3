@@ -5,14 +5,14 @@ public class HealthSystem : MonoBehaviour
 {
     public int numberOfHearts = 3; // Số trái tim ban đầu
     public float luongMauHienTai;
-    public float luongMauToiDa = 100;
+    public float  health = 100;
     public Text heartsText; // Text để hiển thị số lượng trái tim
     public thanhMau thanhmau; // Thanh máu
 
     void Start()
     {
-        luongMauHienTai = luongMauToiDa;
-        thanhmau.capNhatThanhMau(luongMauHienTai, luongMauToiDa);
+        luongMauHienTai =  health;
+        thanhmau.capNhatThanhMau(luongMauHienTai,  health);
         UpdateHeartsUI(); // Cập nhật giao diện số lượng trái tim
     }
 
@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour
             LoseHeart();
         }
 
-        thanhmau.capNhatThanhMau(luongMauHienTai, luongMauToiDa); // Cập nhật thanh máu
+        thanhmau.capNhatThanhMau(luongMauHienTai,  health); // Cập nhật thanh máu
         UpdateHeartsUI(); // Cập nhật giao diện trái tim (text)
     }
 
@@ -33,7 +33,7 @@ public class HealthSystem : MonoBehaviour
         numberOfHearts--; // Mất một trái tim
         if (numberOfHearts > 0)
         {
-            luongMauHienTai = luongMauToiDa; // Hồi lại máu đầy cho trái tim tiếp theo
+            luongMauHienTai =  health; // Hồi lại máu đầy cho trái tim tiếp theo
         }
         else
         {

@@ -1,13 +1,17 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bomb : MonoBehaviour
+public class Bomauto : MonoBehaviour
 {
     public float explosionRadius = 5f;    // Bán kính vụ nổ
     public float explosionForce = 300f;   // Lực nổ
+    public float initialForce = 3f;     // Lực ban đầu
     public float delay = 3f;              // Thời gian chờ trước khi nổ
     public GameObject explosionEffect;    // Hiệu ứng vụ nổ
+
+    public Rigidbody2D Rb;
+
     private float countdown;
     private bool hasExploded = false;
     private bool hasTouchedGround = false; // Cờ đánh dấu bom đã chạm đất
@@ -16,6 +20,10 @@ public class bomb : MonoBehaviour
     void Start()
     {
         countdown = delay;
+            if (Rb != null)
+    {
+        Rb.AddForce(Vector2.up * initialForce); // Thay đổi Vector2.up thành hướng bạn muốn
+    }
     }
 
     // Update is called once per frame
@@ -72,3 +80,5 @@ public class bomb : MonoBehaviour
         }
     }
 }
+
+
