@@ -27,11 +27,14 @@ public class TestAI : MonoBehaviour
 
     void FollowPlayer()
     {
+        RaycastHit2D hitDown;
+        Vector2 rayOrigin = transform.position;
+        float rayDistanceDown = 0.2f;
         if (player != null)
         {
             // Tính khoảng cách giữa enemy và player
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            
+            hitDown = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistanceDown);
             // Nếu khoảng cách lớn hơn stopDistance, enemy sẽ di chuyển về phía player
             if (distanceToPlayer > stopDistance)
             {
@@ -46,6 +49,12 @@ public class TestAI : MonoBehaviour
                 {
                     Jump();
                 }
+                if (player.position.y < transform.position.y &&
+                    jumpTimer <= 0&& hitDown.collider != null)
+                {
+                    
+                    transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y + 0.3f);
+                }
             }
         }
     }
@@ -55,4 +64,5 @@ public class TestAI : MonoBehaviour
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         jumpTimer = jumpCooldown; // Đặt lại bộ đếm thời gian nhảy
     }
+
 }
