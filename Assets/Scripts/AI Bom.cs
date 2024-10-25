@@ -10,6 +10,7 @@ public class AIBom : MonoBehaviour
     public float maxThrowInterval = 7f;
     public Transform player; // Đối tượng người chơi
 
+    private float hihiih = 9f;
     private void Start()
     {
         StartCoroutine(ThrowBombs());
