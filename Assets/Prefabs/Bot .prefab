@@ -738,7 +738,6 @@ GameObject:
   - component: {fileID: 1822054654385877467}
   - component: {fileID: 8849536731416167790}
   - component: {fileID: 7360280286992128090}
-  - component: {fileID: 3838194183309663477}
   - component: {fileID: 7709764444715887591}
   - component: {fileID: 63426666385224170}
   m_Layer: 0
@@ -911,7 +910,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4310579672476532325}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e479add1de3adf4ca62fc5ce03e618f, type: 3}
   m_Name: 
@@ -925,21 +924,6 @@ MonoBehaviour:
   Raycast2: {fileID: 1837524455433259103}
   Raycast3: {fileID: 2610979629136463691}
   jumpForce: 7
---- !u!114 &3838194183309663477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310579672476532325}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1a1d6bcbb1f0847b880ce95470d089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 1
-  stopDistance: 2
 --- !u!114 &7709764444715887591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,7 +931,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4310579672476532325}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c48a867f443757448722b54cbd98804, type: 3}
   m_Name: 
@@ -956,7 +940,7 @@ MonoBehaviour:
   throwPoint: {fileID: 307739844694615738}
   minThrowInterval: 4
   maxThrowInterval: 7
-  player: {fileID: 0}
+  player: {fileID: 2880087253058671387, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
 --- !u!114 &63426666385224170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,7 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc2e95ac667ca54cac5b44bc9b0efde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 2880087253058671387, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
   speed: 2
   jumpForce: 7
   jumpHeightThreshold: 1.5
