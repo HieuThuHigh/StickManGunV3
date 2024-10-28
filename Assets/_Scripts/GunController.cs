@@ -65,6 +65,12 @@ public class GunController : MonoBehaviour
             }
         }
     }
+    public void OnShootButtonClicked()
+    {
+        Debug.Log("Bắn súng!");
+        Shoot();
+        // Thêm logic bắn súng ở đây
+    }
     void UpdatePlayerGunData()
     {
         if (_playerController != null)
@@ -113,6 +119,7 @@ public class GunController : MonoBehaviour
                 if (_currentBulletCount <= 0)
                 {
                     Debug.Log("Hết đạn! Không thể bắn nữa.");
+                    Reload(); // Tự động nạp lại đạn
 
                 }
 

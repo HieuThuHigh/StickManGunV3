@@ -14,12 +14,6 @@ public class PlayerController : MonoBehaviour
     private GunController _gunController; // Điều khiển súng
     private float moveInput = 0f;
 
-    public Button jumpButton; // Nút nhảy
-    public Button moveLeftButton; // Nút di chuyển trái
-    public Button moveRightButton; // Nút di chuyển phải
-    public Button jumpDownButton; // Nút nhảy xuống
-
-
     private Vector2 _initialPosition; // Lưu trữ vị trí ban đầu của nhân vật
     private bool _isStopped = false; // Kiểm tra trạng thái đứng im
 
@@ -37,10 +31,8 @@ public class PlayerController : MonoBehaviour
         // In ra tên và máu của nhân vật
         Debug.Log("Nhân vật: " + playerData.characterName + ", Máu: " + playerData.health);
 
-        jumpButton.onClick.AddListener(OnJumpButtonClicked);
-        moveLeftButton.onClick.AddListener(OnMoveLeftButtonClicked);
-        moveRightButton.onClick.AddListener(OnMoveRightButtonClicked);
-        jumpDownButton.onClick.AddListener(OnJumpDownButtonClicked); // Gán sự kiện cho nút nhảy xuống
+
+
     }
 
 
@@ -81,26 +73,29 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(moveInput * playerData.moveSpeed * Time.deltaTime, 0f, 0f);
     }
 
-    private void OnJumpButtonClicked()
+    public void OnJumpButtonClicked()
     {
         Jump();
     }
 
-    private void OnMoveLeftButtonClicked()
+    public void OnMoveLeftButtonClicked()
     {
         moveInput = -1f; // Di chuyển trái
         Flip();
     }
 
-    private void OnMoveRightButtonClicked()
+    public void OnMoveRightButtonClicked()
     {
         moveInput = 1f; // Di chuyển phải
         Flip();
     }
-    private void OnJumpDownButtonClicked()
+    public void OnJumpDownButtonClicked()
     {
         JumpDown(); // Nhảy xuống
     }
+
+
+
     private void JumpDown()
     {
         RaycastHit2D hitDown;

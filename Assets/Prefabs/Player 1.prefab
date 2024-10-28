@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 933976703859227699}
   - component: {fileID: 129804743876435464}
   - component: {fileID: 8684890190206922092}
+  - component: {fileID: 3814823023337473441}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -898,6 +899,21 @@ MonoBehaviour:
   throwPoint: {fileID: 1834483409758850207, guid: 406cef753390a42428ae83d293fc63e6, type: 3}
   throwForce: 3.74
   offset: 1
+--- !u!114 &3814823023337473441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448249254921954385}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bba96c1c48df549ad925fcf7f0de09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thanhmau: {fileID: 0}
+  luongMauHienTai: 0
+  health: 100
 --- !u!1 &6608556504240347015
 GameObject:
   m_ObjectHideFlags: 0
