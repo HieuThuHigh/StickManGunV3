@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8761315472357023113}
   m_Layer: 0
   m_Name: 2
-  m_TagString: Untagged
+  m_TagString: bom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.07
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f83a32d70f0a054883b789c8285d110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 5
-  explosionForce: 700
+  explosionRadius: 4.05
+  explosionForce: 240.7
   delay: 3
   explosionEffect: {fileID: 4804012466897311888, guid: 08d8dd7c0cacda1429dbc4f329b10066, type: 3}
