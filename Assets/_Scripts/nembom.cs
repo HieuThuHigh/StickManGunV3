@@ -10,25 +10,14 @@ public class Nembom : MonoBehaviour
     public float offset = 1f;             // Khoảng cách ném bom cách nhân vật
     private PlayerController playerController;    // Biến theo dõi hướng của nhân vật
 
-    void Start()
-    {
-        // Tìm kiếm component PlayerController trên đối tượng của nhân vật
-        playerController = GetComponent<PlayerController>();
-
-        // Kiểm tra xem playerController có null không, nếu có, in ra cảnh báo
-        if (playerController == null)
-        {
-            Debug.LogWarning("Không tìm thấy PlayerController trên đối tượng.");
-        }
-    }
     void Update()
     {
         // Kiểm tra nếu người chơi nhấn chuột trái để ném bom
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     ThrowBomb();
-        // }
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ThrowBomb();
+        }
+      
     }
     public void OnThrowBombButtonClicked()
     {

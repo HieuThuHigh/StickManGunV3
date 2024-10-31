@@ -42,27 +42,17 @@ public class TestAI : MonoBehaviour
                 Vector2 targetPosition = new Vector2(player.position.x, transform.position.y);
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-                // Quay mặt theo hướng di chuyển
-                if (targetPosition.x > transform.position.x)
-                {
-                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Quay mặt sang phải
-                }
-                else if (targetPosition.x < transform.position.x)
-                {
-                    transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Quay mặt sang trái
-                }
-
                 // Kiểm tra điều kiện nhảy
-                if (player.position.y > transform.position.y &&
-                    (player.position.y - transform.position.y) < jumpHeightThreshold &&
+                if (player.position.y > transform.position.y && 
+                    (player.position.y - transform.position.y) < jumpHeightThreshold && 
                     jumpTimer <= 0)
                 {
                     Jump();
                 }
-
                 if (player.position.y < transform.position.y &&
-                    jumpTimer <= 0 && hitDown.collider != null)
+                    jumpTimer <= 0&& hitDown.collider != null)
                 {
+                    
                     transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y + 0.2f);
                 }
             }
