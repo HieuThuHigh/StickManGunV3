@@ -127,22 +127,6 @@ public class test : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // Di chuyển xuống khi nhấn phím S
 
     }
-    // public void shoot(){
-
-    //     GunController gunController = GetComponent<GunController>();
-    // }
-    // public void bomb(){
-    //     Nembom nembom = GetComponent<Nembom>();
-    // }
-    void flip()
-    {
-        // if (isfacingRight && trai_phai < 0 || !isfacingRight && trai_phai > 0)
-        // {
-        //     isfacingRight = !isfacingRight;
-        //     Vector3 kich_thuoc = transform.localScale;
-        //     kich_thuoc.x = kich_thuoc.x * -1;
-        //     transform.localScale = kich_thuoc;
-        // }
-    }
+   
 
 }
