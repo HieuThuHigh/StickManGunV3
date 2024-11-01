@@ -5,10 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator animator;
+    private Rigidbody rb;
+    public GameObject circlePrefab;
+    private GameObject circle;
     // Start is called before the first frame update
     void Start()
     {
        animator = GetComponent<Animator>(); 
+       rb = GetComponent<Rigidbody>();
+       
     }
 
     // Update is called once per frame
@@ -24,8 +29,16 @@ public class Player : MonoBehaviour
             animator.Play("RightLeg");
         }
         if(Input.GetKeyDown(KeyCode.W)){
-            animator.Play("JumpLeftLeg");
-            animator.Play("JumpRightLeg");
+            Jump();
         }
     }
+   void Jump(){
+        // Hiệu ứng nhảy ở đây
+        // Sau khi nhảy xong, tạo vòng tròn dưới chân
+        circle = Instantiate(circlePrefab, new Vector3(
+        transform.position.x, 
+        transform.position.y - 1f, 
+        transform.position.z), Quaternion.identity);
+        Destroy(circle, 0.5f); // Biến mất vòng tròn sau 0.5 giây
+   }
 }
