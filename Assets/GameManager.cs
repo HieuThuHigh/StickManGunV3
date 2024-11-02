@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numberOfBots = 2; // Số lượng bot muốn thêm
 
 
-    [SerializeField] private float gameDuration = 10f; // Thời gian cho mỗi trận đấu
+    [SerializeField] private float gameDuration = 100f; // Thời gian cho mỗi trận đấu
     private float timeRemaining; // Thời gian còn lại
     private bool gameActive = false; // Trạng thái trò chơi
     [SerializeField] private Text timeText; // Tham chiếu đến Text hiển thị thời gian
@@ -21,12 +21,12 @@ public class GameManager : MonoBehaviour
         LoadMap(); // Gọi LoadMap trong Start
         LoadPlayer(); // Tải nhân vật vào scene
         SpawnBots();    // Gọi hàm tạo bot
-  
+      //  LoadButton();
         timeRemaining = gameDuration; // Khởi tạo thời gian còn lại
         gameActive = true; // Bắt đầu trò chơi
                            // Thiết lập sự kiện cho nút Restart
-        restartButton.onClick.AddListener(RestartGame);
-        restartButton.gameObject.SetActive(false); // Ẩn nút Restart ban đầu
+      //  restartButton.onClick.AddListener(RestartGame);
+       // restartButton.gameObject.SetActive(false); // Ẩn nút Restart ban đầu
     }
     private void Update()
     {
@@ -73,11 +73,6 @@ public class GameManager : MonoBehaviour
     }
 
    
-
-    private void HandleButtonClick(Button button)
-    {
-        // Gọi script xử lý nút của bạn ở đây
-    }
     private void EndGame()
     {
         gameActive = false; // Dừng trò chơi
