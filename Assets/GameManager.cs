@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -10,14 +11,34 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numberOfBots = 2; // Số lượng bot muốn thêm
 
 
+    [SerializeField] private float gameDuration = 10f; // Thời gian cho mỗi trận đấu
+    private float timeRemaining; // Thời gian còn lại
+    private bool gameActive = false; // Trạng thái trò chơi
+    [SerializeField] private Text timeText; // Tham chiếu đến Text hiển thị thời gian
+    [SerializeField] private Button restartButton; // Tham chiếu đến nút Restart
     private void Start()
     {
         LoadMap(); // Gọi LoadMap trong Start
         LoadPlayer(); // Tải nhân vật vào scene
         SpawnBots();    // Gọi hàm tạo bot
-        CreateButtons(); // Tạo các nút trên màn hình
+  
+        timeRemaining = gameDuration; // Khởi tạo thời gian còn lại
+        gameActive = true; // Bắt đầu trò chơi
+                           // Thiết lập sự kiện cho nút Restart
+        restartButton.onClick.AddListener(RestartGame);
+        restartButton.gameObject.SetActive(false); // Ẩn nút Restart ban đầu
     }
-
+    private void Update()
+    {
+        if (gameActive)
+        {
+            timeRemaining -= Time.deltaTime; // Giảm thời gian còn lại
+            if (timeRemaining <=gameDuration)
+            {
+                EndGame(); // Kết thúc trò chơi khi hết thời gian
+            }
+        }
+    }
     public void LoadMap()
     {
         if (mapData != null && mapData.mapPrefab != null)
@@ -50,35 +71,23 @@ public class GameManager : MonoBehaviour
             Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity); // Tạo nhân vật
         }
     }
-    // Hàm tạo và hiển thị các nút
-    public void CreateButtons()
-    {
-        // Tạo một Canvas nếu chưa có
-        Canvas canvas = FindObjectOfType<Canvas>();
-        if (canvas == null)
-        {
-            GameObject canvasObject = new GameObject("Canvas");
-            canvas = canvasObject.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvasObject.AddComponent<CanvasScaler>();
-            canvasObject.AddComponent<GraphicRaycaster>();
-        }
 
-    
+   
+
+    private void HandleButtonClick(Button button)
+    {
+        // Gọi script xử lý nút của bạn ở đây
     }
-
-    private void CreateButton(Button buttonPrefab, string buttonText, Vector2 position)
+    private void EndGame()
     {
-        if (buttonPrefab != null)
-        {
-            Button buttonInstance = Instantiate(buttonPrefab);
-            buttonInstance.transform.SetParent(FindObjectOfType<Canvas>().transform, false); // Đặt parent là Canvas
-            buttonInstance.GetComponent<RectTransform>().anchoredPosition = position; // Đặt vị trí nút
-            buttonInstance.GetComponentInChildren<Text>().text = buttonText; // Đặt chữ cho nút
-        }
-        else
-        {
-            Debug.LogError($"Button prefab {buttonText} is not assigned!");
-        }
+        gameActive = false; // Dừng trò chơi
+        Debug.Log("Trò chơi kết thúc!");
+        // Hiển thị điểm số hoặc màn hình kết thúc ở đây
+        // Thoát khỏi scene hiện tại và trở về scene chính
+        restartButton.gameObject.SetActive(true); // Hiển thị nút Restart
+    }
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Tải lại scene hiện tại
     }
 }
