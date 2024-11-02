@@ -120,8 +120,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: test, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
         m_Arguments:
@@ -252,13 +252,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: JumpDown
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7541572778442009018, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Nembom, Assembly-CSharp
         m_MethodName: OnThrowBombButtonClicked
         m_Mode: 1
@@ -407,6 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8805357740526369659}
   - component: {fileID: 3087024637257577288}
+  - component: {fileID: 2995952268469661789}
   - component: {fileID: 1651584306965331211}
   m_Layer: 5
   m_Name: nutbam
@@ -463,6 +464,29 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2995952268469661789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799840083643230749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1651584306965331211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,8 +792,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: test, Assembly-CSharp
           m_MethodName: StartMoveLeft
           m_Mode: 1
           m_Arguments:
@@ -784,8 +808,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: test, Assembly-CSharp
           m_MethodName: StopMoveLeft
           m_Mode: 1
           m_Arguments:
@@ -917,7 +941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6662858937139147089, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GunController, Assembly-CSharp
         m_MethodName: OnShootButtonClicked
         m_Mode: 1
@@ -929,7 +953,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6662858937139147089, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GunController, Assembly-CSharp
         m_MethodName: Reload
         m_Mode: 1
@@ -1079,9 +1103,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: StartMoveRight
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: test, Assembly-CSharp
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1095,9 +1119,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: StopMoveRight
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: test, Assembly-CSharp
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
