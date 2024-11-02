@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,39 +170,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &52116152 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8684890190206922092, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-  m_PrefabInstance: {fileID: 907156834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b6f79b9c55f6b49a3580659fd63cff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &52116153 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 129804743876435464, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-  m_PrefabInstance: {fileID: 907156834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e7a9b2921fe20544b533c0c4ac8a9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &52116154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2894489093796422475, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-  m_PrefabInstance: {fileID: 907156834}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c209d67426322ad47bc85973ce224ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &73402203
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +306,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 52116154}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartMoveRight
           m_Mode: 1
@@ -356,7 +322,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 52116154}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StopMoveRight
           m_Mode: 1
@@ -509,7 +475,7 @@ PrefabInstance:
     - target: {fileID: 393214146746726265, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116154}
+      objectReference: {fileID: 0}
     - target: {fileID: 393214146746726265, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Jump
@@ -521,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 446354248793848173, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116152}
+      objectReference: {fileID: 0}
     - target: {fileID: 446354248793848173, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnThrowBombButtonClicked
@@ -529,11 +495,11 @@ PrefabInstance:
     - target: {fileID: 453122624885918066, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116154}
+      objectReference: {fileID: 0}
     - target: {fileID: 453122624885918066, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116154}
+      objectReference: {fileID: 0}
     - target: {fileID: 453122624885918066, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartMoveLeft
@@ -573,11 +539,11 @@ PrefabInstance:
     - target: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116153}
+      objectReference: {fileID: 0}
     - target: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 52116153}
+      objectReference: {fileID: 0}
     - target: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnShootButtonClicked
@@ -589,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 5086563711047644233, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116154}
+      objectReference: {fileID: 0}
     - target: {fileID: 5086563711047644233, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: JumpDown
@@ -609,11 +575,11 @@ PrefabInstance:
     - target: {fileID: 7676090556976515262, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116154}
+      objectReference: {fileID: 0}
     - target: {fileID: 7676090556976515262, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 52116154}
+      objectReference: {fileID: 0}
     - target: {fileID: 7676090556976515262, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartMoveRight
@@ -1002,6 +968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6064825346600687962, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1822007278}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -46,15 +46,15 @@ public class GunController : MonoBehaviour
 
 
 
-        if (Input.GetButtonDown("Fire1")) // Kiểm tra nếu người chơi nhấn phím bắn
-        {
-            Shoot();
-        }
+        //if (Input.GetButtonDown("Fire1")) // Kiểm tra nếu người chơi nhấn phím bắn
+        //{
+        //    Shoot();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Q)) // Kiểm tra nếu người chơi nhấn phím R để nạp lại đạn
-        {
-            Reload();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q)) // Kiểm tra nếu người chơi nhấn phím R để nạp lại đạn
+        //{
+        //    Reload();
+        //}
         // Thay đổi súng khi nhấn phím số (0-9)
         for (int i = 0; i < guns.Count; i++)
         {
