@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             transform.Translate(Vector3.left * playerData.moveSpeed * Time.deltaTime);
             Flip();
         }
-        if (moveRight)
+         else if (moveRight)
         {
             transform.Translate(Vector3.right * playerData.moveSpeed * Time.deltaTime);
             Flip();
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (hitDown.collider != null)
         {
             // Di chuyển player xuống vị trí đáy của collider phía dưới
-            transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y - 0.2f);
+            transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y - 0.5f);
             Debug.Log("Nhân vật đã nhảy xuống một lớp collider.");
         }
         else
