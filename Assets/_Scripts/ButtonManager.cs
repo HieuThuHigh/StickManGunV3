@@ -34,19 +34,19 @@ public class ButtonManager : MonoBehaviour
         // Khởi tạo và gán sự kiện cho các nút
         jumpButton = Instantiate(jumpButtonPrefab, transform);
         SetButtonPosition(jumpButton.GetComponent<RectTransform>(), new Vector2(-200, 0)); // Vị trí nút nhảy
-        jumpButton.onClick.AddListener(playerController.OnJumpButtonClicked);
+        // jumpButton.onClick.AddListener(playerController.OnJumpButtonClicked);
 
         moveLeftButton = Instantiate(moveLeftButtonPrefab, transform);
         SetButtonPosition(moveLeftButton.GetComponent<RectTransform>(), new Vector2(-300, 0)); // Vị trí nút đi trái
-        moveLeftButton.onClick.AddListener(playerController.OnMoveLeftButtonClicked);
+        // moveLeftButton.onClick.AddListener(playerController.OnMoveLeftButtonClicked);
 
         moveRightButton = Instantiate(moveRightButtonPrefab, transform);
         SetButtonPosition(moveRightButton.GetComponent<RectTransform>(), new Vector2(-100, 0)); // Vị trí nút đi phải
-        moveRightButton.onClick.AddListener(playerController.OnMoveRightButtonClicked);
+        // moveRightButton.onClick.AddListener(playerController.OnMoveRightButtonClicked);
 
         jumpDownButton = Instantiate(jumpDownButtonPrefab, transform);
         SetButtonPosition(jumpDownButton.GetComponent<RectTransform>(), new Vector2(0, 0)); // Vị trí nút nhảy xuống
-        jumpDownButton.onClick.AddListener(playerController.OnJumpDownButtonClicked);
+        // jumpDownButton.onClick.AddListener(playerController.OnJumpDownButtonClicked);
 
         // Khởi tạo nút bắn súng và gán sự kiện
         shootButton = Instantiate(shootButtonPrefab, transform);
