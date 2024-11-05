@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +28,7 @@ public class SplController : MonoBehaviour
         weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
         compButton.onClick.AddListener(ComplainEvent);
+
     }
     void SoundEvent()
     {

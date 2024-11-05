@@ -9,7 +9,16 @@ public class BackButtonController : MonoBehaviour
    [SerializeField] private Button backButton;
    [SerializeField] private GameObject menuOff; 
     [SerializeField] private Button PlayButton;
-  // [SerializeField] private GameObject menuOff;
+    
+
+    private int selectedLevel;
+
+    public void SelectLevel(int level)
+    {
+        selectedLevel = level; 
+          
+    }
+
     void Start()
     {
         backButton.onClick.AddListener(() =>
@@ -18,7 +27,7 @@ public class BackButtonController : MonoBehaviour
         });
         PlayButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("level1"); // Tải lại scene hiện tại
+            SceneManager.LoadScene("Level" + selectedLevel);
         });
     }
 
