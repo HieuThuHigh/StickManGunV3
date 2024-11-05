@@ -17,6 +17,7 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
     [SerializeField] private Button soundButton;
+    [SerializeField] private GameObject CampaignPlay;
 
     private void Start()
     {
@@ -60,5 +61,10 @@ public class SplController : MonoBehaviour
     {
         Debug.LogError("Complain");
         compPopup.gameObject.SetActive(true);
+    }
+   public  void CampaignPlays()
+    {
+        Debug.LogError("CampaignPlay");
+        CampaignPlay.gameObject.SetActive(true);
     }
 }
