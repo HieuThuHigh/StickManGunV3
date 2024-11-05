@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class GunController : MonoBehaviour
 {
     public Transform shootingPoint; // Điểm bắn
@@ -11,10 +12,17 @@ public class GunController : MonoBehaviour
     private int _currentBulletCount;   // Số lượng đạn còn lại
     private int _currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
     public GunData gunData;          // Khẩu súng hiện tại
+    public Text bulletCountText;
     private PlayerCustomization _playerCustomization;
     private PlayerController _playerController;
     void Start()
     {
+        if (gunData == null)
+        {
+            gunData = ScriptableObject.CreateInstance<GunData>(); // Tạo instance mới của GunData
+
+        }
+        bulletCountText.text = gunData.bulletCount.ToString(); // cập nhật hiển thị sl đạn
         // Gán vị trí của shootingPoint bằng gunPosition
         if (shootingPoint != null)
         {
@@ -28,6 +36,7 @@ public class GunController : MonoBehaviour
     }
     void Update()
     {
+
         // Cập nhật vị trí của shootingPoint
         if (shootingPoint != null)
         {
@@ -114,12 +123,13 @@ public class GunController : MonoBehaviour
                 // Giảm số lượng đạn còn lại
                 _currentBulletCount--;
 
+                bulletCountText.text = _currentBulletCount.ToString(); // cập nhật hiển thị sl đạn
 
                 // Kiểm tra nếu hết đạn
                 if (_currentBulletCount <= 0)
                 {
                     Debug.Log("Hết đạn! Không thể bắn nữa.");
-                    Reload(); // Tự động nạp lại đạn
+                    Reloading(); // Tự động nạp lại đạn
 
                 }
 
@@ -136,10 +146,10 @@ public class GunController : MonoBehaviour
     }
 
     // Hàm để nạp lại đạn
-    public void Reload()
+    public void Reloading()
     {
         _currentBulletCount = gunData.bulletCount; // Nạp lại số lượng đạn
-        Debug.Log("Đạn đã được nạp lại!");
+        Debug.Log("Đạn đã được nạp");
     }
     // Coroutine để xóa viên đạn sau 1,5 giây
     private IEnumerator DestroyBulletAfterDelay(GameObject bullet, float delay)

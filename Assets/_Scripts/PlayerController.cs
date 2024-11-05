@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public PlayerData playerData;      // Tham chiếu tới dữ liệu nhân vật
+    public Text characterNameText;
     public bool isFacingRight = true;  // Kiểm tra hướng của nhân vật
     private Rigidbody2D _rb;           // Rigidbody của nhân vật
     private int _jumpCount = 0;        // Biến đếm số lần nhảy
@@ -28,7 +29,9 @@ public class PlayerController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (playerData == null)
         {
             playerData = ScriptableObject.CreateInstance<PlayerData>(); // Tạo instance mới của PlayerData
+            
         }
+        characterNameText.text = playerData.characterName;
         // In ra tên và máu của nhân vật
         Debug.Log("Nhân vật: " + playerData.characterName + ", Máu: " + playerData.health);
 
@@ -117,7 +120,7 @@ public class PlayerController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public void JumpDown()
     {
         RaycastHit2D hitDown;
-        float rayDistanceDown = 0.2f; // Khoảng cách ray để kiểm tra collider bên dưới
+        float rayDistanceDown = 0.5f; // Khoảng cách ray để kiểm tra collider bên dưới
         Vector2 rayOrigin = transform.position;
 
         // Dùng raycast để kiểm tra collider ở dưới
@@ -125,7 +128,7 @@ public class PlayerController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (hitDown.collider != null)
         {
             // Di chuyển player xuống vị trí đáy của collider phía dưới
-            transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y - 0.5f);
+            transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.max.y - 0.2f);
             Debug.Log("Nhân vật đã nhảy xuống một lớp collider.");
         }
         else

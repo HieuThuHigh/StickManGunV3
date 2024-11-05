@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 6662858937139147089}
   - component: {fileID: 7541572778442009018}
   - component: {fileID: 5732807514825923350}
+  - component: {fileID: 2828716593001628195}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -728,6 +729,23 @@ MonoBehaviour:
   thanhmau: {fileID: 0}
   luongMauHienTai: 0
   health: 100
+--- !u!114 &2828716593001628195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872890465356568936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cb2b5c6f6b108469037c0e3413ed58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfHearts: 3
+  luongMauHienTai: 0
+  health: 100
+  heartsText: {fileID: 0}
+  thanhmau: {fileID: 0}
 --- !u!1 &7138612142339669650
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,13 +4,16 @@ using UnityEngine.UI;
 public class HealthSystem : MonoBehaviour
 {
     public int numberOfHearts = 3; // Số trái tim ban đầu
-    public float luongMauHienTai;
-    public float  health = 100;
-    public Text heartsText; // Text để hiển thị số lượng trái tim
+    public int luongMauHienTai;
+    public int  health = 100;
+    public Text heartsText; // Text để hiển thị số lượng trái tim 
     public thanhMau thanhmau; // Thanh máu
+    private PlayerData playerData;
+    
 
     void Start()
     {
+        
         luongMauHienTai =  health;
         thanhmau.capNhatThanhMau(luongMauHienTai,  health);
         UpdateHeartsUI(); // Cập nhật giao diện số lượng trái tim
@@ -18,6 +21,7 @@ public class HealthSystem : MonoBehaviour
 
     void Update()
     {
+        
         // Nếu máu cạn và vẫn còn trái tim
         if (luongMauHienTai <= 0 && numberOfHearts > 0)
         {
@@ -56,7 +60,7 @@ public class HealthSystem : MonoBehaviour
     }
 
     // Hàm gọi khi nhân vật bị mất máu
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         luongMauHienTai -= damage;
         if (luongMauHienTai < 0)

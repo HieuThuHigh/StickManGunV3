@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class thanhMau : MonoBehaviour
 {
     public Image _thanhMau;
-    public void capNhatThanhMau(float luongMauHienTai, float  health)
+    public void capNhatThanhMau(int luongMauHienTai, int  health)
     {
         _thanhMau.fillAmount = luongMauHienTai/ health;
     }
