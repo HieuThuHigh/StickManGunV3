@@ -4,109 +4,101 @@ using UnityEngine;
 
 public class AIeasy : MonoBehaviour
 {
-    public Transform player; // Tham chiếu đến Transform của người chơi
-    public float speed = 2f; // Tốc độ di chuyển
-    public float jumpForce = 5f; // Lực nhảy
-    public float jumpHeightThreshold = 1.5f; // Độ cao tối đa để enemy nhảy
-    public float jumpCooldown = 1f; // Thời gian giữa các lần nhảy
-    public float stopDistance = 2f; // Khoảng cách dừng lại khi gần player
+    public float speed = 2f;
+    public float jumpForce = 5f;
+    public float jumpHeightThreshold = 1.5f;
+    public float jumpCooldown = 1f;
+    public float stopDistance = 2f;
     public LayerMask groundLayer;
     public Transform Raycast1;
     public Transform Raycast2;
     public Transform Raycast3;
     private Rigidbody2D rb;
 
-    private float jumpTimer; // Bộ đếm thời gian để kiểm soát thời gian hồi nhảy
-    private float stopTimer = 0f; // Bộ đếm thời gian dừng lại khi không tìm thấy mặt đất
-    [SerializeField] private float fallDelay = 1f; // Thời gian trễ trước khi tụt xuống dưới, có thể chỉnh sửa từ Inspector
-    private float fallDelayTimer = 0f; // Bộ đếm thời gian trễ
+    private float jumpTimer;
+    private float stopTimer = 0f;
+    [SerializeField] private float fallDelay = 1f;
+    private float fallDelayTimer = 0f;
+
+    private Transform player; // Tham chiếu tới player
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // Tìm player theo tên GameObject
+        player = GameObject.FindWithTag("Player")?.transform;
+
+        if (player == null)
+        {
+            Debug.LogError("Player not found! Please ensure the player GameObject is named 'Player'.");
+        }
     }
 
     void Update()
     {
-        jumpTimer -= Time.deltaTime; // Giảm bộ đếm thời gian nhảy
-        stopTimer -= Time.deltaTime; // Giảm bộ đếm thời gian dừng lại
-        fallDelayTimer -= Time.deltaTime; // Giảm bộ đếm thời gian trễ
+        jumpTimer -= Time.deltaTime;
+        stopTimer -= Time.deltaTime;
+        fallDelayTimer -= Time.deltaTime;
 
-        // Nếu stopTimer > 0, có nghĩa là AI đang tạm dừng, không di chuyển
         if (stopTimer > 0)
         {
-            return; // Ngừng di chuyển trong thời gian dừng lại
+            return;
         }
 
-        // Nếu stopTimer <= 0, tiếp tục di chuyển AI theo player
         FollowPlayer();
     }
 
     void FollowPlayer()
     {
+        if (player == null) return;
+
         RaycastHit2D hitDown;
         Vector2 rayOrigin = transform.position;
         float rayDistanceDown = 0.2f;
 
-        if (player != null)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        hitDown = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistanceDown);
+        Vector2 direction = Vector2.down;
+
+        RaycastHit2D hit = Physics2D.Raycast(Raycast1.position, direction, 0.1f, groundLayer);
+        RaycastHit2D hit2 = Physics2D.Raycast(Raycast2.position, direction, 2f, groundLayer);
+        RaycastHit2D hit3 = Physics2D.Raycast(Raycast3.position, direction, 1f, groundLayer);
+        Debug.DrawRay(Raycast1.position, direction * 0.1f, Color.red);
+        Debug.DrawRay(Raycast2.position, direction * 1f, Color.green);
+        Debug.DrawRay(Raycast3.position, direction * 1f, Color.blue);
+
+        if (hit.collider == null && hit2.collider == null)
         {
-            // Tính khoảng cách giữa enemy và player
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            hitDown = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistanceDown);
-            Vector2 direction = Vector2.down;
+            stopTimer = 1f;
+            Flip();
+            return;
+        }
 
-            // Kiểm tra hai raycast có chạm vào mặt đất không
-            RaycastHit2D hit = Physics2D.Raycast(Raycast1.position, direction, 0.1f, groundLayer);
-            RaycastHit2D hit2 = Physics2D.Raycast(Raycast2.position, direction, 2f, groundLayer);
-            RaycastHit2D hit3 = Physics2D.Raycast(Raycast3.position, direction, 1f, groundLayer);
-            Debug.DrawRay(Raycast1.position, direction * 0.1f, Color.red);
-            Debug.DrawRay(Raycast2.position, direction * 1f, Color.green);
-            Debug.DrawRay(Raycast3.position, direction * 1f, Color.blue);
+        if (distanceToPlayer > stopDistance)
+        {
+            Vector2 targetPosition = new Vector2(player.position.x, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-            // Nếu cả hai raycast không chạm vào mặt đất, dừng AI lại một giây
-            if (hit.collider == null && hit2.collider == null)
+            if (targetPosition.x > transform.position.x)
             {
-                stopTimer = 1f; // Dừng AI 1 giây
-                // Quay mặt AI về hướng ngược lại sau khi dừng lại
-                Flip();
-                return; // Ngừng di chuyển trong thời gian dừng
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else if (targetPosition.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
 
-            // Nếu khoảng cách lớn hơn stopDistance, enemy sẽ di chuyển về phía player
-            if (distanceToPlayer > stopDistance)
+            if (player.position.y > transform.position.y && ((player.position.y - transform.position.y) < jumpHeightThreshold) && jumpTimer <= 0)
             {
-                // Di chuyển enemy theo hướng của người chơi
-                Vector2 targetPosition = new Vector2(player.position.x, transform.position.y);
-                transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                Jump();
+            }
 
-                // Quay mặt AI theo hướng di chuyển
-                if (targetPosition.x > transform.position.x)
+            if (player.position.y < transform.position.y && jumpTimer <= 0 && hitDown.collider != null && hit3.collider != null)
+            {
+                if (fallDelayTimer <= 0)
                 {
-                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Quay mặt sang phải
-                }
-                else if (targetPosition.x < transform.position.x)
-                {
-                    transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Quay mặt sang trái
-                }
-
-                // Kiểm tra điều kiện nhảy
-                if (player.position.y > transform.position.y && (
-                    (player.position.y - transform.position.y) < jumpHeightThreshold) &&
-                    jumpTimer <= 0)
-                {
-                    Jump();
-                }
-
-                // Kiểm tra điều kiện tụt xuống dưới với trễ
-                if (player.position.y < transform.position.y &&
-                    jumpTimer <= 0 && hitDown.collider != null && hit3.collider != null)
-                {
-                    // Nếu thời gian trễ đã đủ, tụt xuống dưới
-                    if (fallDelayTimer <= 0)
-                    {
-                        transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y + 0.2f);
-                        fallDelayTimer = fallDelay; // Đặt lại thời gian trễ theo giá trị fallDelay từ Inspector
-                    }
+                    transform.position = new Vector2(transform.position.x, hitDown.collider.bounds.min.y + 0.2f);
+                    fallDelayTimer = fallDelay;
                 }
             }
         }
@@ -115,24 +107,20 @@ public class AIeasy : MonoBehaviour
     void Jump()
     {
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        jumpTimer = jumpCooldown; // Đặt lại bộ đếm thời gian nhảy
+        jumpTimer = jumpCooldown;
     }
 
-    // Hàm Flip để quay mặt AI ngược lại
     void Flip()
     {
-        // Quay mặt AI về hướng ngược lại
         if (player != null)
         {
-            // Nếu player nằm phía bên phải AI
             if (player.position.x > transform.position.x)
             {
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Quay mặt sang phải
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
-            // Nếu player nằm phía bên trái AI
             else if (player.position.x < transform.position.x)
             {
-                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Quay mặt sang trái
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
         }
     }

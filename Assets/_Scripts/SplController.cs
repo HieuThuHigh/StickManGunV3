@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +17,7 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
     [SerializeField] private Button soundButton;
+    [SerializeField] private GameObject CampaignPlay;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class SplController : MonoBehaviour
         weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
         compButton.onClick.AddListener(ComplainEvent);
+
     }
     void SoundEvent()
     {
@@ -60,5 +62,10 @@ public class SplController : MonoBehaviour
     {
         Debug.LogError("Complain");
         compPopup.gameObject.SetActive(true);
+    }
+   public  void CampaignPlays()
+    {
+        Debug.LogError("CampaignPlay");
+        CampaignPlay.gameObject.SetActive(true);
     }
 }
