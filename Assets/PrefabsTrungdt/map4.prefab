@@ -43,7 +43,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1470634604054408802}
   - component: {fileID: 7638045397623256855}
-  m_Layer: 0
+  - component: {fileID: 7631343410799644183}
+  m_Layer: 7
   m_Name: boxColider (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -114,6 +115,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 25.639053, y: 8.703026}
   m_EdgeRadius: 0
+--- !u!251 &7631343410799644183
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748232302305828484}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1125501922000740029
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +259,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2286386810419610620}
   - component: {fileID: 6625838350309705918}
-  m_Layer: 0
+  - component: {fileID: 3655218384521946592}
+  m_Layer: 7
   m_Name: boxColider (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -310,6 +331,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 59.801434, y: 5.4662247}
   m_EdgeRadius: 0
+--- !u!251 &3655218384521946592
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949711647860678727}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &4349617354851411081
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +360,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5928876138772421531}
   - component: {fileID: 6041974725981249630}
-  m_Layer: 0
+  - component: {fileID: 3122374209246163897}
+  m_Layer: 7
   m_Name: boxColider
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -391,6 +432,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 187.09726, y: 8.605713}
   m_EdgeRadius: 0
+--- !u!251 &3122374209246163897
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349617354851411081}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &4864846463193706268
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +461,8 @@ GameObject:
   m_Component:
   - component: {fileID: 356923606961648101}
   - component: {fileID: 8970456518176438064}
-  m_Layer: 0
+  - component: {fileID: 5254356958491982883}
+  m_Layer: 7
   m_Name: boxColider (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -472,6 +533,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 232.28282, y: 5.3507156}
   m_EdgeRadius: 0
+--- !u!251 &5254356958491982883
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864846463193706268}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &6308541098215673060
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +902,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6516168952381746857}
   - component: {fileID: 8214719852504619131}
-  m_Layer: 0
+  - component: {fileID: 6698082232050139172}
+  m_Layer: 7
   m_Name: boxColider (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -893,6 +974,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 57.678802, y: 5.53067}
   m_EdgeRadius: 0
+--- !u!251 &6698082232050139172
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507694635994960447}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &6746811005670230803
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1084,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7187451355914332930}
   - component: {fileID: 7148706006733617029}
-  m_Layer: 0
+  - component: {fileID: 4064883421729084017}
+  m_Layer: 7
   m_Name: boxColider (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1055,3 +1156,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 28.90451, y: 5.0026503}
   m_EdgeRadius: 0
+--- !u!251 &4064883421729084017
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9110253406363587301}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

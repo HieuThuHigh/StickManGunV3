@@ -44,13 +44,14 @@ public class BotAI : MonoBehaviour
     void CheckForPit()
     {
         Vector2 direction = Vector2.down;
-        RaycastHit2D hit = Physics2D.Raycast(Raycast1.position, direction, 0.1f, groundLayer);        
-        Debug.DrawRay(Raycast1.position, direction * 0.1f, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(Raycast1.position, direction, 0.2f, groundLayer); // Tăng khoảng cách raycast
+        Debug.DrawRay(Raycast1.position, direction * 0.2f, Color.red);
 
         RaycastHit2D hit2 = Physics2D.Raycast(Raycast2.position, direction, 1f, groundLayer);
         Debug.DrawRay(Raycast2.position, direction * 1f, Color.green);
-        
-        if (hit.collider == null && hit2.collider == null)
+
+        // Chỉ khi raycast 2 không phát hiện mặt đất thì mới flip
+        if (hit2.collider == null)
         {
             Flip();
         }

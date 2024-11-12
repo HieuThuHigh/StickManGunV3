@@ -40,10 +40,10 @@ public class BotAutoShooting : MonoBehaviour
             shootingPoint.position = transform.position + offset; // Cập nhật vị trí của shootingPoint
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)) // Kiểm tra nếu người chơi nhấn phím R để nạp lại đạn
-        {
-            Reload();
-        }
+        // if (Input.GetKeyDown(KeyCode.Q)) // Kiểm tra nếu người chơi nhấn phím R để nạp lại đạn
+        // {
+        //     Reload();
+        // }
 
         // Thay đổi súng khi nhấn phím số (0-9)
         for (int i = 0; i < guns.Count; i++)
@@ -80,31 +80,45 @@ public class BotAutoShooting : MonoBehaviour
             // Kiểm tra nếu còn đạn
             if (_currentBulletCount > 0)
             {
-                GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-                // Lấy hướng mà viên đạn sẽ bay
+                // Sử dụng Raycast để kiểm tra xem có trúng đối tượng có tag "Player" không
                 Vector2 shootDirection = transform.right; // Hướng bắn phải
                 if (transform.localScale.x < 0)
                 {
                     shootDirection = -transform.right; // hướng bắn trái
                 }
-                // Xoay viên đạn theo hướng bắn
-                float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
-                bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
 
-                // Đặt vận tốc cho đạn
-                rb.velocity = shootDirection * bulletSpeed;
+                // Tạo raycast từ vị trí bắn theo hướng bắn
+                RaycastHit2D hit = Physics2D.Raycast(shootingPoint.position, shootDirection);
 
-                StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
-
-                // Giảm số lượng đạn còn lại
-                _currentBulletCount--;
-
-                // Kiểm tra nếu hết đạn
-                if (_currentBulletCount <= 0)
+                // Kiểm tra nếu raycast chạm tới đối tượng có tag "Player"
+                if (hit.collider != null && hit.collider.CompareTag("Player"))
                 {
-                    Debug.Log("Hết đạn! Không thể bắn nữa.");
+                    // Instantiate đạn nếu raycast trúng đối tượng với tag "Player"
+                    GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+                    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+                    // Xoay viên đạn theo hướng bắn
+                    float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
+                    bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
+
+                    // Đặt vận tốc cho đạn
+                    rb.velocity = shootDirection * bulletSpeed;
+
+                    StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
+
+                    // Giảm số lượng đạn còn lại
+                    _currentBulletCount--;
+
+                    // Kiểm tra nếu hết đạn
+                    if (_currentBulletCount <= 0)
+                    {
+                        Reload();
+                        Debug.Log("Hết đạn! Không thể bắn nữa.");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Không tìm thấy đối tượng với tag Player trong phạm vi bắn!");
                 }
             }
             else
@@ -117,6 +131,7 @@ public class BotAutoShooting : MonoBehaviour
             Debug.LogError("Shooting Point or Gun Data is not assigned!"); // Thông báo lỗi
         }
     }
+
 
     // Hàm để nạp lại đạn
     public void Reload()
