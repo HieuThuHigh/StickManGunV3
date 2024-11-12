@@ -33,14 +33,11 @@ public class bomb : MonoBehaviour
         }
     }
 
-
     void Explode()
     {
         // Hiển thị hiệu ứng nổ
         GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
-
-        // Hủy hiệu ứng nổ sau 1 giây
-        Destroy(explosion, 1f);
+        Destroy(explosion, 1f); // Hủy hiệu ứng nổ sau 1 giây
 
         // Tìm tất cả các đối tượng trong bán kính vụ nổ
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
@@ -54,9 +51,12 @@ public class bomb : MonoBehaviour
                 rb.AddForce((rb.transform.position - transform.position).normalized * explosionForce);
             }
 
-            // Gây sát thương cho các đối tượng có thể phá hủy (nếu có)
-            // Ví dụ: Health health = nearbyObject.GetComponent<Health>();
-            // if (health != null) { health.TakeDamage(50); }
+            // Gây sát thương cho Player nếu có thành phần PlayerHealth
+            PlayerHealth playerHealth = nearbyObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(50); // Trừ 50 máu của Player
+            }
         }
 
         // Hủy bom sau khi nổ
@@ -65,7 +65,7 @@ public class bomb : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-         if (!hasExploded && !hasTouchedGround)
+        if (!hasExploded && !hasTouchedGround)
         {
             hasTouchedGround = true; // Đánh dấu là bom đã chạm đất
             countdown = delay;       // Bắt đầu đếm ngược

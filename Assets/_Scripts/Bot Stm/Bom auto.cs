@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bomauto : MonoBehaviour
 {
-    public float explosionRadius = 5f;    // Bán kính vụ nổ
-    public float explosionForce = 300f;   // Lực nổ
+    public float explosionRadius = 1f;    // Bán kính vụ nổ
+    public float explosionForce = 50f;   // Lực nổ
     public float initialForce = 3f;     // Lực ban đầu
     public float delay = 3f;              // Thời gian chờ trước khi nổ
     public GameObject explosionEffect;    // Hiệu ứng vụ nổ
@@ -61,11 +61,17 @@ public class Bomauto : MonoBehaviour
             {
                 rb.AddForce((rb.transform.position - transform.position).normalized * explosionForce);
             }
+            PlayerHealth playerHealth = nearbyObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(50); // Trừ 50 máu của Player
+            }
 
             // Gây sát thương cho các đối tượng có thể phá hủy (nếu có)
             // Ví dụ: Health health = nearbyObject.GetComponent<Health>();
             // if (health != null) { health.TakeDamage(50); }
         }
+       
 
         // Hủy bom sau khi nổ
         Destroy(gameObject);

@@ -328,13 +328,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2074122918}
+    - target: {fileID: 7360183240396312108, guid: 9bbe2c707b98c0441aef19a609171adc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7771983345542943820, guid: 9bbe2c707b98c0441aef19a609171adc, type: 3}
-      propertyPath: mapData
-      value: 
-      objectReference: {fileID: 11400000, guid: dde5bd082f494494fb3732cd4e12e206, type: 2}
-    - target: {fileID: 7771983345542943820, guid: 9bbe2c707b98c0441aef19a609171adc, type: 3}
-      propertyPath: botPrefab
-      value: 
+      propertyPath: numberOfBots
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9027915968491454955, guid: 9bbe2c707b98c0441aef19a609171adc, type: 3}
       propertyPath: m_LocalPosition.x

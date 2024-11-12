@@ -4164,10 +4164,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1547976068}
-        m_TargetAssemblyTypeName: BackButtonController, Assembly-CSharp
-        m_MethodName: SelectLevel
-        m_Mode: 3
+      - m_Target: {fileID: 1035552229}
+        m_TargetAssemblyTypeName: SplController, Assembly-CSharp
+        m_MethodName: CampaignPlays
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7013,6 +7013,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1994671680, guid: 290c9788ec358fa4db519896dcbf3446, type: 3}
+    - target: {fileID: 1372012323123953964, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
+      propertyPath: m_Name
+      value: LevelNumber
+      objectReference: {fileID: 0}
     - target: {fileID: 1504068207954003279, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
       propertyPath: m_Sprite
       value: 
