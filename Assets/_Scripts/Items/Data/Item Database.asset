@@ -1,0 +1,490 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4744a5fea056c614cb772f22a2dd347f, type: 3}
+  m_Name: Item Database
+  m_EditorClassIdentifier: 
+  ItemsHat:
+  - ID: 0
+    Name: 0
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: d19eee37852f1ed469342b9c0f0244d9, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 1
+    Name: 1
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: 6bc716288ad066f4aa9a12441608100d, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 2
+    Name: 2
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: 3d0c28f0e0f4a504c9fe42eede4fb4a9, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 3
+    Name: 3
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: 93f49784587764d47a007eb4ff3602c5, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 4
+    Name: 4
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: ec7ce4399048e9645bd500d8c0c7554a, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 5
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: 0887b8cf9174bdb40b2b1a9060a2b2f9, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 6
+    Name: 6
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: d3afbba3b8ebed74aaa1b9cd45214e4d, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 7
+    Name: 7
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: 42642278b6277fe45ba9f9bed9e02898, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 8
+    Name: 8
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: af7f8b84ef239f4498680aa549a8eb57, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 9
+    Name: 9
+    Type: 1
+    Description: 
+    Icon: {fileID: 21300000, guid: efb77a6048b60fc4b9239b0d441cdbc2, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  ItemsFace:
+  - ID: 0
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: ab873ba397e6df844ab1137132aa6ba8, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 1
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: eb1ec258fc741644dafe5abc21c992eb, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 3
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: fdf6ac4a59ce44842be2d3042df5e05d, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 4
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: 1ac4f30f7eec1cb419c1524153b1d532, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: fba7d4fb08e133c418b385d7032a2b66, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: 7d4635c20b31a5942b1c148e1e4a343b, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 6
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: 8201f5681c43b3a4eb962e8650cfbf46, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 7
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: ef75865450d02034e8ac47ea6b328d78, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 8
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: b0be462b9d2da5346914044b2b734158, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 9
+    Name: 
+    Type: 2
+    Description: 
+    Icon: {fileID: 21300000, guid: f395bce6062a0db4d8513a7d94674440, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  Itemsbody:
+  - ID: 0
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.9716981, g: 0.48126557, b: 0.8963306, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 1
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.39961272, g: 0.98039216, b: 0.2705882, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 2
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.2705882, g: 0.79273576, b: 0.98039216, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 3
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.98039216, g: 0.38642994, b: 0.2705882, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 4
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.98039216, g: 0.2705882, b: 0.2844888, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.98039216, g: 0.2705882, b: 0.5150402, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 6
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.2705882, g: 0.98039216, b: 0.4855183, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 7
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.4361059, g: 0.052198302, b: 0.4811321, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 8
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.98039216, g: 0.7102917, b: 0.2705882, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 9
+    Name: 
+    Type: 5
+    Description: 
+    Icon: {fileID: 0}
+    ItemColor: {r: 0.5500897, g: 0.98039216, b: 0.2705882, a: 0}
+    GunDataReference: {fileID: 0}
+  Itemsgun:
+  - ID: 0
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: fcef5249b9a67be43a0eeb4799822a3e, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 382aa375a7af33d4bb3117b9b2c649ae, type: 2}
+  - ID: 1
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: 108787b771d405045b3b8e9fbdddeb08, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  - ID: 2
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: 8d86900510cc5124784a0459ae11a113, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  - ID: 3
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: 317161d9a8f0ee0418c00d1f3106c18d, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  - ID: 4
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: d6c34c51c930a2b439260110739e864b, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  - ID: 5
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: fcef5249b9a67be43a0eeb4799822a3e, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  - ID: 6
+    Name: 
+    Type: 3
+    Description: 
+    Icon: {fileID: 21300000, guid: fcef5249b9a67be43a0eeb4799822a3e, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 11400000, guid: 9718c22ef7023694fa284ede50a0dcee, type: 2}
+  Itemsshirt:
+  - ID: 0
+    Name: 0
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 0e49fa5b2d6f17e4ba51b46113e59158, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 1
+    Name: 1
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 185352756dc749d40bf77b943f85a40a, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 2
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 84fb79c2cec931e418763749d63ab94f, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 3
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 67f3674e432be6641a1adc67e4aa5728, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 4
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 14b0a1bfa0208b84c86b65d0160f58dd, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: a2c039be53c390c45a443df253356f4b, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 6
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 5bc97d244b20a2a449e30e70d1217884, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 7
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: d1f091e7f9581fb45a712049dde873b1, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 8
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: b4aa5cd43c2fa7c478f478500ab6504c, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 9
+    Name: 
+    Type: 4
+    Description: 
+    Icon: {fileID: 21300000, guid: 5553699fdf338184691218ba67db909b, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  Itemsperk:
+  - ID: 0
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: 9b04624dfb2bad8469397c4f75dd84dc, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 1
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: 9549ffac1e8b48c46909db8b1238e670, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 2
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: 8bd4d2e1a63547841921479d16b4252e, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 3
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: 203a6147cb8f2ab438579a9ae9a52a69, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 4
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: d3ce32b1cce05794b9124bee24b84a15, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: -482804444, guid: 16f9655006a5f6f44af43386c3e69a8d, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 6
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: df15a972017e0c146ab36ebe66b45d09, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 7
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: f6d314a3bb68bb24f91cb057c3e7871b, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 8
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: 7a09a74d11cb1894ab5198def33187bf, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 9
+    Name: 
+    Type: 6
+    Description: 
+    Icon: {fileID: 21300000, guid: 542e3fa982b38a74ab2a0e321362f4a8, type: 3}
+    ItemColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+    GunDataReference: {fileID: 0}
+  Itemscolor:
+  - ID: 0
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: fae11142b762ed2418d6fe2fb5688294, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 1
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: c9a9f563edeefaa419eedc7c18e6b1d4, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 2
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: 49284613c3093af4ab17daa80e4ad25b, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 3
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: c5c024b987e93a345ace4f7ba775017c, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 4
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: dc4e66f5c52eeaa4f9e4f16faab1da33, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 5
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: 69ba267fa1aa57a4faaf938096203aed, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 6
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: 0155cdf12d39c9b4e8cce18a890810fe, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 7
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: a362a5b93437657488d48aefd1525009, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 8
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: 57eedf48d286b024db940bb34d2d7c74, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}
+  - ID: 9
+    Name: 
+    Type: 7
+    Description: 
+    Icon: {fileID: 21300000, guid: c60af10556eab8944ba851ba5a7885ce, type: 3}
+    ItemColor: {r: 0, g: 0, b: 0, a: 0}
+    GunDataReference: {fileID: 0}

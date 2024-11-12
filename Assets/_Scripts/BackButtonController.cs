@@ -24,6 +24,7 @@ public class BackButtonController : MonoBehaviour
         backButton.onClick.AddListener(() =>
         {
             menuOff.SetActive(false);
+        
         });
         PlayButton.onClick.AddListener(() =>
         {
