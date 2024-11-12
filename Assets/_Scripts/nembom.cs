@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;  // Để sử dụng UI Text
 
 public class Nembom : MonoBehaviour
 {
@@ -9,9 +10,14 @@ public class Nembom : MonoBehaviour
     public float throwForce = 10f;        // Lực ném bom
     public float offset = 1f;             // Khoảng cách ném bom cách nhân vật
     private PlayerController playerController;    // Biến theo dõi hướng của nhân vật
+    public int maxBombs;  // Số bom tối đa
+    private int currentBombs;  // Số bom hiện tại
+    public Text bombCountText; // UI để hiển thị số bom còn lại
 
     void Start()
     {
+        currentBombs = maxBombs;  // Khởi tạo số bom
+        UpdateBombCountUI();  // Cập nhật UI
         // Tìm kiếm component PlayerController trên đối tượng của nhân vật
         playerController = GetComponent<PlayerController>();
 
@@ -21,21 +27,28 @@ public class Nembom : MonoBehaviour
             Debug.LogWarning("Không tìm thấy PlayerController trên đối tượng.");
         }
     }
+
     void Update()
     {
-        // Kiểm tra nếu người chơi nhấn chuột trái để ném bom
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     ThrowBomb();
-        // }
-
+        // Bạn có thể sử dụng OnThrowBombButtonClicked() để gọi ném bom từ UI
     }
+
     public void OnThrowBombButtonClicked()
     {
         Debug.Log("Ném bom!");
         // Thêm logic ném bom ở đây
-        ThrowBomb();
+        if (currentBombs > 0)  // Kiểm tra nếu còn bom
+        {
+            ThrowBomb();
+            currentBombs--;  // Giảm số bom còn lại
+            UpdateBombCountUI();  // Cập nhật UI
+        }
+        else
+        {
+            Debug.Log("Không còn bom để ném!");
+        }
     }
+
     void ThrowBomb()
     {
         // Tính toán vị trí ném bom cách nhân vật 1 đơn vị theo hướng của nhân vật
@@ -70,5 +83,13 @@ public class Nembom : MonoBehaviour
 
         // Áp dụng lực ném theo hướng nhân vật (phải hoặc trái)
         rb.AddForce(throwDirection * throwForce, ForceMode2D.Impulse);
+    }
+
+    void UpdateBombCountUI()
+    {
+        if (bombCountText != null)
+        {
+            bombCountText.text = currentBombs.ToString(); // Cập nhật số bom còn lại trên UI
+        }
     }
 }

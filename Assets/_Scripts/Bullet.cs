@@ -2,17 +2,27 @@
 
 public class Bullet : MonoBehaviour
 {
-    private int damage;
+    public int damage = 10; // Số máu giảm khi đạn trúng bot
 
-    public void SetDamage(int value)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        damage = value;
-    }
+        // Kiểm tra xem va chạm có phải là với bot không
+        if (collision.gameObject.CompareTag("Bot")) // Giả sử bot có tag là "Bot"
+        {
+            // Lấy script của bot và giảm máu
+            AlHealth botHealth = collision.gameObject.GetComponent<AlHealth>();
+            if (botHealth != null)
+            {
+                botHealth.BotDamage(damage); // Giảm máu của bot
+            }
 
-    // Xử lý va chạm hoặc sát thương tại đây
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Kiểm tra và xử lý sát thương
-        // Ví dụ: collision.GetComponent<Health>().TakeDamage(damage);
+            // Phá hủy đạn sau khi va chạm
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Nếu đạn va vào vật thể khác (không phải bot), đạn cũng bị phá hủy
+            Destroy(gameObject);
+        }
     }
 }

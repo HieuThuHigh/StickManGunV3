@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GunController : MonoBehaviour
 {
+
     public Transform shootingPoint; // Điểm bắn
     public GameObject bulletPrefab;  // Prefab của đạn
     public float bulletSpeed = 20f;  // Tốc độ đạn
@@ -41,11 +42,11 @@ public class GunController : MonoBehaviour
         if (shootingPoint != null)
         {
             // Giả sử player là Transform của nhân vật
-            Transform playerTransform = transform; // Gán transform của nhân vật (hoặc bạn có thể chỉ định đối tượng nhân vật cụ thể)
-            Vector3 offset = new Vector3(0.5f, -0.3f, 0); // Tạo khoảng cách trước mặt nhân vật
+            Transform playerTransform = transform; // vật (hoặc bạn có thể chỉ địGán transform của nhân nh đối tượng nhân vật cụ thể)
+            Vector3 offset = new Vector3(0.9f, -0.1f, 0); // Tạo khoảng cách trước mặt nhân vật
             if (transform.localScale.x < 0)
             {
-                offset = new Vector3(-0.5f, -0.3f, 0); // Đổi chiều nếu nhân vật quay trái
+                offset = new Vector3(-0.9f, -0.1f, 0); // Đổi chiều nếu nhân vật quay trái
             }
             shootingPoint.position = transform.position + offset; // Cập nhật vị trí của shootingPoint
             // Đặt vị trí của shootingPoint ở trước mặt player
