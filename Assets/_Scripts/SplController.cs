@@ -16,12 +16,11 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject compPopup;
     [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
-    [SerializeField] private Button soundButton;
+    [SerializeField] private GameObject soundButton;
     [SerializeField] private GameObject CampaignPlay;
 
     private void Start()
     {
-        soundButton.onClick.AddListener(SoundEvent);
         weaponLibButton.onClick.AddListener(WeaponLib);
         challengButton.onClick.AddListener(Challenge);
         gameSetupButton.onClick.AddListener(GameSetup);
