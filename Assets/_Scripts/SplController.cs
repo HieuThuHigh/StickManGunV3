@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SplController : MonoBehaviour
@@ -17,7 +18,7 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
     [SerializeField] private GameObject soundButton;
-    [SerializeField] private GameObject CampaignPlay;
+    [FormerlySerializedAs("CampaignPlay")] [SerializeField] private GameObject campaignPlay;
 
     private void Start()
     {
@@ -65,6 +66,6 @@ public class SplController : MonoBehaviour
    public  void CampaignPlays()
     {
         Debug.LogError("CampaignPlay");
-        CampaignPlay.gameObject.SetActive(true);
+        campaignPlay.gameObject.SetActive(true);
     }
 }
