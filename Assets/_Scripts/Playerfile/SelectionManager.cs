@@ -96,7 +96,7 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    void OnItem_Click(ItemData data)
+    public void OnItem_Click(ItemData data)
     {
         // callback
         characterCustomization.EquidItem(data);
@@ -154,69 +154,79 @@ public class SelectionManager : MonoBehaviour
     }
 
     private void LoadCharacterCustomization()
+{
+    if (PlayerPrefs.HasKey("SelectedHatID"))
     {
-        if (PlayerPrefs.HasKey("SelectedHatID"))
+        int selectedHatID = PlayerPrefs.GetInt("SelectedHatID");
+        int selectedHatIndex = _itemDatabase.ItemsHat.FindIndex(item => item.ID == selectedHatID);
+        if (selectedHatIndex >= 0)
         {
-            int selectedHatID = PlayerPrefs.GetInt("SelectedHatID");
-            int selectedHatIndex = _itemDatabase.ItemsHat.FindIndex(item => item.ID == selectedHatID);
-            if (selectedHatIndex >= 0)
-            {
-                characterCustomization.selectedHatIndex = selectedHatIndex;
-            }
+            characterCustomization.selectedHatIndex = selectedHatIndex;
+            // Gọi phương thức EquidItem để hiển thị lại mũ
+            characterCustomization.EquidItem(_itemDatabase.ItemsHat[selectedHatIndex]);
         }
-
-        if (PlayerPrefs.HasKey("SelectedFaceID"))
-        {
-            int selectedFaceID = PlayerPrefs.GetInt("SelectedFaceID");
-            int selectedFaceIndex = _itemDatabase.ItemsFace.FindIndex(item => item.ID == selectedFaceID);
-            if (selectedFaceIndex >= 0)
-            {
-                characterCustomization.selectedFaceIndex = selectedFaceIndex;
-            }
-        }
-
-        if (PlayerPrefs.HasKey("SelectedShirtID"))
-        {
-            int selectedShirtID = PlayerPrefs.GetInt("SelectedShirtID");
-            int selectedShirtIndex = _itemDatabase.Itemsshirt.FindIndex(item => item.ID == selectedShirtID);
-            if (selectedShirtIndex >= 0)
-            {
-                characterCustomization.selectedShirtIndex = selectedShirtIndex;
-            }
-        }
-
-        if (PlayerPrefs.HasKey("SelectedColorID"))
-        {
-            int selectedColorID = PlayerPrefs.GetInt("SelectedColorID");
-            int selectedColorIndex = _itemDatabase.Itemscolor.FindIndex(item => item.ID == selectedColorID);
-            if (selectedColorIndex >= 0)
-            {
-                characterCustomization.selectedColorIndex = selectedColorIndex;
-            }
-        }
-
-        if (PlayerPrefs.HasKey("SelectedGunID"))
-        {
-            int selectedGunID = PlayerPrefs.GetInt("SelectedGunID");
-            int selectedGunIndex = _itemDatabase.Itemsgun.FindIndex(item => item.ID == selectedGunID);
-            if (selectedGunIndex >= 0)
-            {
-                characterCustomization.selectedGunIndex = selectedGunIndex;
-            }
-        }
-
-        if (PlayerPrefs.HasKey("SelectedPerkID"))
-        {
-            int selectedPerkID = PlayerPrefs.GetInt("SelectedPerkID");
-            int selectedPerkIndex = _itemDatabase.Itemsperk.FindIndex(item => item.ID == selectedPerkID);
-            if (selectedPerkIndex >= 0)
-            {
-                characterCustomization.selectedPerkIndex = selectedPerkIndex;
-            }
-        }
-
-     
     }
+
+    if (PlayerPrefs.HasKey("SelectedFaceID"))
+    {
+        int selectedFaceID = PlayerPrefs.GetInt("SelectedFaceID");
+        int selectedFaceIndex = _itemDatabase.ItemsFace.FindIndex(item => item.ID == selectedFaceID);
+        if (selectedFaceIndex >= 0)
+        {
+            characterCustomization.selectedFaceIndex = selectedFaceIndex;
+            // Gọi phương thức EquidItem để hiển thị lại mặt
+            characterCustomization.EquidItem(_itemDatabase.ItemsFace[selectedFaceIndex]);
+        }
+    }
+
+    if (PlayerPrefs.HasKey("SelectedShirtID"))
+    {
+        int selectedShirtID = PlayerPrefs.GetInt("SelectedShirtID");
+        int selectedShirtIndex = _itemDatabase.Itemsshirt.FindIndex(item => item.ID == selectedShirtID);
+        if (selectedShirtIndex >= 0)
+        {
+            characterCustomization.selectedShirtIndex = selectedShirtIndex;
+            // Gọi phương thức EquidItem để hiển thị lại áo
+            characterCustomization.EquidItem(_itemDatabase.Itemsshirt[selectedShirtIndex]);
+        }
+    }
+
+    if (PlayerPrefs.HasKey("SelectedColorID"))
+    {
+        int selectedColorID = PlayerPrefs.GetInt("SelectedColorID");
+        int selectedColorIndex = _itemDatabase.Itemscolor.FindIndex(item => item.ID == selectedColorID);
+        if (selectedColorIndex >= 0)
+        {
+            characterCustomization.selectedColorIndex = selectedColorIndex;
+            // Gọi phương thức EquidItem để hiển thị lại màu
+            characterCustomization.EquidItem(_itemDatabase.Itemscolor[selectedColorIndex]);
+        }
+    }
+
+    if (PlayerPrefs.HasKey("SelectedGunID"))
+    {
+        int selectedGunID = PlayerPrefs.GetInt("SelectedGunID");
+        int selectedGunIndex = _itemDatabase.Itemsgun.FindIndex(item => item.ID == selectedGunID);
+        if (selectedGunIndex >= 0)
+        {
+            characterCustomization.selectedGunIndex = selectedGunIndex;
+            // Gọi phương thức EquidItem để hiển thị lại súng
+            characterCustomization.EquidItem(_itemDatabase.Itemsgun[selectedGunIndex]);
+        }
+    }
+
+    if (PlayerPrefs.HasKey("SelectedPerkID"))
+    {
+        int selectedPerkID = PlayerPrefs.GetInt("SelectedPerkID");
+        int selectedPerkIndex = _itemDatabase.Itemsperk.FindIndex(item => item.ID == selectedPerkID);
+        if (selectedPerkIndex >= 0)
+        {
+            characterCustomization.selectedPerkIndex = selectedPerkIndex;
+            // Gọi phương thức EquidItem để hiển thị lại perk
+            characterCustomization.EquidItem(_itemDatabase.Itemsperk[selectedPerkIndex]);
+        }
+    }
+}
 
   
    

@@ -316,11 +316,11 @@ Transform:
   m_GameObject: {fileID: 1503477867849541595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2013.7528, y: 483.53568, z: 5.325853}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2599.606, y: 649.0413, z: 5.221072}
+  m_LocalScale: {x: 1.2903228, y: 1.3468015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1918166717577520482}
+  m_Father: {fileID: 3837995620665207569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1936776381439445219
 AudioSource:
@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 7228698381403123506}
   - component: {fileID: 3728518709615489309}
   - component: {fileID: 7408043856285850551}
+  - component: {fileID: 7139118821716358148}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -673,12 +674,14 @@ RectTransform:
   m_Children:
   - {fileID: 2762082048122762979}
   - {fileID: 5908685448267764010}
+  - {fileID: 7631544984304923060}
   - {fileID: 6995333121497050225}
   - {fileID: 5656353654636034686}
   - {fileID: 7304006379786365630}
   - {fileID: 8660177391322296318}
   - {fileID: 7828855676880740663}
   - {fileID: 8268065931449866769}
+  - {fileID: 7130879126733009420}
   m_Father: {fileID: 1918166717577520482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -844,6 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 8660177391322296318}
   bulletPrefab: {fileID: 7534063544991044676, guid: d2a94a0057fe29f4c987b7ae004a818f, type: 3}
+  gunSpriteRenderer: {fileID: 2361773339173137563}
   bulletSpeed: 10
   guns:
   - {fileID: 11400000, guid: 382aa375a7af33d4bb3117b9b2c649ae, type: 2}
@@ -889,6 +893,31 @@ MonoBehaviour:
   player: {fileID: 3279060893243097223}
   healthBar: {fileID: 3543981592499693163}
   livesText: {fileID: 1902286097250667742}
+--- !u!114 &7139118821716358148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3279060893243097223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedHatIndex: 0
+  selectedFaceIndex: 0
+  selectedShirtIndex: 0
+  selectedColorIndex: 0
+  selectedGunIndex: 0
+  selectedPerkIndex: 0
+  hatTransform: {fileID: 998424561983514783}
+  faceTransform: {fileID: 8775760461398351608}
+  shirtTransform: {fileID: 5908685448267764010}
+  bodyTransform: {fileID: 0}
+  gunTransform: {fileID: 1288773344267627350}
+  colorTransform: {fileID: 0}
+  perkTransform: {fileID: 0}
 --- !u!1 &3502688084683012663
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +950,6 @@ Transform:
   - {fileID: 1366486949949724092}
   - {fileID: 3837995620665207569}
   - {fileID: 3479612154200051803}
-  - {fileID: 7130879126733009420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3998509425788173037
@@ -1055,7 +1083,7 @@ GameObject:
   - component: {fileID: 5908685448267764010}
   - component: {fileID: 263198457495103491}
   m_Layer: 0
-  m_Name: Body
+  m_Name: shirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1073,8 +1101,7 @@ Transform:
   m_LocalPosition: {x: -0.0039999723, y: -0.20700002, z: 0}
   m_LocalScale: {x: 1.2903228, y: 1.3468015, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7631544984304923060}
+  m_Children: []
   m_Father: {fileID: 3837995620665207569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &263198457495103491
@@ -1679,11 +1706,11 @@ Transform:
   m_GameObject: {fileID: 7767884366255505854}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.004650018, y: -0.024502523, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0020000245, y: -0.24000004, z: 0}
+  m_LocalScale: {x: 1.2903228, y: 1.3468015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5908685448267764010}
+  m_Father: {fileID: 3837995620665207569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5128360775904056350
 SpriteRenderer:
@@ -1940,7 +1967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7999166013163275798, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8623596595806237905, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
       propertyPath: m_Pivot.x

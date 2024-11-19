@@ -7,6 +7,8 @@ public class GunController : MonoBehaviour
 
     public Transform shootingPoint; // Điểm bắn
     public GameObject bulletPrefab;  // Prefab của đạn
+    public SpriteRenderer gunSpriteRenderer; // Thêm thành phần này để tham chiếu tới SpriteRenderer
+
     public float bulletSpeed = 20f;  // Tốc độ đạn
     public List<GunData> guns;       // Danh sách các khẩu súng
                                      // private int currentGunIndex = 0; // Chỉ số của khẩu súng hiện tại
@@ -18,6 +20,10 @@ public class GunController : MonoBehaviour
     private PlayerController _playerController;
     void Start()
     {
+        if (guns.Count > 0)
+        {
+            ChangeGun(_currentGunIndex); // Đặt khẩu súng đầu tiên khi bắt đầu
+        }
         if (gunData == null)
         {
             gunData = ScriptableObject.CreateInstance<GunData>(); // Tạo instance mới của GunData
@@ -158,15 +164,37 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(bullet); // Xóa viên đạn
     }
+    public void ChangeToRandomGun()
+    {
+        if (guns.Count > 0)
+        {
+            int randomIndex = Random.Range(0, guns.Count); // Lấy chỉ số ngẫu nhiên
+            ChangeGun(randomIndex); // Thay đổi súng theo chỉ số ngẫu nhiên
+            Debug.Log("Đã đổi sang súng ngẫu nhiên: " + gunData.gunName);
+        }
+        else
+        {
+            Debug.LogWarning("Danh sách súng rỗng!");
+        }
+    }
     public void ChangeGun(int newGunIndex)
     {
+        
         if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
         {
-            _currentGunIndex = newGunIndex;
-            gunData = guns[_currentGunIndex]; // Cập nhật GunData
-            _currentBulletCount = gunData.bulletCount; // Cập nhật số lượng đạn
-            UpdatePlayerGunData(); // Cập nhật GunData trong PlayerController
-            Debug.Log("Đã thay đổi sang khẩu súng: " + gunData.gunName);
+            if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
+            {
+                _currentGunIndex = newGunIndex;
+                gunData = guns[_currentGunIndex]; // Cập nhật GunData
+                _currentBulletCount = gunData.bulletCount; // Cập nhật số lượng đạn
+                UpdatePlayerGunData(); // Cập nhật GunData trong PlayerController
+                bulletCountText.text = _currentBulletCount.ToString(); // Cập nhật số lượng đạn trên UI
+                Debug.Log("Đã thay đổi sang khẩu súng: " + gunData.gunName);
+            }
+            else
+            {
+                Debug.LogWarning("Chỉ số súng không hợp lệ hoặc súng hiện tại đã được trang bị.");
+            }
         }
     }
 }
