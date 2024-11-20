@@ -20,18 +20,19 @@ public class LoadingSPL : MonoBehaviour
     {
         startGameBtn.onClick.AddListener(ButtonClick);
         StartCoroutine(HandleLoadingPopups());
-        loadingImage.fillAmount = 0f;
-        loadingText.text = "0%";
+        loadingImage.fillAmount = 0f; // Đảm bảo thanh tiến trình bắt đầu từ 0
+        loadingText.text = "0%"; // Khởi tạo text loading
     }
 
     private IEnumerator HandleLoadingPopups()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) // Chỉnh sửa 3.5 thành 3
         {
             for (int j = 0; j < popups.Length; j++)
             {
                 popups[j].SetActive(true);
                 yield return new WaitForSeconds(0.5f);
+                // Ẩn popup ngay sau đó
                 popups[j].SetActive(false);
             }
         }
@@ -41,26 +42,30 @@ public class LoadingSPL : MonoBehaviour
 
     private void Update()
     {
-        Event();
+        Event(); // Gọi hàm Event trong Update để đảm bảo cập nhật liên tục
     }
 
     void Event()
     {
         if (loadingImage.fillAmount < 1f)
         {
+            // Tăng thời gian lấp đầy theo thời gian thực
             currentFillTime += Time.deltaTime;
-            
+
+            // Tính tỷ lệ đã lấp đầy dựa trên thời gian hiện tại và tổng thời gian
             float progress = Mathf.Clamp01(currentFillTime / fillDuration);
             loadingImage.fillAmount = progress;
-            
+
+            // Cập nhật text loading (phần trăm)
             loadingText.text = Mathf.RoundToInt(progress * 100f) + "%";
         }
-        else if (loadingImage.fillAmount >= 1f && popupLoading.activeSelf)
+        else if (loadingImage.fillAmount >= 1f && popupLoading.activeSelf) // Kiểm tra thanh đã đầy và popup chưa tắt
         {
+            // Khi loading đầy 100%, tắt popupLoading và hiện startGamePopup
             popupLoading.SetActive(false);
-            loadingImage.gameObject.SetActive(false);
-            loadingText.gameObject.SetActive(false);
-            startGamePopup.SetActive(true);
+            loadingImage.gameObject.SetActive(false); // Tắt loading image
+            loadingText.gameObject.SetActive(false); // Tắt loading text
+            startGamePopup.SetActive(true); // Hiện startGamePopup
         }
     }
 

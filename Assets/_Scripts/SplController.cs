@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SplController : MonoBehaviour
@@ -9,22 +8,22 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject weaponLibPopup;
     [SerializeField] private GameObject challengPopup;
     [SerializeField] private Button challengButton;
-    [SerializeField] private Button customGameButton;
+    [SerializeField] private Button gameSetupButton;
     [SerializeField] private GameObject splPopup;  
     [SerializeField] private Button creditButton;
     [SerializeField] private GameObject creditPopup;
     [SerializeField] private Button compButton;
     [SerializeField] private GameObject compPopup;
-    [SerializeField] private GameObject customGamePopup;
+    [SerializeField] private GameObject gameSetupPopup;
     [SerializeField] private GameObject line;
     [SerializeField] private GameObject soundButton;
-    [FormerlySerializedAs("CampaignPlay")] [SerializeField] private GameObject campaignPlay;
+    [SerializeField] private GameObject CampaignPlay;
 
     private void Start()
     {
         weaponLibButton.onClick.AddListener(WeaponLib);
         challengButton.onClick.AddListener(Challenge);
-        customGameButton.onClick.AddListener(GameSetup);
+        gameSetupButton.onClick.AddListener(GameSetup);
         weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
         compButton.onClick.AddListener(ComplainEvent);
@@ -37,35 +36,35 @@ public class SplController : MonoBehaviour
 
     void CreditaEvent()
     {
-        Debug.LogWarning("Credit");
+        Debug.LogError("Credit");
         creditPopup.gameObject.SetActive(true);
     }
 
     void WeaponLib()
     {
-        Debug.LogWarning("Weapon");
+        Debug.LogError("Weapon");
         weaponLibPopup.gameObject.SetActive(true);
     }
 
     void Challenge()
     {
-        Debug.LogWarning("Challenge");
+        Debug.LogError("Challenge");
         challengPopup.gameObject.SetActive(true);
     }
     void GameSetup()
     {
-        Debug.LogWarning("GameSetup");
-        customGamePopup.gameObject.SetActive(true);
+        Debug.LogError("GameSetup");
+        gameSetupPopup.gameObject.SetActive(true);
     }
 
     void ComplainEvent()
     {
-        Debug.LogWarning("Complain");
+        Debug.LogError("Complain");
         compPopup.gameObject.SetActive(true);
     }
    public  void CampaignPlays()
     {
-        Debug.LogWarning("CampaignPlay");
-        campaignPlay.gameObject.SetActive(true);
+        Debug.LogError("CampaignPlay");
+        CampaignPlay.gameObject.SetActive(true);
     }
 }

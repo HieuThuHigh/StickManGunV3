@@ -11,11 +11,11 @@ public class BackButtonController : MonoBehaviour
     [SerializeField] private Button PlayButton;
     
 
-    private int _selectedLevel;
+    private int selectedLevel;
 
     public void SelectLevel(int level)
     {
-        _selectedLevel = level; 
+        selectedLevel = level; 
           
     }
 
@@ -24,11 +24,10 @@ public class BackButtonController : MonoBehaviour
         backButton.onClick.AddListener(() =>
         {
             menuOff.SetActive(false);
-        
         });
         PlayButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level" + selectedLevel);
         });
     }
 
