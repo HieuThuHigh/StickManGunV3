@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class RandomBox : MonoBehaviour
 {
+    void Start()
+    {
+         Destroy(gameObject, 10f);
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -14,6 +18,7 @@ public class RandomBox : MonoBehaviour
             {
                 gunController.ChangeToRandomGun(); // Gọi hàm để đổi súng ngẫu nhiên
                 Destroy(gameObject); // Xóa hộp sau khi đổi súng
+                
             }
         }
     }

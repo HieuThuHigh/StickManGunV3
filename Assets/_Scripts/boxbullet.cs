@@ -5,16 +5,14 @@ using UnityEngine;
 public class boxbullet : MonoBehaviour
 {
    public GameObject boxPrefab; // Prefab của hộp
-    public float spawnInterval = 5f; // Thời gian giữa các lần xuất hiện
+    public float spawnInterval = 20f; // Thời gian giữa các lần xuất hiện
     public float raycastDistance = 10f; // Khoảng cách raycast từ trên xuống
 
     private void Start()
     {
         StartCoroutine(SpawnBox());
     }
-    void Update(){
-        // Destroy(gameObject, 3f);
-    }
+    
 
     private IEnumerator SpawnBox()
     {
