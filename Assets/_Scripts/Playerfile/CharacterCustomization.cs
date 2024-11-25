@@ -3,12 +3,12 @@ using UnityEngine.UI;
 public class CharacterCustomization : MonoBehaviour
 {
     // Các chỉ số lưu trữ lựa chọn của người chơi
-    public int selectedHatIndex = 0;
-    public int selectedFaceIndex = 0;
-    public int selectedShirtIndex = 0;
-    public int selectedColorIndex = 0;
-    public int selectedGunIndex = 0;
-    public int selectedPerkIndex = 0;
+    public int selectedHatIndex = -1;
+    public int selectedFaceIndex = -1;
+    public int selectedShirtIndex = -1;
+    public int selectedColorIndex = -1;
+    public int selectedGunIndex = -1;
+    public int selectedPerkIndex = -1;
 
   
 

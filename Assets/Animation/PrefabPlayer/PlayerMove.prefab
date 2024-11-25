@@ -685,7 +685,6 @@ GameObject:
   - component: {fileID: 7228698381403123506}
   - component: {fileID: 3728518709615489309}
   - component: {fileID: 7408043856285850551}
-  - component: {fileID: 7139118821716358148}
   - component: {fileID: 6606286345705231383}
   m_Layer: 0
   m_Name: Player 1
@@ -927,31 +926,6 @@ MonoBehaviour:
   player: {fileID: 3279060893243097223}
   healthBar: {fileID: 3543981592499693163}
   livesText: {fileID: 1902286097250667742}
---- !u!114 &7139118821716358148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3279060893243097223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedHatIndex: 0
-  selectedFaceIndex: 0
-  selectedShirtIndex: 0
-  selectedColorIndex: 0
-  selectedGunIndex: 0
-  selectedPerkIndex: 0
-  hatTransform: {fileID: 0}
-  faceTransform: {fileID: 0}
-  shirtTransform: {fileID: 0}
-  bodyTransform: {fileID: 0}
-  gunTransform: {fileID: 0}
-  colorTransform: {fileID: 0}
-  perkTransform: {fileID: 0}
 --- !u!114 &6606286345705231383
 MonoBehaviour:
   m_ObjectHideFlags: 0

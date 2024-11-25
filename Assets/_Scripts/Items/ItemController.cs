@@ -18,7 +18,7 @@ public class ItemController : MonoBehaviour
     {
         _onClick?.Invoke(_data);
         PlayerPrefs.SetInt($"Selected{_data.Type}ID", _data.ID);
-    PlayerPrefs.Save(); // Lưu dữ liệu vào PlayerPrefs
+        PlayerPrefs.Save(); // Lưu dữ liệu vào PlayerPrefs
     }
 
     public void SetData(ItemData data, Action<ItemData> onClick)
