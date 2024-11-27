@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item Database", menuName = "GameData/ItemDatabase")]
 public class ItemDatabase : ScriptableObject
 {
+    //laylaiitemdatabase
     public List<ItemData> ItemsHat;
     public List<ItemData> ItemsFace;
     public List<ItemData> Itemsbody;
@@ -26,3 +27,4 @@ public class ItemData
     // Thêm trường tham chiếu đến GunData
     public GunData GunDataReference;  // Tham chiếu đến GunData cho các item thuộc loại súng
 }
+
