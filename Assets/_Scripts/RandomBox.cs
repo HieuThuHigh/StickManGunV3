@@ -16,7 +16,7 @@ public class RandomBox : MonoBehaviour
             GunController gunController = other.GetComponent<GunController>();
             if (gunController != null)
             {
-                gunController.ChangeToRandomGun(); // Gọi hàm để đổi súng ngẫu nhiên
+                // gunController.ChangeToRandomGun(); // Gọi hàm để đổi súng ngẫu nhiên
                 Destroy(gameObject); // Xóa hộp sau khi đổi súng
                 
             }

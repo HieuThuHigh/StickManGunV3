@@ -1,16 +1,17 @@
 using System.Collections;
+using GameTool.Assistants.DesignPattern;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class LoadingSPL : MonoBehaviour
+public class LoadingSPL : SingletonMonoBehaviour<LoadingSPL>
 {
     public GameObject[] popups;
     public Image loadingImage; 
     public TextMeshProUGUI loadingText; // Text để hiển thị phần trăm loading
     [SerializeField] private GameObject startGamePopup;
     [SerializeField] private GameObject loadingGamePopup;
-    [SerializeField] private GameObject homePopup;
+    public GameObject homePopup;
     [SerializeField] private Button startGameBtn;
     [SerializeField] private float fillDuration = 4.5f; 
     [SerializeField] private float currentFillTime = 0f;
