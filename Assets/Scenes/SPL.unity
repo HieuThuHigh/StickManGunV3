@@ -5881,11 +5881,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1327484826525756557, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
   m_PrefabInstance: {fileID: 6077688004063246965}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1612434434 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8784836019280905705, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
-  m_PrefabInstance: {fileID: 6077688004063246965}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1650991699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7399484976151460989, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
@@ -11544,9 +11539,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8845532369742784099, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7728231261162523829}
-    - targetCorrespondingSourceObject: {fileID: 8845532369742784099, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7728231261162523833}
     - targetCorrespondingSourceObject: {fileID: 7059121147534766375, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 170805374}
@@ -11841,31 +11833,6 @@ MonoBehaviour:
   - {fileID: 1660292501}
   - {fileID: 1612142895}
   - {fileID: 669658912}
---- !u!114 &7728231261162523833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013497443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedHatIndex: 0
-  selectedFaceIndex: 0
-  selectedShirtIndex: 0
-  selectedColorIndex: 0
-  selectedGunIndex: 0
-  selectedPerkIndex: 0
-  hatTransform: {fileID: 2068943950}
-  faceTransform: {fileID: 396368097}
-  shirtTransform: {fileID: 1567875196}
-  bodyTransform: {fileID: 1612434434}
-  gunTransform: {fileID: 969164349}
-  colorTransform: {fileID: 2058086786}
-  perkTransform: {fileID: 1506611256}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
