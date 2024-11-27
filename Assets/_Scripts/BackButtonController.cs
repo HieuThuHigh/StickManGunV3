@@ -28,7 +28,7 @@ public class BackButtonController : MonoBehaviour
         });
         PlayButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level" + _selectedLevel);
         });
     }
 

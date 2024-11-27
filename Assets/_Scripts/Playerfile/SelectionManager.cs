@@ -113,9 +113,9 @@ public class SelectionManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("SelectedHat", characterCustomization.selectedHatIndex);
             PlayerPrefs.SetInt("SelectedFace", characterCustomization.selectedFaceIndex);
-            PlayerPrefs.SetInt("SelectedShirt", characterCustomization.selectedShirtIndex);
+            PlayerPrefs.SetInt("Selectedshirt", characterCustomization.selectedShirtIndex);
             PlayerPrefs.SetInt("SelectedColor", characterCustomization.selectedColorIndex);
-            PlayerPrefs.SetInt("SelectedGun", characterCustomization.selectedGunIndex);
+            PlayerPrefs.SetInt("Selectedgun", characterCustomization.selectedGunIndex);
             PlayerPrefs.SetInt("SelectedPerk", characterCustomization.selectedPerkIndex);
 
             // Lưu ID của các item trong ItemDatabase nếu cần
@@ -131,7 +131,7 @@ public class SelectionManager : MonoBehaviour
 
             if (characterCustomization.selectedShirtIndex >= 0 && characterCustomization.selectedShirtIndex < _itemDatabase.Itemsshirt.Count)
             {
-                PlayerPrefs.SetInt("SelectedShirtID", _itemDatabase.Itemsshirt[characterCustomization.selectedShirtIndex].ID);
+                PlayerPrefs.SetInt("SelectedshirtID", _itemDatabase.Itemsshirt[characterCustomization.selectedShirtIndex].ID);
             }
 
             if (characterCustomization.selectedColorIndex >= 0 && characterCustomization.selectedColorIndex < _itemDatabase.Itemscolor.Count)
@@ -141,7 +141,7 @@ public class SelectionManager : MonoBehaviour
 
             if (characterCustomization.selectedGunIndex >= 0 && characterCustomization.selectedGunIndex < _itemDatabase.Itemsgun.Count)
             {
-                PlayerPrefs.SetInt("SelectedGunID", _itemDatabase.Itemsgun[characterCustomization.selectedGunIndex].ID);
+                PlayerPrefs.SetInt("SelectedgunID", _itemDatabase.Itemsgun[characterCustomization.selectedGunIndex].ID);
             }
 
             if (characterCustomization.selectedPerkIndex >= 0 && characterCustomization.selectedPerkIndex < _itemDatabase.Itemsperk.Count)
@@ -179,9 +179,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedShirtID"))
+    if (PlayerPrefs.HasKey("SelectedshirtID"))
     {
-        int selectedShirtID = PlayerPrefs.GetInt("SelectedShirtID");
+        int selectedShirtID = PlayerPrefs.GetInt("SelectedshirtID");
         int selectedShirtIndex = _itemDatabase.Itemsshirt.FindIndex(item => item.ID == selectedShirtID);
         if (selectedShirtIndex >= 0)
         {
@@ -203,9 +203,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedGunID"))
+    if (PlayerPrefs.HasKey("SelectedgunID"))
     {
-        int selectedGunID = PlayerPrefs.GetInt("SelectedGunID");
+        int selectedGunID = PlayerPrefs.GetInt("SelectedgunID");
         int selectedGunIndex = _itemDatabase.Itemsgun.FindIndex(item => item.ID == selectedGunID);
         if (selectedGunIndex >= 0)
         {

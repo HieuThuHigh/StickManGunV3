@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2833,6 +2832,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5778384054192020895, guid: 10be8fcd4659a7a4eb169e4ff0f20067, type: 3}
   m_PrefabInstance: {fileID: 5437494346081295837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &626065774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2013087724919697800, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
+  m_PrefabInstance: {fileID: 6077688004063246965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378905ba405eb4f4f97d694a1e74dd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &628764419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5672139858774398683, guid: ec3948f0829bd4f4cb1cdf1a58ffced7, type: 3}
@@ -5710,7 +5720,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 626065774}
+        m_TargetAssemblyTypeName: BackButtonController, Assembly-CSharp
+        m_MethodName: SelectLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2846307986642403912}
         m_TargetAssemblyTypeName: SplController, Assembly-CSharp
         m_MethodName: CampaignPlays
         m_Mode: 1
@@ -8318,7 +8340,7 @@ PrefabInstance:
     - target: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: compPopup
       value: 
-      objectReference: {fileID: 1013497443}
+      objectReference: {fileID: 1585948570559750272}
     - target: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: creditPopup
       value: 
@@ -8377,6 +8399,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2150079542411766392, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
   m_PrefabInstance: {fileID: 2846307986642403910}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2846307986642403912 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
+  m_PrefabInstance: {fileID: 2846307986642403910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993249257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a610aef81b523524b873e7505c1852e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4652062130491790906
 PrefabInstance:
   m_ObjectHideFlags: 0
