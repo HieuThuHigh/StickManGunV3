@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 public class GunController : MonoBehaviour
 {
 
@@ -60,7 +61,7 @@ public class GunController : MonoBehaviour
             // shootingPoint.rotation = playerTransform.rotation; // Đặt hướng của shootingPoint  giống hướng của player
         }
 
-
+        if (!PhotonView.Get(this).IsMine) return; // Chỉ xử lý input nếu đây là player của mình
 
         //if (Input.GetButtonDown("Fire1")) // Kiểm tra nếu người chơi nhấn phím bắn
         //{
@@ -83,6 +84,7 @@ public class GunController : MonoBehaviour
     }
     public void OnShootButtonClicked()
     {
+
         Debug.Log("Bắn súng!");
         Shoot();
         // Thêm logic bắn súng ở đây
@@ -104,29 +106,33 @@ public class GunController : MonoBehaviour
                 //for (int i = 0; i < gunData.bulletCount; i++)
                 //{
                 // GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-                GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+                // GameObject bullet = Instantiate(gunData.bulletPrefab, shootingPoint.position, shootingPoint.rotation);
 
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                // Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-                // Lấy hướng mà viên đạn sẽ bay
-                Vector2 shootDirection = transform.right; // Hướng bắn phải
-                if (transform.localScale.x < 0)
-                {
-                    shootDirection = -transform.right; // hướng bắn trái
-                }
-                // Xoay viên đạn theo hướng bắn
-                float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
-                bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
-
-
-
-                // Đặt vận tốc cho đạn
-                rb.velocity = shootDirection * bulletSpeed;
-
-
-                StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
+                // // Lấy hướng mà viên đạn sẽ bay
+                // Vector2 shootDirection = transform.right; // Hướng bắn phải
+                // if (transform.localScale.x < 0)
+                // {
+                //     shootDirection = -transform.right; // hướng bắn trái
                 // }
+                // // Xoay viên đạn theo hướng bắn
+                // float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
+                // bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
 
+
+
+                // // Đặt vận tốc cho đạn
+                // rb.velocity = shootDirection * bulletSpeed;
+
+
+                // StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
+
+                // Tạo đạn và gửi thông tin qua Photon RPC
+                Vector3 position = shootingPoint.position;
+                Quaternion rotation = shootingPoint.rotation;
+                PhotonView photonView = PhotonView.Get(this);
+                photonView.RPC("SpawnBullet", RpcTarget.All, position, rotation);
                 // Giảm số lượng đạn còn lại
                 _currentBulletCount--;
 
@@ -151,18 +157,62 @@ public class GunController : MonoBehaviour
             Debug.LogError("Shooting Point or Gun Data is not assigned!"); // Thông báo lỗi
         }
     }
+    [PunRPC]
+    void SpawnBullet(Vector3 position, Quaternion rotation)
+    {
+        // Tạo đạn tại vị trí và hướng được gửi qua mạng
+        GameObject bullet = Instantiate(bulletPrefab, position, rotation);
+
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        // Xác định hướng bắn
+        Vector2 shootDirection = transform.right;
+        if (transform.localScale.x < 0)
+        {
+            shootDirection = -transform.right;
+        }
+
+        // Đặt vận tốc cho đạn
+        rb.velocity = shootDirection * bulletSpeed;
+
+        // Hủy đạn sau 1,5 giây
+        StartCoroutine(DestroyBulletAfterDelay(bullet, 1.5f));
+    }
 
     // Hàm để nạp lại đạn
     public void Reloading()
     {
-        _currentBulletCount = gunData.bulletCount; // Nạp lại số lượng đạn
+        // _currentBulletCount = gunData.bulletCount; // Nạp lại số lượng đạn
+        // Debug.Log("Đạn đã được nạp");
+        PhotonView photonView = PhotonView.Get(this);
+        photonView.RPC("ReloadingRPC", RpcTarget.All);
+    }
+    [PunRPC]
+    void ReloadingRPC()
+    {
+        _currentBulletCount = gunData.bulletCount; // Nạp lại đạn
+        bulletCountText.text = _currentBulletCount.ToString();
         Debug.Log("Đạn đã được nạp");
+    }
+    [PunRPC]
+    void DestroyBulletRPC(int bulletViewID)
+    {
+        PhotonView bulletView = PhotonView.Find(bulletViewID);
+        if (bulletView != null)
+        {
+            Destroy(bulletView.gameObject);
+        }
     }
     // Coroutine để xóa viên đạn sau 1,5 giây
     private IEnumerator DestroyBulletAfterDelay(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
-        Destroy(bullet); // Xóa viên đạn
+        PhotonView bulletView = bullet.GetComponent<PhotonView>();
+        if (bulletView != null && bulletView.IsMine)
+        {
+            PhotonView.Get(this).RPC("DestroyBulletRPC", RpcTarget.All, bulletView.ViewID);
+        }
+        // Destroy(bullet); // Xóa viên đạn
     }
     public void ChangeToRandomGun()
     {
@@ -179,7 +229,7 @@ public class GunController : MonoBehaviour
     }
     public void ChangeGun(int newGunIndex)
     {
-        
+
         if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
         {
             if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)

@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
         {
             // Nếu đạn va vào vật thể khác (không phải bot), đạn cũng bị phá hủy
             Destroy(gameObject);
-        }
+        } 
+        
     }
 }
