@@ -909,7 +909,7 @@ MonoBehaviour:
   throwPoint: {fileID: 8660177391322296318}
   throwForce: 3.74
   offset: 1
-  maxBombs: 100
+  maxBombs: 3
   bombCountText: {fileID: 0}
 --- !u!114 &7408043856285850551
 MonoBehaviour:
@@ -2473,6 +2473,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3479612154200051803}
     m_Modifications:
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7408043856285850551}
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Reload
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHealth, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228803914007131463, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7999166013163275798, guid: a44d5d9cbea7f6c4397ba396ac7a5348, type: 3}
       propertyPath: m_Name
       value: gameOver
