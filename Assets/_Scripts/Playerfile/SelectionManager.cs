@@ -59,8 +59,9 @@ public class SelectionManager : MonoBehaviour
         colorRenderer = colorObject.GetComponent<SpriteRenderer>();
         Debug.Log("da chay vao srtart");
       //  SetupButtons();
+        LoadCharacterCustomization(); 
         CreateItem();
-        LoadCharacterCustomization();  // Tải lại lựa chọn từ PlayerPrefs
+       // Tải lại lựa chọn từ PlayerPrefs
        
     }
 
@@ -94,6 +95,7 @@ public class SelectionManager : MonoBehaviour
         {
             itemscolor[i].SetData(_itemDatabase.Itemscolor[i], OnItem_Click);
         }
+        SaveCharacterCustomization();
     }
 
     public void OnItem_Click(ItemData data)
@@ -102,12 +104,19 @@ public class SelectionManager : MonoBehaviour
         characterCustomization.EquidItem(data);
 
         // Lưu lại lựa chọn của người chơi
-      
-    }
+        SaveCharacterCustomization();
 
-    public void ConfirmCustomization()
+    }
+ public void ConfirmCustomization()
     {
         SaveCharacterCustomization(); // Gọi lưu khi người dùng hoàn tất thay đổi
+    }
+ private void SaveSelectedItemID(string key, int selectedIndex, List<ItemData> items)
+    {
+        if (selectedIndex >= 0 && selectedIndex < items.Count)
+        {
+            PlayerPrefs.SetInt(key, items[selectedIndex].ID);
+        }
     }
     private void SaveCharacterCustomization()
     {
@@ -122,51 +131,51 @@ public class SelectionManager : MonoBehaviour
             PlayerPrefs.SetInt("SelectedPerk", characterCustomization.selectedPerkIndex);
 
             // Lưu ID của các item trong ItemDatabase nếu cần
-            //if (characterCustomization.selectedHatIndex >= 0 && characterCustomization.selectedHatIndex < _itemDatabase.ItemsHat.Count)
-            //{
-            //    PlayerPrefs.SetInt("SelectedHatID", _itemDatabase.ItemsHat[characterCustomization.selectedHatIndex].ID);
-            //}
+            // if (characterCustomization.selectedHatIndex >= 0 && characterCustomization.selectedHatIndex < _itemDatabase.ItemsHat.Count)
+            // {
+            //     PlayerPrefs.SetInt("SelectedHatID", _itemDatabase.ItemsHat[characterCustomization.selectedHatIndex].ID);
+              
+            // }
 
-            //if (characterCustomization.selectedFaceIndex >= 0 && characterCustomization.selectedFaceIndex < _itemDatabase.ItemsFace.Count)
-            //{
-            //    PlayerPrefs.SetInt("SelectedFaceID", _itemDatabase.ItemsFace[characterCustomization.selectedFaceIndex].ID);
-            //}
+            // if (characterCustomization.selectedFaceIndex >= 0 && characterCustomization.selectedFaceIndex < _itemDatabase.ItemsFace.Count)
+            // {
+            //     PlayerPrefs.SetInt("SelectedFaceID", _itemDatabase.ItemsFace[characterCustomization.selectedFaceIndex].ID);
+                
+            // }
 
-            //if (characterCustomization.selectedShirtIndex >= 0 && characterCustomization.selectedShirtIndex < _itemDatabase.Itemsshirt.Count)
-            //{
-            //    PlayerPrefs.SetInt("SelectedshirtID", _itemDatabase.Itemsshirt[characterCustomization.selectedShirtIndex].ID);
-            //}
+            // if (characterCustomization.selectedShirtIndex >= 0 && characterCustomization.selectedShirtIndex < _itemDatabase.Itemsshirt.Count)
+            // {
+            //     PlayerPrefs.SetInt("SelectedshirtID", _itemDatabase.Itemsshirt[characterCustomization.selectedShirtIndex].ID);
+                
+            // }
 
-            //if (characterCustomization.selectedColorIndex >= 0 && characterCustomization.selectedColorIndex < _itemDatabase.Itemscolor.Count)
-            //{
-            //    PlayerPrefs.SetInt("SelectedColorID", _itemDatabase.Itemscolor[characterCustomization.selectedColorIndex].ID);
-            //}
+            // if (characterCustomization.selectedColorIndex >= 0 && characterCustomization.selectedColorIndex < _itemDatabase.Itemscolor.Count)
+            // {
+            //     PlayerPrefs.SetInt("SelectedColorID", _itemDatabase.Itemscolor[characterCustomization.selectedColorIndex].ID);
+               
+            // }
 
-            //if (characterCustomization.selectedGunIndex >= 0 && characterCustomization.selectedGunIndex < _itemDatabase.Itemsgun.Count)
-            //{
-            //    PlayerPrefs.SetInt("SelectedgunID", _itemDatabase.Itemsgun[characterCustomization.selectedGunIndex].ID);
-            //}
+            // if (characterCustomization.selectedGunIndex >= 0 && characterCustomization.selectedGunIndex < _itemDatabase.Itemsgun.Count)
+            // {
+            //     PlayerPrefs.SetInt("SelectedgunID", _itemDatabase.Itemsgun[characterCustomization.selectedGunIndex].ID);
+                 
+            // }
 
-            //if (characterCustomization.selectedPerkIndex >= 0 && characterCustomization.selectedPerkIndex < _itemDatabase.Itemsperk.Count)
-            //{
-            //    PlayerPrefs.SetInt("SelectedPerkID", _itemDatabase.Itemsperk[characterCustomization.selectedPerkIndex].ID);
-            //}
+            // if (characterCustomization.selectedPerkIndex >= 0 && characterCustomization.selectedPerkIndex < _itemDatabase.Itemsperk.Count)
+            // {
+            //     PlayerPrefs.SetInt("SelectedPerkID", _itemDatabase.Itemsperk[characterCustomization.selectedPerkIndex].ID);
+            // }
 
             PlayerPrefs.Save();  // Lưu PlayerPrefs
         }
     }
-    private void SaveSelectedItemID(string key, int selectedIndex, List<ItemData> items)
-    {
-        if (selectedIndex >= 0 && selectedIndex < items.Count)
-        {
-            PlayerPrefs.SetInt(key, items[selectedIndex].ID);
-        }
-    }
+
     private void LoadCharacterCustomization()
 {
     if (PlayerPrefs.HasKey("SelectedHatID"))
     {
-        int selectedHatID = PlayerPrefs.GetInt("SelectedHatID");
+        int selectedHatID = PlayerPrefs.GetInt("SelectedHatID",-1);
+        Debug.Log($"Selected Hat ID: {selectedHatID}");
         int selectedHatIndex = _itemDatabase.ItemsHat.FindIndex(item => item.ID == selectedHatID);
         if (selectedHatIndex >= 0)
         {

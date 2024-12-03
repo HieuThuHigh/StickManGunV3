@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject challengPopup;
     [SerializeField] private Button challengButton;
     [SerializeField] private Button customGameButton;
-    [SerializeField] private GameObject splPopup;  
+    [SerializeField] private GameObject splPopup;
     [SerializeField] private Button creditButton;
     [SerializeField] private GameObject creditPopup;
     [SerializeField] private Button compButton;
@@ -18,7 +19,7 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject customGamePopup;
     [SerializeField] private GameObject line;
     [SerializeField] private GameObject soundButton;
-    [FormerlySerializedAs("CampaignPlay")] [SerializeField] private GameObject campaignPlay;
+    [FormerlySerializedAs("CampaignPlay")][SerializeField] private GameObject campaignPlay;
 
     private void Start()
     {
@@ -63,9 +64,13 @@ public class SplController : MonoBehaviour
         Debug.LogWarning("Complain");
         compPopup.gameObject.SetActive(true);
     }
-   public  void CampaignPlays()
+    public void CampaignPlays()
     {
         Debug.LogWarning("CampaignPlay");
         campaignPlay.gameObject.SetActive(true);
+    }
+    public void Multiplayer()
+    {
+        SceneManager.LoadScene("Multiplayer");
     }
 }

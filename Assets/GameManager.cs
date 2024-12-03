@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using Photon.Pun;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    
 
     void UpdateTimeText()
     {
@@ -86,7 +87,8 @@ public class GameManager : MonoBehaviour
     {
         if (playerPrefab != null)
         {
-            Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
+             PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(Random.Range(-3,3), 1, 0), Quaternion.identity);
+            //  Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
         }
     }
 
