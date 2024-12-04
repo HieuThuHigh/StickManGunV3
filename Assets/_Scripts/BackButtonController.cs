@@ -6,30 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class BackButtonController : MonoBehaviour
 {
-    [SerializeField] private Button backButton;
-    [SerializeField] private GameObject menuOff;
+   [SerializeField] private Button backButton;
+   [SerializeField] private GameObject menuOff; 
     [SerializeField] private Button PlayButton;
+    
 
-
-    private int selectedLevel;
+    private int _selectedLevel;
 
     public void SelectLevel(int level)
     {
-        selectedLevel = level;
+        _selectedLevel = level; 
+          
     }
 
     void Start()
     {
-        backButton.onClick.AddListener((BackEvent));
-
-        if (PlayButton)
+        backButton.onClick.AddListener(() =>
         {
-            PlayButton.onClick.AddListener(() => { SceneManager.LoadScene("Level" + selectedLevel); });
-        }
+            menuOff.SetActive(false);
+        
+        });
+        PlayButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Level" + _selectedLevel);
+        });
     }
 
-    void BackEvent()
-    {
-        menuOff.SetActive(false);
-    }
+
 }
