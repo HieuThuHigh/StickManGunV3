@@ -183,20 +183,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats: []
-  faces: []
-  shirts:
-  - {fileID: 21300000, guid: 84fb79c2cec931e418763749d63ab94f, type: 3}
-  - {fileID: 21300000, guid: d1f091e7f9581fb45a712049dde873b1, type: 3}
-  colors: []
-  guns: []
-  perks: []
+  selectedHatIndex: -1
+  selectedFaceIndex: -1
+  selectedShirtIndex: -1
+  selectedColorIndex: -1
+  selectedGunIndex: -1
+  selectedPerkIndex: -1
   hatTransform: {fileID: 0}
   faceTransform: {fileID: 0}
   shirtTransform: {fileID: 4015112488537612696}
   bodyTransform: {fileID: 0}
   gunTransform: {fileID: 0}
   colorTransform: {fileID: 0}
+  perkTransform: {fileID: 0}
 --- !u!1 &316764514915382789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,24 +1016,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats:
-  - {fileID: 21300000, guid: 6bc716288ad066f4aa9a12441608100d, type: 3}
-  - {fileID: 21300000, guid: 3d0c28f0e0f4a504c9fe42eede4fb4a9, type: 3}
-  faces: []
-  shirts: []
-  colors:
-  - {r: 0.9622642, g: 0.049928807, b: 0.049928807, a: 0}
-  - {r: 0.17254901, g: 0.5294118, b: 0.43183783, a: 0}
-  guns:
-  - {fileID: 0}
-  - {fileID: 0}
-  perks: []
+  selectedHatIndex: -1
+  selectedFaceIndex: -1
+  selectedShirtIndex: -1
+  selectedColorIndex: -1
+  selectedGunIndex: -1
+  selectedPerkIndex: -1
   hatTransform: {fileID: 0}
   faceTransform: {fileID: 0}
   shirtTransform: {fileID: 0}
   bodyTransform: {fileID: 0}
   gunTransform: {fileID: 832385729618340473}
   colorTransform: {fileID: 0}
+  perkTransform: {fileID: 0}
 --- !u!1 &1519587708441527267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,20 +1153,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats:
-  - {fileID: 21300000, guid: 6bc716288ad066f4aa9a12441608100d, type: 3}
-  - {fileID: 21300000, guid: 3d0c28f0e0f4a504c9fe42eede4fb4a9, type: 3}
-  faces: []
-  shirts: []
-  colors: []
-  guns: []
-  perks: []
+  selectedHatIndex: -1
+  selectedFaceIndex: -1
+  selectedShirtIndex: -1
+  selectedColorIndex: -1
+  selectedGunIndex: -1
+  selectedPerkIndex: -1
   hatTransform: {fileID: 2268353897474711474}
   faceTransform: {fileID: 0}
   shirtTransform: {fileID: 0}
   bodyTransform: {fileID: 0}
   gunTransform: {fileID: 0}
   colorTransform: {fileID: 0}
+  perkTransform: {fileID: 0}
 --- !u!1 &2041117423054870588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,22 +1290,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats:
-  - {fileID: 21300000, guid: 6bc716288ad066f4aa9a12441608100d, type: 3}
-  - {fileID: 21300000, guid: 3d0c28f0e0f4a504c9fe42eede4fb4a9, type: 3}
-  faces: []
-  shirts: []
-  colors:
-  - {r: 0.9622642, g: 0.049928807, b: 0.049928807, a: 0}
-  - {r: 0.17254901, g: 0.5294118, b: 0.43183783, a: 0}
-  guns: []
-  perks: []
+  selectedHatIndex: -1
+  selectedFaceIndex: -1
+  selectedShirtIndex: -1
+  selectedColorIndex: -1
+  selectedGunIndex: -1
+  selectedPerkIndex: -1
   hatTransform: {fileID: 0}
   faceTransform: {fileID: 0}
   shirtTransform: {fileID: 0}
   bodyTransform: {fileID: 0}
   gunTransform: {fileID: 0}
   colorTransform: {fileID: 3578721226736152314}
+  perkTransform: {fileID: 0}
 --- !u!1 &2706102578216977628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,7 +4925,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4533619161376505937}
-  - component: {fileID: 535714078846011334}
   m_Layer: 0
   m_Name: hinhanhplayer
   m_TagString: Untagged
@@ -4967,24 +4956,6 @@ RectTransform:
   m_AnchoredPosition: {x: 211, y: 54}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &535714078846011334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8278518678878265908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a32f9b176ab244ca0b337198112563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedHatIndex: 0
-  selectedFaceIndex: 0
-  selectedShirtIndex: 0
-  selectedColorIndex: 0
-  selectedGunIndex: 0
-  selectedPerkIndex: 0
 --- !u!1 &8313403997426212929
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,20 +5338,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a1b4b20969f0049a40260aaf3bbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hats: []
-  faces:
-  - {fileID: 21300000, guid: 1ac4f30f7eec1cb419c1524153b1d532, type: 3}
-  - {fileID: 21300000, guid: ef75865450d02034e8ac47ea6b328d78, type: 3}
-  shirts: []
-  colors: []
-  guns: []
-  perks: []
+  selectedHatIndex: -1
+  selectedFaceIndex: -1
+  selectedShirtIndex: -1
+  selectedColorIndex: -1
+  selectedGunIndex: -1
+  selectedPerkIndex: -1
   hatTransform: {fileID: 0}
   faceTransform: {fileID: 1259213066437387297}
   shirtTransform: {fileID: 0}
   bodyTransform: {fileID: 0}
   gunTransform: {fileID: 0}
   colorTransform: {fileID: 0}
+  perkTransform: {fileID: 0}
 --- !u!1 &8957330106472506449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6548,6 +6518,14 @@ PrefabInstance:
     - target: {fileID: 8541381264285564527, guid: 8a9f82b0751f9d247b91d66fd61c9a2c, type: 3}
       propertyPath: m_Name
       value: BackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675562609124632763, guid: 8a9f82b0751f9d247b91d66fd61c9a2c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675562609124632763, guid: 8a9f82b0751f9d247b91d66fd61c9a2c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
