@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun; // Thêm Photon PUN
 
-public class boxbullet : MonoBehaviour
+public class boxbullet : MonoBehaviourPun
 {
-   public GameObject boxPrefab; // Prefab của hộp
+    public GameObject boxPrefab; // Prefab của hộp
     public float spawnInterval = 20f; // Thời gian giữa các lần xuất hiện
     public float raycastDistance = 10f; // Khoảng cách raycast từ trên xuống
 
     private void Start()
     {
-        StartCoroutine(SpawnBox());
+        if (PhotonNetwork.IsMasterClient) // Chỉ MasterClient mới thực hiện spawn
+        {
+            StartCoroutine(SpawnBox());
+        }
     }
-    
 
     private IEnumerator SpawnBox()
     {
@@ -27,7 +30,7 @@ public class boxbullet : MonoBehaviour
     {
         // Tìm tất cả các đối tượng trong Scene có Layer là "Ground"
         GameObject[] groundObjects = GameObject.FindGameObjectsWithTag("Ground");
-        
+
         if (groundObjects.Length == 0) return;
 
         // Chọn ngẫu nhiên một Ground Object
@@ -41,8 +44,15 @@ public class boxbullet : MonoBehaviour
             // Xác định điểm xuất hiện ở trên Ground Object
             Vector2 spawnPosition = new Vector2(Random.Range(groundCollider.bounds.min.x, groundCollider.bounds.max.x), groundCollider.bounds.max.y + 1);
 
-            // Tạo hộp tại vị trí spawn
-            Instantiate(boxPrefab, spawnPosition, Quaternion.identity);
+            // Gọi RPC để tạo hộp trên tất cả các client
+            photonView.RPC("RPC_SpawnBox", RpcTarget.All, spawnPosition);
         }
+    }
+
+    [PunRPC]
+    private void RPC_SpawnBox(Vector2 spawnPosition)
+    {
+        // Tạo hộp tại vị trí spawn
+        Instantiate(boxPrefab, spawnPosition, Quaternion.identity);
     }
 }

@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // Để sử dụng UI Text
+using UnityEngine.UI; // Để sử dụng UI Text
+using Photon.Pun; // Thêm Photon PUN
 
-public class Nembom : MonoBehaviour
+public class Nembom : MonoBehaviourPun
 {
-    public GameObject bombPrefab;         // Prefab của bom
-    public Transform throwPoint;          // Vị trí ném bom (tay nhân vật hoặc vị trí gần nhân vật)
-    public float throwForce = 10f;        // Lực ném bom
-    public float offset = 1f;             // Khoảng cách ném bom cách nhân vật
-    private PlayerController playerController;    // Biến theo dõi hướng của nhân vật
-    public int maxBombs;  // Số bom tối đa
-    private int currentBombs;  // Số bom hiện tại
+    public GameObject bombPrefab; // Prefab của bom
+    public Transform throwPoint; // Vị trí ném bom (tay nhân vật hoặc vị trí gần nhân vật)
+    public float throwForce = 10f; // Lực ném bom
+    public float offset = 1f; // Khoảng cách ném bom cách nhân vật
+    private PlayerController playerController; // Biến theo dõi hướng của nhân vật
+    public int maxBombs; // Số bom tối đa
+    private int currentBombs; // Số bom hiện tại
     public Text bombCountText; // UI để hiển thị số bom còn lại
 
     void Start()
     {
-        currentBombs = maxBombs;  // Khởi tạo số bom
-        UpdateBombCountUI();  // Cập nhật UI
+        currentBombs = maxBombs; // Khởi tạo số bom
+        UpdateBombCountUI(); // Cập nhật UI
+
         // Tìm kiếm component PlayerController trên đối tượng của nhân vật
         playerController = GetComponent<PlayerController>();
 
@@ -36,12 +38,13 @@ public class Nembom : MonoBehaviour
     public void OnThrowBombButtonClicked()
     {
         Debug.Log("Ném bom!");
-        // Thêm logic ném bom ở đây
-        if (currentBombs > 0)  // Kiểm tra nếu còn bom
+        if (currentBombs > 0) // Kiểm tra nếu còn bom
         {
-            ThrowBomb();
-            currentBombs--;  // Giảm số bom còn lại
-            UpdateBombCountUI();  // Cập nhật UI
+            currentBombs--; // Giảm số bom còn lại
+            UpdateBombCountUI(); // Cập nhật UI
+
+            // Gọi RPC để ném bom trên tất cả các client
+            photonView.RPC("RPC_ThrowBomb", RpcTarget.All);
         }
         else
         {
@@ -49,7 +52,8 @@ public class Nembom : MonoBehaviour
         }
     }
 
-    void ThrowBomb()
+    [PunRPC] // Đánh dấu hàm này là RPC để có thể gọi trên các client khác
+    void RPC_ThrowBomb()
     {
         // Tính toán vị trí ném bom cách nhân vật 1 đơn vị theo hướng của nhân vật
         Vector3 bombStartPosition;

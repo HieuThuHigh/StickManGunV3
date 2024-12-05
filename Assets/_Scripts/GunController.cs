@@ -117,8 +117,7 @@ public class GunController : MonoBehaviour
                 //     shootDirection = -transform.right; // hướng bắn trái
                 // }
                 // // Xoay viên đạn theo hướng bắn
-                // float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
-                // bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
+
 
 
 
@@ -134,12 +133,14 @@ public class GunController : MonoBehaviour
                 PhotonView photonView = PhotonView.Get(this);
                 photonView.RPC("SpawnBullet", RpcTarget.All, position, rotation);
                 // Giảm số lượng đạn còn lại
-                _currentBulletCount--;
+                // _currentBulletCount--;
 
-                bulletCountText.text = _currentBulletCount.ToString(); // cập nhật hiển thị sl đạn
+                // bulletCountText.text = _currentBulletCount.ToString(); // cập nhật hiển thị sl đạn
+                // Cập nhật số lượng đạn qua RPC
+                photonView.RPC("UpdateBulletCount", RpcTarget.All, _currentBulletCount - 1);
 
                 // Kiểm tra nếu hết đạn
-                if (_currentBulletCount <= 0)
+                if (_currentBulletCount - 1 <= 0)
                 {
                     Debug.Log("Hết đạn! Không thể bắn nữa.");
                     Reloading(); // Tự động nạp lại đạn
@@ -158,6 +159,12 @@ public class GunController : MonoBehaviour
         }
     }
     [PunRPC]
+    void UpdateBulletCount(int newBulletCount)
+    {
+        _currentBulletCount = newBulletCount;
+        bulletCountText.text = _currentBulletCount.ToString(); // Cập nhật UI
+    }
+    [PunRPC]
     void SpawnBullet(Vector3 position, Quaternion rotation)
     {
         // Tạo đạn tại vị trí và hướng được gửi qua mạng
@@ -172,6 +179,8 @@ public class GunController : MonoBehaviour
             shootDirection = -transform.right;
         }
 
+        float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg; // Tính góc dựa trên hướng
+        bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Xoay viên đạn theo hướng bắn
         // Đặt vận tốc cho đạn
         rb.velocity = shootDirection * bulletSpeed;
 
@@ -229,23 +238,21 @@ public class GunController : MonoBehaviour
     }
     public void ChangeGun(int newGunIndex)
     {
-
         if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
         {
-            if (newGunIndex != _currentGunIndex && newGunIndex < guns.Count)
-            {
-                _currentGunIndex = newGunIndex;
-                gunData = guns[_currentGunIndex]; // Cập nhật GunData
-                _currentBulletCount = gunData.bulletCount; // Cập nhật số lượng đạn
-                UpdatePlayerGunData(); // Cập nhật GunData trong PlayerController
-                bulletCountText.text = _currentBulletCount.ToString(); // Cập nhật số lượng đạn trên UI
-                Debug.Log("Đã thay đổi sang khẩu súng: " + gunData.gunName);
-            }
-            else
-            {
-                Debug.LogWarning("Chỉ số súng không hợp lệ hoặc súng hiện tại đã được trang bị.");
-            }
+            PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("ChangeGunRPC", RpcTarget.All, newGunIndex);
         }
+    }
+
+    [PunRPC]
+    void ChangeGunRPC(int newGunIndex)
+    {
+        _currentGunIndex = newGunIndex;
+        gunData = guns[_currentGunIndex]; // Cập nhật GunData
+        _currentBulletCount = gunData.bulletCount; // Cập nhật số lượng đạn
+        bulletCountText.text = _currentBulletCount.ToString(); // Cập nhật giao diện
+        Debug.Log("Đã thay đổi sang khẩu súng: " + gunData.gunName);
     }
 }
 
