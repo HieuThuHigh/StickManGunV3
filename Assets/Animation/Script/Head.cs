@@ -16,11 +16,9 @@ public class Head : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rb.velocity.y <0){
+        if(rb && rb.velocity.y <0){
             StartCoroutine(RotateAndResetCoroutine());
         }
-
-       
     }
        
     public void RotateAndReset()

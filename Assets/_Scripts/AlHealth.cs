@@ -72,7 +72,11 @@ public class AlHealth : MonoBehaviour
 
     void UpdateHealthBar()
     {
-        healthBar.fillAmount = (float)botHealth / maxHealth;
+        if (healthBar)
+        {
+            healthBar.fillAmount = (float)botHealth / maxHealth;
+
+        }
     }
 
     void UpdateLivesText()
