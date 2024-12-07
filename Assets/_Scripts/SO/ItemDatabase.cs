@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameTool.Assistants.DictionarySerialize;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class ItemDatabase : ScriptableObject
     public List<ItemData> Itemsperk;
 }
 
+[Serializable]
 public class ItemData
 {
     public int ID;
