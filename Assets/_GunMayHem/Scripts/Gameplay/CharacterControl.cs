@@ -19,6 +19,29 @@ namespace _GunMayHem.Gameplay
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _animator.SetAnimation("FootJump", true, mixDuration: 0.1f,
+                    onEnd: () => { _animator.SetAnimation("FootIdle", true, mixDuration: 0f); });
+
+                var vector2 = _rigidbody.velocity;
+                vector2.y = _jumpForce;
+                _rigidbody.velocity = vector2;
+            }
+
+            _isGrounded = false;
+            if (_rigidbody.velocity.y <= 0.1f)
+            {
+                foreach (var pos in _listPosCheckGround)
+                {
+                    if (Physics2D.Raycast(pos.position, Vector2.down, 0.1f, _layerMaskGround))
+                    {
+                        _isGrounded = true;
+                        break;
+                    }
+                }
+            }
+
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 _rigidbody.AddForce(Vector2.right * _moveSpeed);
@@ -36,31 +59,11 @@ namespace _GunMayHem.Gameplay
                 SetAnimMove("FootIdle");
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _animator.SetAnimation("FootJump", true, mixDuration: 0.1f,
-                    onEnd: () => { _animator.SetAnimation("FootIdle", true, mixDuration: 0f); });
-
-                var vector2 = _rigidbody.velocity;
-                vector2.y = _jumpForce;
-                _rigidbody.velocity = vector2;
-            }
-
             if (Mathf.Abs(_rigidbody.velocity.x) > _maxSpeedX)
             {
                 var vector2 = _rigidbody.velocity;
                 vector2.x = Mathf.Clamp(_rigidbody.velocity.x, -_maxSpeedX, _maxSpeedX);
                 _rigidbody.velocity = vector2;
-            }
-
-            _isGrounded = false;
-            foreach (var pos in _listPosCheckGround)
-            {
-                if (Physics2D.Raycast(pos.position, Vector2.down, 0.1f, _layerMaskGround))
-                {
-                    _isGrounded = true;
-                    break;
-                }
             }
         }
 
