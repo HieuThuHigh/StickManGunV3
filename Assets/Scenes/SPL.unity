@@ -846,6 +846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CampaignPlay
       objectReference: {fileID: 0}
+    - target: {fileID: 3147277641338106213, guid: 53508b6589835a04abead40772fbdf3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1145,6 +1149,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2429552389579214879, guid: e014a5a17bec2ab4cb9c4416f65d62a5, type: 3}
   m_PrefabInstance: {fileID: 316615727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &372163961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3147277641338106213, guid: 53508b6589835a04abead40772fbdf3a, type: 3}
+  m_PrefabInstance: {fileID: 181134967}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &379548374
 GameObject:
@@ -2537,6 +2546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985e4075e7a220545a5494c04af80dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons: []
+  popup: []
 --- !u!1 &1075739280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4745,7 +4756,7 @@ PrefabInstance:
     - target: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: compPopup
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 372163961}
     - target: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: creditPopup
       value: 
@@ -4757,7 +4768,7 @@ PrefabInstance:
     - target: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: campaignPlay
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 372163961}
     - target: {fileID: 5907864887361463997, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: challengPopup
       value: 
