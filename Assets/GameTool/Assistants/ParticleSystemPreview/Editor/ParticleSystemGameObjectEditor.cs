@@ -60,7 +60,7 @@ namespace GameTool.Assistants.ParticleSystemPreview.Editor
                 {
                     if (baseEditor)
                     {
-                        //DestroyImmediate(baseEditor);
+                        DestroyImmediate(baseEditor);
                     }
                 });
                 if (this)

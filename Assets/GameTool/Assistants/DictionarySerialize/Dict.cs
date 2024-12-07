@@ -79,7 +79,7 @@ namespace GameTool.Assistants.DictionarySerialize
 
         public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
-            ((IDictionary<TKey, TValue>) dict).CopyTo(array, arrayIndex);
+            ((IDictionary<TKey, TValue>)dict).CopyTo(array, arrayIndex);
         }
 
         public bool Remove(KeyValuePair<TKey, TValue> item)
@@ -204,7 +204,7 @@ namespace GameTool.Assistants.DictionarySerialize
             {
                 if (index >= list.Count)
                 {
-                    list.Add(new _SerialKVPair<TKey, TValue>() {key = value.Key, value = value.Value});
+                    list.Add(new _SerialKVPair<TKey, TValue>() { key = value.Key, value = value.Value });
                 }
                 else
                 {
@@ -215,9 +215,10 @@ namespace GameTool.Assistants.DictionarySerialize
                     }
                     else
                     {
-                        list[index] = new _SerialKVPair<TKey, TValue>() {key = value.Key, value = value.Value};
+                        list[index] = new _SerialKVPair<TKey, TValue>() { key = value.Key, value = value.Value };
                     }
                 }
+
                 index++;
             }
 
@@ -232,6 +233,11 @@ namespace GameTool.Assistants.DictionarySerialize
         /// </summary>
         public void OnAfterDeserialize()
         {
+            if (dict == null)
+            {
+                dict = new Dictionary<TKey, TValue>();
+            }
+
             // Xoá dict trước
             dict.Clear();
 

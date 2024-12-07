@@ -22,12 +22,12 @@ namespace DatdevUlts.DateTimeScripts.Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("_maxRequestTimes"));
             }
 
-            if (typeRequestValue is DateTimeManager.TypeRequest.Https or DateTimeManager.TypeRequest.NetworkMixed)
+            if (typeRequestValue == DateTimeManager.TypeRequest.Https || typeRequestValue == DateTimeManager.TypeRequest.NetworkMixed)
             {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("https"));
             }
 
-            if (typeRequestValue is DateTimeManager.TypeRequest.NTP or DateTimeManager.TypeRequest.NetworkMixed)
+            if (typeRequestValue == DateTimeManager.TypeRequest.NTP || typeRequestValue == DateTimeManager.TypeRequest.NetworkMixed)
             {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("ntpLinks"));
             }
