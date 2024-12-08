@@ -223,6 +223,7 @@ MonoBehaviour:
   _pausing: 0
   _timeScale: 1
   _ignoreTimeScale: 0
+  _defaultMixDuration: 0
   _enableLog: 0
   _animName: Empty
 --- !u!210 &2441588667109015291
@@ -251,10 +252,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _posFire: {fileID: 3480426037352646888}
   _typeBullet: 0
+  _animator: {fileID: 7712598181100274129}
   _character: {fileID: 0}
   _maxAmmo: 0
   _timeShoot: 0.3
   _isInfiniteAmmo: 0
+  _isHold: 0
   _speed: 7
   _dmg: 10
 --- !u!1001 &5345817476822688409

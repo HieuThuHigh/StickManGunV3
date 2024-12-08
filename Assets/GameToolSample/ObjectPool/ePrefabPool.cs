@@ -9,5 +9,7 @@ namespace GameToolSample.ObjectPool
         ToastDisplayItem,
 BulletLong,
 BulletShort,
+BulletShotGun,
+Gift
     }
 }

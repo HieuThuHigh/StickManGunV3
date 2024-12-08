@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using DatdevUlts.Ults;
 using GameTool.Assistants.DesignPattern;
+using GameTool.ObjectPool.Scripts;
+using GameToolSample.ObjectPool;
 using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +17,8 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private GameObject _lose;
         [SerializeField] private List<Button> _listBtnHome;
         [SerializeField] private List<Button> _listBtnReplay;
+        [SerializeField] private Transform _boundLeftGift;
+        [SerializeField] private Transform _boundRightGift;
         private List<GroundControl> _listGroundControls = new List<GroundControl>();
         private List<Transform> _listPos = new List<Transform>();
 
@@ -31,22 +35,29 @@ namespace _GunMayHem.Gameplay
 
             _listPos.AddRange(ListGroundControls.Select(control => control.LeftPoint).ToList());
             _listPos.AddRange(ListGroundControls.Select(control => control.RightPoint).ToList());
-            
+
             foreach (var button in _listBtnHome)
             {
-                button.onClick.AddListener(() =>
-                {
-                    SceneLoadManager.Instance.LoadSceneWithName("Home");
-                });
+                button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("Home"); });
             }
-            
+
             foreach (var button in _listBtnReplay)
             {
-                button.onClick.AddListener(() =>
-                {
-                    SceneLoadManager.Instance.LoadCurrentScene();
-                });
+                button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadCurrentScene(); });
             }
+
+            DropGift();
+        }
+
+        public void DropGift()
+        {
+            var posX = RandomUlts.Range(_boundLeftGift.position.x, _boundRightGift.position.x);
+
+            var pos = new Vector2(posX, 20);
+
+            PoolingManager.Instance.GetObject(ePrefabPool.Gift, position: pos).Disable(10f);
+
+            this.DelayedCall(5f, DropGift);
         }
 
         public void Victory()

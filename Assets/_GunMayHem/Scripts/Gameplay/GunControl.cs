@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DatdevUlts.AnimationUtils;
 using DatdevUlts.Ults;
 using GameTool.ObjectPool.Scripts;
 using GameToolSample.ObjectPool;
@@ -10,6 +10,7 @@ namespace _GunMayHem.Gameplay
     {
         [SerializeField] private Transform _posFire;
         [SerializeField] private TypeBullet _typeBullet;
+        [SerializeField] private AnimatorController _animator;
 
         [Header("CONFIG DATA_________________________")] [SerializeField]
         private CharacterControl _character;
@@ -17,13 +18,20 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private int _maxAmmo;
         [SerializeField] private float _timeShoot;
         [SerializeField] private bool _isInfiniteAmmo;
+        [SerializeField] private bool _isHold;
         [SerializeField] private float _speed;
         [SerializeField] private int _dmg;
 
         private int _ammo;
         private bool _canShoot;
-        
+
         public bool HaveAmmo => _ammo > 0 || _isInfiniteAmmo;
+
+        public CharacterControl Character
+        {
+            get => _character;
+            set => _character = value;
+        }
 
         public Transform PosFire => _posFire;
 
@@ -37,9 +45,16 @@ namespace _GunMayHem.Gameplay
 
         private void Update()
         {
-            if (_character.IsPlayer && Input.GetKeyDown(KeyCode.J))
+            if (_character.IsPlayer)
             {
-                Shoot();
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    Shoot();
+                }
+                else if (_isHold && Input.GetKey(KeyCode.J))
+                {
+                    Shoot();
+                }
             }
         }
 
@@ -50,7 +65,21 @@ namespace _GunMayHem.Gameplay
                 return;
             }
 
-            var bullet = PoolingManager.Instance.GetObject(ePrefabPool.BulletShort);
+            BasePooling bullet;
+
+            if (_typeBullet == TypeBullet.Short)
+            {
+                bullet = PoolingManager.Instance.GetObject(ePrefabPool.BulletShort);
+            }
+            else if (_typeBullet == TypeBullet.Long)
+            {
+                bullet = PoolingManager.Instance.GetObject(ePrefabPool.BulletLong);
+            }
+            else
+            {
+                bullet = PoolingManager.Instance.GetObject(ePrefabPool.BulletShotGun);
+            }
+
 
             bullet.GetComponent<BulletControl>().SetData(_speed, _character.transform.right, _posFire.position,
                 _dmg, _character);
@@ -59,6 +88,16 @@ namespace _GunMayHem.Gameplay
             if (!_isInfiniteAmmo)
             {
                 _ammo--;
+            }
+            
+            _animator.SetAnimation("shoot", true, onEnd: () =>
+            {
+                _animator.SetAnimation("Empty");
+            });
+
+            if (!HaveAmmo)
+            {
+                _character.ChangeGun(1);
             }
         }
     }

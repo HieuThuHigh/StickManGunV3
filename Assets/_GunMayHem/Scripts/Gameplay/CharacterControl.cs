@@ -19,7 +19,9 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private float _maxSpeedX;
         [SerializeField] private float _jumpForce;
         [SerializeField] private bool _isPlayer;
+        [SerializeField] private bool _testMode;
         [SerializeField] private int _maxJumps;
+        [SerializeField] private Color _color;
         private List<CharacterControl> _listCharEnemy = new List<CharacterControl>();
 
 
@@ -48,6 +50,8 @@ namespace _GunMayHem.Gameplay
 
         private void Start()
         {
+            ChangeSkinColor();
+            
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 
@@ -124,6 +128,11 @@ namespace _GunMayHem.Gameplay
 
         public void UpdateBot()
         {
+            if (_testMode)
+            {
+                return;
+            }
+            
             if (_isPlayer)
             {
                 return;
@@ -397,6 +406,39 @@ namespace _GunMayHem.Gameplay
                     GameplayManager.Instance.Victory();
                 }
             }
+        }
+
+        public void ChangeSkinColor()
+        {
+            var collect = GetComponentsInChildren<SpriteRenderer>()
+                .Where(spriteRenderer => spriteRenderer.gameObject.CompareTag("Skin"));
+            foreach (var spriteRenderer in collect)
+            {
+                spriteRenderer.color = _color;
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Gift"))
+            {
+                other.gameObject.SetActive(false);
+                ChangeGun();
+            }
+        }
+
+        [ContextMenu("CHANGE GUN")]
+        public void ChangeGun()
+        {
+            ChangeGun(RandomUlts.Range(2,4));
+        }
+
+        public void ChangeGun(int index)
+        {
+            Destroy(_gunControl.gameObject);
+
+            _gunControl = Instantiate(Resources.Load<GunControl>($"Prefabs/Guns/{index}"), transform);
+            _gunControl.Character = this;
         }
     }
 }
