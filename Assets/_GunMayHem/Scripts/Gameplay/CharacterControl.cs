@@ -14,6 +14,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private Collider2D _collider;
         [SerializeField] private GunControl _gunControl;
         [SerializeField] private List<Transform> _listPosCheckGround;
+        [SerializeField] private Transform _nameTxt;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _maxSpeedX;
         [SerializeField] private float _jumpForce;
@@ -56,6 +57,7 @@ namespace _GunMayHem.Gameplay
 
         private void Update()
         {
+            _nameTxt.rotation = Quaternion.identity;
             _timeStun -= Time.deltaTime;
             if (_isPlayer && Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -373,7 +375,11 @@ namespace _GunMayHem.Gameplay
                 _timeStun = 0;
             }
 
-            _timeStun += 0.25f;
+            if (!_isPlayer)
+            {
+                _timeStun += 0.25f;
+            }
+
             _rigidbody.AddForce(dmg * _rigidbody.mass, ForceMode2D.Impulse);
         }
 

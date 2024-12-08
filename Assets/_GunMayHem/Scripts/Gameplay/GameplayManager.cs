@@ -5,6 +5,7 @@ using DatdevUlts.Ults;
 using GameTool.Assistants.DesignPattern;
 using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _GunMayHem.Gameplay
 {
@@ -12,6 +13,8 @@ namespace _GunMayHem.Gameplay
     {
         [SerializeField] private GameObject _victory;
         [SerializeField] private GameObject _lose;
+        [SerializeField] private List<Button> _listBtnHome;
+        [SerializeField] private List<Button> _listBtnReplay;
         private List<GroundControl> _listGroundControls = new List<GroundControl>();
         private List<Transform> _listPos = new List<Transform>();
 
@@ -28,6 +31,22 @@ namespace _GunMayHem.Gameplay
 
             _listPos.AddRange(ListGroundControls.Select(control => control.LeftPoint).ToList());
             _listPos.AddRange(ListGroundControls.Select(control => control.RightPoint).ToList());
+            
+            foreach (var button in _listBtnHome)
+            {
+                button.onClick.AddListener(() =>
+                {
+                    SceneLoadManager.Instance.LoadSceneWithName("Home");
+                });
+            }
+            
+            foreach (var button in _listBtnReplay)
+            {
+                button.onClick.AddListener(() =>
+                {
+                    SceneLoadManager.Instance.LoadCurrentScene();
+                });
+            }
         }
 
         public void Victory()
@@ -38,7 +57,6 @@ namespace _GunMayHem.Gameplay
             }
 
             _ended = true;
-            this.DelayedCall(2f, () => { SceneLoadManager.Instance.LoadSceneWithName("SPL"); });
 
             _victory.gameObject.SetActive(true);
         }
@@ -51,7 +69,6 @@ namespace _GunMayHem.Gameplay
             }
 
             _ended = true;
-            this.DelayedCall(2f, () => { SceneLoadManager.Instance.LoadSceneWithName("SPL"); });
 
             _lose.gameObject.SetActive(true);
         }

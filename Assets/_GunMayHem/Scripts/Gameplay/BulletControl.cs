@@ -8,7 +8,7 @@ namespace _GunMayHem.Gameplay
     {
         [SerializeField] private Rigidbody2D _rb2d;
         [SerializeField] private TrailRenderer _trailRenderer;
-        
+
         private CharacterControl _shooter;
         private int _dmg;
         private Vector3 _direction;
@@ -34,6 +34,11 @@ namespace _GunMayHem.Gameplay
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!other.attachedRigidbody)
+            {
+                return;
+            }
+
             var characterControl = other.attachedRigidbody.GetComponent<CharacterControl>();
             if (characterControl && characterControl != _shooter)
             {
