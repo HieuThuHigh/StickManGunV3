@@ -76,7 +76,8 @@ Shader "Custom/SprSkin"
                     col = col * _ColorSkinTint;
                 }
 
-                return col *= col.a * i.color;
+                col.rgb *= col.a;
+                return col *= i.color;
             }
             ENDCG
         }
