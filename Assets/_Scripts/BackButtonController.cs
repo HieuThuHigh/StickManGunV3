@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -27,7 +28,7 @@ public class BackButtonController : MonoBehaviour
 
         if (PlayButton)
         {
-            PlayButton.onClick.AddListener(() => { SceneManager.LoadScene("Level1"); });
+            PlayButton.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("Gameplay"); });
         }
     }
 }

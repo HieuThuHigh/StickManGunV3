@@ -38,8 +38,8 @@ namespace _GunMayHem.Gameplay
             if (characterControl && characterControl != _shooter)
             {
                 characterControl.TakeDmg(_direction * _dmg);
+                gameObject.SetActive(false);
             }
-            gameObject.SetActive(false);
         }
     }
 }

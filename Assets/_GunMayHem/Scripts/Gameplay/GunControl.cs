@@ -25,6 +25,10 @@ namespace _GunMayHem.Gameplay
         
         public bool HaveAmmo => _ammo > 0 || _isInfiniteAmmo;
 
+        public Transform PosFire => _posFire;
+
+        public bool CanShoot => _canShoot;
+
         private void OnEnable()
         {
             _ammo = _maxAmmo;
@@ -39,7 +43,7 @@ namespace _GunMayHem.Gameplay
             }
         }
 
-        private void Shoot()
+        public void Shoot()
         {
             if (!HaveAmmo || !_canShoot)
             {
