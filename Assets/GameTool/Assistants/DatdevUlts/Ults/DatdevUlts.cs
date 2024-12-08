@@ -678,7 +678,7 @@ namespace DatdevUlts.Ults
         {
             if (collection == null || collection.Count == 0)
             {
-                throw new ArgumentException("The collection cannot be null or empty.");
+                return default;
             }
 
             using (var enumerator = collection.GetEnumerator())

@@ -249,8 +249,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39be459835445518dc8f3fba82d83e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _posFire: {fileID: 3480426037352646888}
+  _typeBullet: 0
+  _character: {fileID: 0}
+  _maxAmmo: 0
+  _timeShoot: 0
+  _isInfiniteAmmo: 0
+  _speed: 0
+  _dmg: 20
 --- !u!1001 &5345817476822688409
 PrefabInstance:
   m_ObjectHideFlags: 0
