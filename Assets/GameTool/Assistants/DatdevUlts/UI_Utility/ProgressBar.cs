@@ -27,7 +27,7 @@ namespace DatdevUlts.UI_Utility
         public Vector2 GetSizeDelta(float current, float max)
         {
             current = Mathf.Clamp(current, 0, max);
-            var size = RectMax.sizeDelta;
+            var size = RectMax.rect.size;
             if (_horizontal)
             {
                 size.x *= current / max;

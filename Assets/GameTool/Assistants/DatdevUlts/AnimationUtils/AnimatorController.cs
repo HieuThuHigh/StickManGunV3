@@ -1,15 +1,25 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DatdevUlts.AnimationUtils
 {
+    [RequireComponent(typeof(Animator))]
     public class AnimatorController : MonoBehaviour
     {
         [SerializeField] private bool _loop;
         [SerializeField] private bool _pausing;
+        [SerializeField] private float _timeScale = 1;
+        [SerializeField] private bool _ignoreTimeScale;
+        [SerializeField] private float _defaultMixDuration = 0.25f;
+        [SerializeField] private bool _enableLog;
+        [AnimName] [SerializeField] private string _animName;
+        private string m_animName;
         private Animator _animator;
         private bool _pausingLoop;
-        private string _animName;
+        private bool _awaked;
+        private bool _protectEnd;
+        private float _allowEndTime;
 
         public bool Pause
         {
@@ -19,6 +29,50 @@ namespace DatdevUlts.AnimationUtils
 
         private int Pausing => _pausing ? 0 : 1;
 
+        public bool IgnoreTimeScale
+        {
+            get => _ignoreTimeScale;
+            set => _ignoreTimeScale = value;
+        }
+
+        public bool Loop
+        {
+            get => _loop;
+            set => _loop = value;
+        }
+
+        public bool Awaked => _awaked;
+
+        public float TimeScale
+        {
+            get => _timeScale;
+            set => _timeScale = value;
+        }
+
+        public string AnimName
+        {
+            get => m_animName;
+            set => m_animName = value;
+        }
+
+        public bool EnableLog
+        {
+            get => _enableLog;
+            set => _enableLog = value;
+        }
+
+        public Action OnStartAnim
+        {
+            get => _onStartAnim;
+            set => _onStartAnim = value;
+        }
+
+        public Action OnEndAnim
+        {
+            get => _onEndAnim;
+            set => _onEndAnim = value;
+        }
+
         private bool PausingLoop
         {
             get => _pausingLoop;
@@ -27,8 +81,8 @@ namespace DatdevUlts.AnimationUtils
 
         private const float OffsetEnd = 0.0001f;
 
-        private Action OnStartAnim;
-        private Action OnEndAnim;
+        private Action _onStartAnim;
+        private Action _onEndAnim;
 
         public Animator Animator
         {
@@ -50,6 +104,21 @@ namespace DatdevUlts.AnimationUtils
             Animator.enabled = false;
         }
 
+        private void OnEnable()
+        {
+            Update(0);
+            if (!_awaked)
+            {
+                StartCoroutine(CheckAwake());
+            }
+
+            IEnumerator CheckAwake()
+            {
+                yield return null;
+                _awaked = true;
+            }
+        }
+
         private void SetupAnimator()
         {
             if (!_animator)
@@ -60,22 +129,32 @@ namespace DatdevUlts.AnimationUtils
 
         public void Update()
         {
+            var currentAnimatorStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+            if (_animName != m_animName)
+            {
+                SetAnimation(_animName);
+                return;
+            }
+
             if (_pausing)
             {
                 return;
             }
 
-            var currentAnimatorStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-
             var length = currentAnimatorStateInfo.length;
             var currentTime = length *
                               (currentAnimatorStateInfo.normalizedTime - (int)currentAnimatorStateInfo.normalizedTime);
 
-            var deltatime = Time.deltaTime;
+            var deltatime = Time.deltaTime * _timeScale;
+            if (_ignoreTimeScale)
+            {
+                deltatime = Time.unscaledDeltaTime * _timeScale;
+            }
 
             if (!_loop)
             {
-                if (!PausingLoop && length - currentTime < deltatime && currentAnimatorStateInfo.IsName(_animName))
+                if (!PausingLoop && length - currentTime < deltatime && currentAnimatorStateInfo.IsName(m_animName))
                 {
                     deltatime = length - currentTime - OffsetEnd;
 
@@ -94,7 +173,18 @@ namespace DatdevUlts.AnimationUtils
                 {
                     deltatime = length - currentTime;
                     Update(deltatime * Pausing);
-                    OnEndAnim?.Invoke();
+                    if (_protectEnd)
+                    {
+                        if (_allowEndTime < 0)
+                        {
+                            OnEndAnim?.Invoke();
+                        }
+                    }
+                    else
+                    {
+                        OnEndAnim?.Invoke();
+                    }
+
                     OnStartAnim?.Invoke();
                 }
                 else
@@ -102,51 +192,103 @@ namespace DatdevUlts.AnimationUtils
                     Update(deltatime * Pausing);
                 }
             }
+
+            _allowEndTime -= deltatime * Pausing;
         }
 
-        public void SetAnimation(string animationName, bool loop, float timeScale = 1f, float mixDuration = 0.25f, Action onStart = null,
-            Action onEnd = null, int layer = 0)
+        public void SetAnimation(string animationName, bool loop, float timeScale = 1f, float mixDuration = -1f,
+            Action onStart = null, Action onEnd = null, int layer = 0, bool quiet = true, bool protectEnd = true,
+            bool forceCrossFade = true, bool forceReplay = false)
         {
-            var has = Animator.HasState(0, Animator.StringToHash(animationName));
+            var has = Animator.HasState(layer, Animator.StringToHash(animationName));
             if (!has)
             {
-                Debug.LogError($"State {animationName} is NULL");
-                return;
+                if (!quiet)
+                {
+                    if (_enableLog)
+                    {
+                        Debug.LogError($"State {animationName} of layer {layer} is NULL");
+                    }
+
+                    return;
+                }
             }
 
-            OnStartAnim = onStart;
-            OnEndAnim = null;
+            if (mixDuration <= -0.5f)
+            {
+                mixDuration = _defaultMixDuration;
+            }
 
-            _loop = loop;
+            if (layer == 0)
+            {
+                OnStartAnim = onStart;
+                OnEndAnim = null;
 
-            var currentAnimatorStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+                _loop = loop;
+            }
+
+            var currentAnimatorStateInfo = _animator.GetCurrentAnimatorStateInfo(layer);
 
             var length = currentAnimatorStateInfo.length;
             var currentTime = length *
                               (currentAnimatorStateInfo.normalizedTime - (int)currentAnimatorStateInfo.normalizedTime);
 
-            if (mixDuration > length - currentTime - OffsetEnd)
+            _protectEnd = protectEnd;
+            if (_protectEnd)
+            {
+                _allowEndTime = mixDuration;
+            }
+
+            if (!forceCrossFade && mixDuration > length - currentTime - OffsetEnd)
             {
                 mixDuration = length - currentTime - OffsetEnd * 2;
             }
 
-            PausingLoop = false;
-
-            _animName = animationName;
-
-            if (mixDuration <= OffsetEnd)
-            {
-                Animator.Play(animationName, layer, 0);
-                Animator.Update(0);
-            }
-            else
-            {
-                Animator.CrossFadeInFixedTime(animationName, mixDuration, layer, 0);
-                Animator.Update(0);
-            }
-            Animator.speed = timeScale;
+            var animNameBefore = m_animName;
             
-            OnEndAnim = onEnd;
+            if (layer == 0)
+            {
+                PausingLoop = false;
+
+                m_animName = animationName;
+                _animName = m_animName;
+            }
+
+            if (forceReplay || animNameBefore != m_animName)
+            {
+                if (!forceCrossFade && mixDuration <= OffsetEnd || mixDuration <= OffsetEnd)
+                {
+                    Animator.Play(animationName, layer);
+                }
+                else
+                {
+                    Animator.CrossFadeInFixedTime(animationName, mixDuration, layer, 0);
+
+                    if (Awaked)
+                    {
+                        Animator.Update(0);
+                    }
+                }
+            }
+            
+
+            if (layer == 0)
+            {
+                _timeScale = timeScale;
+
+                OnEndAnim = onEnd;
+            }
+        }
+
+        public void SetAnimation(string animName)
+        {
+            SetAnimation(animName, _loop);
+        }
+
+        [ContextMenu("SetAnimation")]
+        public void SetAnimation()
+        {
+            SetAnimation(m_animName);
         }
 
         public void Update(float deltaTime)

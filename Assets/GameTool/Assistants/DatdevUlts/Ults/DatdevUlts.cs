@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -405,7 +408,9 @@ namespace DatdevUlts.Ults
             {
                 if (b == 0)
                 {
-                    if (c == 0) { }
+                    if (c == 0)
+                    {
+                    }
                 }
 
                 x1 = -c / b;
@@ -419,7 +424,9 @@ namespace DatdevUlts.Ults
                 }
                 else
                 {
-                    if (delta < 0) { }
+                    if (delta < 0)
+                    {
+                    }
                     else
                     {
                         x1 = (-b - Mathf.Sqrt(delta)) / 2 / a;
@@ -666,6 +673,31 @@ namespace DatdevUlts.Ults
             return collection.ElementAt(Range(0, collection.Count - 1));
         }
 
+        /// Lấy cái nhất, arg1: Cái đang so sánh với arg2 (Cái đang là est), true thì est = arg1
+        public static T GetEst<T>(this ICollection<T> collection, Func<T, T, bool> compare)
+        {
+            if (collection == null || collection.Count == 0)
+            {
+                return default;
+            }
+
+            using (var enumerator = collection.GetEnumerator())
+            {
+                enumerator.MoveNext();
+                T min = enumerator.Current;
+
+                foreach (var item in collection)
+                {
+                    if (compare(item, min))
+                    {
+                        min = item;
+                    }
+                }
+
+                return min;
+            }
+        }
+
         public static int GetRandom(Range rangeInt)
         {
             return Random.Range((int)rangeInt.min, (int)rangeInt.max + 1);
@@ -782,6 +814,79 @@ namespace DatdevUlts.Ults
 
             // Tạo số ngẫu nhiên kiểu double trong khoảng [0, 1) và scale nó để nằm trong khoảng [min, max]
             return random.NextDouble() * (max - min) + min;
+        }
+    }
+
+    public static class CanvasPositioningExtensions
+    {
+        public static Vector3 WorldToCanvasPosition(this RectTransform canvas, Vector3 worldPosition,
+            Camera camera = null)
+        {
+            if (camera == null)
+            {
+                camera = Camera.main;
+            }
+
+            // ReSharper disable once PossibleNullReferenceException
+            var viewportPosition = camera.WorldToViewportPoint(worldPosition);
+            return canvas.ViewportToCanvasPosition(viewportPosition);
+        }
+
+        public static Vector3 ScreenToCanvasPosition(this RectTransform canvas, Vector3 screenPosition)
+        {
+            var viewportPosition = new Vector3(screenPosition.x / Screen.width,
+                screenPosition.y / Screen.height,
+                0);
+            return canvas.ViewportToCanvasPosition(viewportPosition);
+        }
+
+        public static Vector3 ViewportToCanvasPosition(this RectTransform rectTransform, Vector3 viewportPosition)
+        {
+            var centerBasedViewPortPosition = viewportPosition - new Vector3(0.5f, 0.5f, 0);
+            var scale = rectTransform.rect.size;
+            return Vector3.Scale(centerBasedViewPortPosition, scale);
+        }
+
+        /// <summary>
+        /// Chuyển đổi vị trí local của một phần tử trong Canvas sang vị trí viewport.
+        /// </summary>
+        /// <param name="rectTransform">RectTransform chứa phần tử.</param>
+        /// <param name="localPos">Vị trí local cần chuyển đổi.</param>
+        /// <returns>Vị trí trong không gian viewport.</returns>
+        public static Vector3 LocalPositionToViewport(this RectTransform rectTransform, Vector3 localPos)
+        {
+            var scale = rectTransform.rect.size;
+            var centerBasedLocalPos = Vector3.Scale(localPos, new Vector3(1 / scale.x, 1 / scale.y, 1));
+            return centerBasedLocalPos + new Vector3(0.5f, 0.5f, 0);
+        }
+        
+        public static Vector3 WorldPositionToViewport(this RectTransform rectTransform, Vector3 worldPos)
+        {
+            return rectTransform.LocalPositionToViewport(rectTransform.InverseTransformPoint(worldPos));
+        }
+
+        private static Vector3[] corners = new Vector3[4];
+
+        /// <summary>
+        /// Returns a random world position that lies inside the given RectTransform.
+        /// </summary>
+        /// <param name="rectTransform">The RectTransform to find a position inside of.</param>
+        /// <returns>A Vector3 representing a random world position inside the RectTransform.</returns>
+        public static Vector3 GetRandomWorldPositionInside(this RectTransform rectTransform)
+        {
+            // Get the corners of the RectTransform in world space
+            rectTransform.GetWorldCorners(corners);
+
+            // Get random point in normalized coordinates
+            float randomX = Random.Range(0.0f, 1.0f);
+            float randomY = Random.Range(0.0f, 1.0f);
+
+            // Interpolate to find a point inside the RectTransform
+            Vector3 positionInside = corners[0]
+                                     + randomX * (corners[3] - corners[0])
+                                     + randomY * (corners[1] - corners[0]);
+
+            return positionInside;
         }
     }
 
@@ -1073,12 +1178,6 @@ namespace DatdevUlts.Ults
                 }
             }
         }
-
-        [Obsolete]
-        public static Coroutine DelayCall(this MonoBehaviour monoBehaviour, float timeDelay, Action action, bool ignoreTimeScale = false)
-        {
-            return DelayedCall(monoBehaviour, timeDelay, action, ignoreTimeScale);
-        }
     }
 
     public static class IListExtensions
@@ -1157,7 +1256,179 @@ namespace DatdevUlts.Ults
         }
     }
 
+    public static class CollectionExtensions
+    {
+        public static void NullAllItems(this Array collection)
+        {
+            for (int i = 0; i < collection.Length; i++)
+            {
+                collection.SetValue(null, i);
+            }
+        }
+    }
 
+    public static class PhysicsExtensions
+    {
+        public static void SortRaycastHits(Vector3 origin, RaycastHit[] hits)
+        {
+            Array.Sort(hits, (hit1, hit2) =>
+            {
+                if (!hit1.transform && !hit2.transform)
+                {
+                    return 0;
+                }
+
+                if (!hit1.transform)
+                {
+                    return 1;
+                }
+
+                if (!hit2.transform)
+                {
+                    return -1;
+                }
+
+                if ((hit1.point - origin).magnitude > (hit2.point - origin).magnitude)
+                {
+                    return 1;
+                }
+
+                if ((hit1.point - origin).magnitude < (hit2.point - origin).magnitude)
+                {
+                    return -1;
+                }
+
+                return 0;
+            });
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform)
+                {
+                    Debug.Log($"{i}: {hits[i].transform.name}", hits[i].transform.gameObject);
+                }
+            }
+        }
+    }
+
+    public static class LogExtensions
+    {
+        public static void LogError(this object message, Object context = null, Color color = default,
+            bool bold = true)
+        {
+            if (color == default)
+            {
+                color = Color.yellow;
+            }
+
+            string formattedMessage = $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{message}</color>";
+
+            if (bold)
+            {
+                formattedMessage = $"<b>{formattedMessage}</b>";
+            }
+
+            Debug.LogError(formattedMessage, context);
+        }
+
+        public static void LogWarning(this object message, Object context = null, Color color = default,
+            bool bold = true)
+        {
+            if (color == default)
+            {
+                color = Color.yellow; // Sử dụng màu mặc định cho cảnh báo
+            }
+
+            string formattedMessage = $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{message}</color>";
+
+            if (bold)
+            {
+                formattedMessage = $"<b>{formattedMessage}</b>";
+            }
+
+            Debug.LogWarning(formattedMessage, context);
+        }
+
+        public static void Log(this object message, Object context = null, Color color = default,
+            bool bold = true)
+        {
+            if (color == default)
+            {
+                color = Color.white;
+            }
+
+            string formattedMessage = $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{message}</color>";
+
+            if (bold)
+            {
+                formattedMessage = $"<b>{formattedMessage}</b>";
+            }
+
+            Debug.Log(formattedMessage, context);
+        }
+
+        public static void LogException(this Exception exception, Object context = null, Color color = default,
+            bool bold = true)
+        {
+            if (color == default)
+            {
+                color = Color.red;
+            }
+
+            string formattedMessage = $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{exception.Message}</color>";
+
+            if (bold)
+            {
+                formattedMessage = $"<b>{formattedMessage}</b>";
+            }
+
+            Debug.LogException(new Exception(formattedMessage, exception), context);
+        }
+    }
+
+    public static class EnumExtensions
+    {
+        /// <summary>
+        /// Converts an Enum value to the specified Enum type.
+        /// </summary>
+        /// <param name="value">The Enum value to convert.</param>
+        /// <typeparam name="T">The target Enum type.</typeparam>
+        /// <returns>The converted Enum value of type T.</returns>
+        public static T ToEnum<T>(this Enum value) where T : Enum
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value), "Value cannot be null.");
+            }
+
+            if (!Enum.IsDefined(typeof(T), value.ToString()))
+            {
+                throw new ArgumentException($"The value '{value}' is not defined in the enum type '{typeof(T).Name}'.");
+            }
+            
+            return (T)Enum.Parse(typeof(T), value.ToString(), true);
+        }
+        
+        /// <summary>
+        /// Checks if the Enum value can be converted to the specified Enum type.
+        /// </summary>
+        /// <param name="value">The Enum value to check.</param>
+        /// <typeparam name="T">The target Enum type.</typeparam>
+        /// <returns>True if the value can be converted to type T; otherwise, false.</returns>
+        public static bool CanConvertToEnum<T>(this Enum value) where T : Enum
+        {
+            if (value == null)
+            {
+                return false;
+            }
+
+            // Kiểm tra xem giá trị có tồn tại trong loại enum mục tiêu hay không
+            return Enum.IsDefined(typeof(T), value.ToString());
+        }
+    }
+
+
+    [Serializable]
     public struct Range
     {
         public float min;
@@ -1176,6 +1447,7 @@ namespace DatdevUlts.Ults
         Y
     }
 
+    [Serializable]
     public struct MoveInput
     {
         public Vector3 startPos;
@@ -1188,6 +1460,7 @@ namespace DatdevUlts.Ults
         }
     }
 
+    [Serializable]
     public struct CurrentMoveInfo
     {
         public Vector3 currentPosition;
@@ -1195,6 +1468,7 @@ namespace DatdevUlts.Ults
         public float currentTime;
     }
 
+    [Serializable]
     public struct MoveSetting
     {
         public float timeScale;
@@ -1224,5 +1498,29 @@ namespace DatdevUlts.Ults
         }
     }
 
-    public class SortingLayerAtt : PropertyAttribute { }
+    public static class ObjectExtension
+    {
+        public static T DeepClone<T>(this T source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source), "Source cannot be null");
+            }
+
+            if (!typeof(T).IsSerializable)
+            {
+                throw new ArgumentException("Type must be serializable", nameof(source));
+            }
+
+            IFormatter formatter = new BinaryFormatter();
+            using Stream stream = new MemoryStream();
+            formatter.Serialize(stream, source);
+            stream.Seek(0, SeekOrigin.Begin);
+            return (T)formatter.Deserialize(stream);
+        }
+    }
+
+    public class SortingLayerAtt : PropertyAttribute
+    {
+    }
 }

@@ -65,9 +65,12 @@ namespace DatdevUlts.UI_Utility
 
         public override void OnInitializePotentialDrag(PointerEventData eventData)
         {
-            for (int i = 0; i < MParentInitializePotentialDragHandlers.Length; ++i)
+            if (ParentScrollRect)
             {
-                MParentInitializePotentialDragHandlers[i].OnInitializePotentialDrag(eventData);
+                for (int i = 0; i < MParentInitializePotentialDragHandlers.Length; ++i)
+                {
+                    MParentInitializePotentialDragHandlers[i].OnInitializePotentialDrag(eventData);
+                }
             }
 
             base.OnInitializePotentialDrag(eventData);
@@ -76,7 +79,11 @@ namespace DatdevUlts.UI_Utility
         public override void OnBeginDrag(PointerEventData eventData)
         {
             MRouteToParent = (!horizontal && Mathf.Abs(eventData.delta.x) > Mathf.Abs(eventData.delta.y)) ||
-                              (!vertical && Mathf.Abs(eventData.delta.x) < Mathf.Abs(eventData.delta.y));
+                             (!vertical && Mathf.Abs(eventData.delta.x) < Mathf.Abs(eventData.delta.y));
+            if (!ParentScrollRect)
+            {
+                MRouteToParent = false;
+            }
 
             if (MRouteToParent)
             {

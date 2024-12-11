@@ -7,5 +7,9 @@ namespace GameToolSample.ObjectPool
         ItemShowUIPrefab,
         ItemShowSpritePrefab,
         ToastDisplayItem,
+BulletLong,
+BulletShort,
+BulletShotGun,
+Gift
     }
 }

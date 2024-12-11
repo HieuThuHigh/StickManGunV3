@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
 
 public class Menu : MonoBehaviour
@@ -43,6 +44,8 @@ public class Menu : MonoBehaviour
     public void ExitGame()
     {
         // Lưu ý: chỉ hoạt động khi build ra game, không hoạt động trong editor
-        Application.Quit();
+        //Application.Quit();
+        
+        SceneLoadManager.Instance.LoadSceneWithName("Home");
     }
 }
