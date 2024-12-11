@@ -6,7 +6,8 @@ using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 
 using Photon.Pun;
-    public class PlayerListEntry : MonoBehaviour
+using _GunMayHem.Gameplay;
+public class PlayerListEntry : MonoBehaviour
     {
         [Header("UI References")]
         public Text PlayerNameText;
@@ -32,7 +33,7 @@ using Photon.Pun;
             }
             else
             {
-                Hashtable initialProps = new Hashtable() {{PlayerController.PLAYER_READY, isPlayerReady}};
+                Hashtable initialProps = new Hashtable() {{character2.PLAYER_READY, isPlayerReady}};
                 PhotonNetwork.LocalPlayer.SetCustomProperties(initialProps);
                 PhotonNetwork.LocalPlayer.SetScore(0);
 
@@ -41,7 +42,7 @@ using Photon.Pun;
                     isPlayerReady = !isPlayerReady;
                     SetPlayerReady(isPlayerReady);
 
-                    Hashtable props = new Hashtable() {{PlayerController.PLAYER_READY, isPlayerReady}};
+                    Hashtable props = new Hashtable() {{character2.PLAYER_READY, isPlayerReady}};
                     PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
                     if (PhotonNetwork.IsMasterClient)
