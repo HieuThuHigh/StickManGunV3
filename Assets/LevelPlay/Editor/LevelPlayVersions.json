@@ -403,6 +403,17 @@
             "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/AdMob/${VERSION}/ISAdMobAdapterDependencies.xml",
             "dependencyXmlFileName": "ISAdMobAdapterDependencies.xml",
             "versions": {
+              "4.3.69.0": {
+                "ironSourceSdkVersion": "[8.4.0, 9.0[",
+                "android": {
+                  "adapterVersion": "4.3.48.0",
+                  "adNetworkVersion": "23.6.0"
+                },
+                "ios": {
+                  "adapterVersion": "4.3.60.0",
+                  "adNetworkVersion": "11.13.0"
+                }
+              },
               "4.3.68.0": {
                 "ironSourceSdkVersion": "[8.4.0, 9.0[",
                 "android": {
@@ -534,6 +545,17 @@
             "dependencyXmlURL": "https://s3.amazonaws.com/ssa.public/Dependencies-xmls/Vungle/${VERSION}/ISVungleAdapterDependencies.xml",
             "dependencyXmlFileName": "ISVungleAdapterDependencies.xml",
             "versions": {
+              "4.3.49.0": {
+                "ironSourceSdkVersion": "[8.4.0, 9.0[",
+                "android": {
+                  "adapterVersion": "4.3.27",
+                  "adNetworkVersion": "7.4.2"
+                },
+                "ios": {
+                  "adapterVersion": "4.3.40.0",
+                  "adNetworkVersion": "7.4.3"
+                }
+              },
                 "4.3.48.0": {
                 "ironSourceSdkVersion": "[8.4.0, 9.0[",
                 "android": {
@@ -684,6 +706,17 @@
             "dependencyXmlFileName": "ISMobileFuseAdapterDependencies.xml",
             "isNew": true,
             "versions": {
+              "4.3.3.0": {
+                "ironSourceSdkVersion": "[8.4.0, 9.0[",
+                "android": {
+                  "adapterVersion": "4.3.3",
+                  "adNetworkVersion": "1.8.2"
+                },
+                "ios": {
+                  "adapterVersion": "4.3.3.0",
+                  "adNetworkVersion": "1.8.2"
+                }
+              },
                 "4.3.2.0": {
                     "ironSourceSdkVersion": "[8.4.0, 9.0[",
                     "android": {
