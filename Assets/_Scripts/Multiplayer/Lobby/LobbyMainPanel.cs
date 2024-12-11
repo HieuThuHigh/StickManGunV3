@@ -243,6 +243,7 @@ using Photon.Pun;
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
 
+
         public void OnJoinRandomRoomButtonClicked()
         {
             SetActivePanel(JoinRandomRoomPanel.name);
