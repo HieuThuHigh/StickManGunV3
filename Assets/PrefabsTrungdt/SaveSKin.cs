@@ -19,12 +19,12 @@ public class SaveSkin : MonoBehaviour
     private void ApplyCustomization()
     {
         // Lấy thông tin tùy chỉnh từ PlayerPrefs
-        int selectedHatID = PlayerPrefs.GetInt("SelectedHatID", -1);
-        int selectedFaceID = PlayerPrefs.GetInt("SelectedFaceID", -1);
-        int selectedShirtID = PlayerPrefs.GetInt("SelectedshirtID", -1);
-        int selectedBodyID = PlayerPrefs.GetInt("SelectedBodyID", -1);
-        int selectedGunID = PlayerPrefs.GetInt("SelectedgunID", -1);
-        int selectedColorID = PlayerPrefs.GetInt("SelectedColorID", -1);
+        int selectedHatID = UnityEngine.PlayerPrefs.GetInt("SelectedHatID", -1);
+        int selectedFaceID = UnityEngine.PlayerPrefs.GetInt("SelectedFaceID", -1);
+        int selectedShirtID = UnityEngine.PlayerPrefs.GetInt("SelectedshirtID", -1);
+        int selectedBodyID = UnityEngine.PlayerPrefs.GetInt("SelectedBodyID", -1);
+        int selectedGunID = UnityEngine.PlayerPrefs.GetInt("SelectedgunID", -1);
+        int selectedColorID = UnityEngine.PlayerPrefs.GetInt("SelectedColorID", -1);
 
         // Cập nhật mũ
         if (selectedHatID != -1)

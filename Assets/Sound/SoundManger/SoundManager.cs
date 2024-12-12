@@ -9,8 +9,8 @@ public class SoundManager : MonoBehaviour
     private bool muted = false;
     void Start()
     {
-        if(!PlayerPrefs.HasKey("muted")){
-            PlayerPrefs.SetInt("muted", 0);
+        if(!UnityEngine.PlayerPrefs.HasKey("muted")){
+            UnityEngine.PlayerPrefs.SetInt("muted", 0);
             Load();
         }else{
             Load();
@@ -40,9 +40,9 @@ public class SoundManager : MonoBehaviour
         }
     }
     private void Load(){
-        muted = PlayerPrefs.GetInt("muted")== 1;
+        muted = UnityEngine.PlayerPrefs.GetInt("muted")== 1;
     }
     private void Save(){
-        PlayerPrefs.SetInt("muted",muted? 1 : 0);
+        UnityEngine.PlayerPrefs.SetInt("muted",muted? 1 : 0);
     }
 }

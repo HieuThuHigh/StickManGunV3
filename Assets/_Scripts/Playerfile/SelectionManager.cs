@@ -115,7 +115,7 @@ public class SelectionManager : MonoBehaviour
     {
         if (selectedIndex >= 0 && selectedIndex < items.Count)
         {
-            PlayerPrefs.SetInt(key, items[selectedIndex].ID);
+            UnityEngine.PlayerPrefs.SetInt(key, items[selectedIndex].ID);
         }
     }
     private void SaveCharacterCustomization()
@@ -123,12 +123,12 @@ public class SelectionManager : MonoBehaviour
         // Lưu ID của các item đã chọn vào PlayerPrefs
         if (characterCustomization != null)
         {
-            PlayerPrefs.SetInt("SelectedHat", characterCustomization.selectedHatIndex);
-            PlayerPrefs.SetInt("SelectedFace", characterCustomization.selectedFaceIndex);
-            PlayerPrefs.SetInt("Selectedshirt", characterCustomization.selectedShirtIndex);
-            PlayerPrefs.SetInt("SelectedColor", characterCustomization.selectedColorIndex);
-            PlayerPrefs.SetInt("Selectedgun", characterCustomization.selectedGunIndex);
-            PlayerPrefs.SetInt("SelectedPerk", characterCustomization.selectedPerkIndex);
+            UnityEngine.PlayerPrefs.SetInt("SelectedHat", characterCustomization.selectedHatIndex);
+            UnityEngine.PlayerPrefs.SetInt("SelectedFace", characterCustomization.selectedFaceIndex);
+            UnityEngine.PlayerPrefs.SetInt("Selectedshirt", characterCustomization.selectedShirtIndex);
+            UnityEngine.PlayerPrefs.SetInt("SelectedColor", characterCustomization.selectedColorIndex);
+            UnityEngine.PlayerPrefs.SetInt("Selectedgun", characterCustomization.selectedGunIndex);
+            UnityEngine.PlayerPrefs.SetInt("SelectedPerk", characterCustomization.selectedPerkIndex);
 
             // Lưu ID của các item trong ItemDatabase nếu cần
             // if (characterCustomization.selectedHatIndex >= 0 && characterCustomization.selectedHatIndex < _itemDatabase.ItemsHat.Count)
@@ -166,15 +166,15 @@ public class SelectionManager : MonoBehaviour
             //     PlayerPrefs.SetInt("SelectedPerkID", _itemDatabase.Itemsperk[characterCustomization.selectedPerkIndex].ID);
             // }
 
-            PlayerPrefs.Save();  // Lưu PlayerPrefs
+            UnityEngine.PlayerPrefs.Save();  // Lưu PlayerPrefs
         }
     }
 
     private void LoadCharacterCustomization()
 {
-    if (PlayerPrefs.HasKey("SelectedHatID"))
+    if (UnityEngine.PlayerPrefs.HasKey("SelectedHatID"))
     {
-        int selectedHatID = PlayerPrefs.GetInt("SelectedHatID",-1);
+        int selectedHatID = UnityEngine.PlayerPrefs.GetInt("SelectedHatID",-1);
         Debug.Log($"Selected Hat ID: {selectedHatID}");
         int selectedHatIndex = _itemDatabase.ItemsHat.FindIndex(item => item.ID == selectedHatID);
         if (selectedHatIndex >= 0)
@@ -185,9 +185,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedFaceID"))
+    if (UnityEngine.PlayerPrefs.HasKey("SelectedFaceID"))
     {
-        int selectedFaceID = PlayerPrefs.GetInt("SelectedFaceID");
+        int selectedFaceID = UnityEngine.PlayerPrefs.GetInt("SelectedFaceID");
         int selectedFaceIndex = _itemDatabase.ItemsFace.FindIndex(item => item.ID == selectedFaceID);
         if (selectedFaceIndex >= 0)
         {
@@ -197,9 +197,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedshirtID"))
+    if (UnityEngine.PlayerPrefs.HasKey("SelectedshirtID"))
     {
-        int selectedShirtID = PlayerPrefs.GetInt("SelectedshirtID");
+        int selectedShirtID = UnityEngine.PlayerPrefs.GetInt("SelectedshirtID");
         int selectedShirtIndex = _itemDatabase.Itemsshirt.FindIndex(item => item.ID == selectedShirtID);
         if (selectedShirtIndex >= 0)
         {
@@ -209,9 +209,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedColorID"))
+    if (UnityEngine.PlayerPrefs.HasKey("SelectedColorID"))
     {
-        int selectedColorID = PlayerPrefs.GetInt("SelectedColorID");
+        int selectedColorID = UnityEngine.PlayerPrefs.GetInt("SelectedColorID");
         int selectedColorIndex = _itemDatabase.Itemscolor.FindIndex(item => item.ID == selectedColorID);
         if (selectedColorIndex >= 0)
         {
@@ -221,9 +221,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedgunID"))
+    if (UnityEngine.PlayerPrefs.HasKey("SelectedgunID"))
     {
-        int selectedGunID = PlayerPrefs.GetInt("SelectedgunID");
+        int selectedGunID = UnityEngine.PlayerPrefs.GetInt("SelectedgunID");
         int selectedGunIndex = _itemDatabase.Itemsgun.FindIndex(item => item.ID == selectedGunID);
         if (selectedGunIndex >= 0)
         {
@@ -233,9 +233,9 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    if (PlayerPrefs.HasKey("SelectedPerkID"))
+    if (UnityEngine.PlayerPrefs.HasKey("SelectedPerkID"))
     {
-        int selectedPerkID = PlayerPrefs.GetInt("SelectedPerkID");
+        int selectedPerkID = UnityEngine.PlayerPrefs.GetInt("SelectedPerkID");
         int selectedPerkIndex = _itemDatabase.Itemsperk.FindIndex(item => item.ID == selectedPerkID);
         if (selectedPerkIndex >= 0)
         {

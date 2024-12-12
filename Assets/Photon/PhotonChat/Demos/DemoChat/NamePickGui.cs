@@ -25,7 +25,7 @@ namespace Photon.Chat.Demo
             this.chatNewComponent = FindObjectOfType<ChatGui>();
 
 
-            string prefsName = PlayerPrefs.GetString(UserNamePlayerPref);
+            string prefsName = UnityEngine.PlayerPrefs.GetString(UserNamePlayerPref);
             if (!string.IsNullOrEmpty(prefsName))
             {
                 this.idInput.text = prefsName;
@@ -49,7 +49,7 @@ namespace Photon.Chat.Demo
             chatNewComponent.Connect();
             this.enabled = false;
 
-            PlayerPrefs.SetString(UserNamePlayerPref, chatNewComponent.UserName);
+            UnityEngine.PlayerPrefs.SetString(UserNamePlayerPref, chatNewComponent.UserName);
         }
     }
 }

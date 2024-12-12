@@ -14,7 +14,11 @@ namespace GameToolSample.GameDataScripts.Scripts
         public DataField Data;
         public GameModeData GameModeData;
 
-
+        public static int Freeze
+        {
+            get => PlayerPrefs.GetInt("Freeze", 0);
+            set => PlayerPrefs.SetInt("Freeze", value);
+        }
         protected override void Awake()
         {
             base.Awake();
@@ -470,4 +474,5 @@ namespace GameToolSample.GameDataScripts.Scripts
         None,
         Normal,
     }
+    
 }

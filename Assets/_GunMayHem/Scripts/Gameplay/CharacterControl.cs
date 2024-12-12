@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DatdevUlts.AnimationUtils;
 using DatdevUlts.Ults;
+using GameToolSample.GameDataScripts.Scripts;
 using UnityEngine;
 
 namespace _GunMayHem.Gameplay
@@ -19,7 +20,8 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private float _maxSpeedX;
         [SerializeField] private float _jumpForce;
         [SerializeField] private bool _isPlayer;
-        [SerializeField] private bool _testMode;
+        [SerializeField] public bool _testMode;
+        [SerializeField] private bool isFreeze;
         [SerializeField] private int _maxJumps;
         [SerializeField] private Color _color;
         private List<CharacterControl> _listCharEnemy = new List<CharacterControl>();
@@ -51,7 +53,7 @@ namespace _GunMayHem.Gameplay
         private void Start()
         {
             ChangeSkinColor();
-            
+
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 
@@ -133,7 +135,7 @@ namespace _GunMayHem.Gameplay
             {
                 return;
             }
-            
+
             if (_isPlayer)
             {
                 return;
@@ -405,6 +407,7 @@ namespace _GunMayHem.Gameplay
                 else
                 {
                     GameplayManager.Instance.Victory();
+                    GameData.Freeze += 1;
                 }
             }
         }
@@ -431,7 +434,7 @@ namespace _GunMayHem.Gameplay
         [ContextMenu("CHANGE GUN")]
         public void ChangeGun()
         {
-            ChangeGun(RandomUlts.Range(2,4));
+            ChangeGun(RandomUlts.Range(2, 4));
         }
 
         public void ChangeGun(int index)
