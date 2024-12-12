@@ -4318,6 +4318,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4594012845879002908, guid: 1d169934dcf232246b9d39a2c1e8336b, type: 3}
+      propertyPath: feezeCountText
+      value: 
+      objectReference: {fileID: 1932847466710996018}
     - target: {fileID: 5779696679911769165, guid: 1d169934dcf232246b9d39a2c1e8336b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4413,6 +4417,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d169934dcf232246b9d39a2c1e8336b, type: 3}
+--- !u!114 &1932847466710996018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620339938432450559, guid: 1d169934dcf232246b9d39a2c1e8336b, type: 3}
+  m_PrefabInstance: {fileID: 1932847466710996017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1984489631880115885
 PrefabInstance:
   m_ObjectHideFlags: 0

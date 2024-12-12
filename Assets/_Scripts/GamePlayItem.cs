@@ -48,6 +48,10 @@ public class GamePlayItem : MonoBehaviour
         {
             GameData.Freeze = 0;
         }
+        if (GameData.Freeze > 100)
+        {
+            GameData.Freeze = 100;
+        }
     }
 
     private void UpdatePopupStates(int freezeValue)
