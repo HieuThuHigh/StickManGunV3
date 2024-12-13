@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DatdevUlts.AnimationUtils;
 using DatdevUlts.Ults;
+using GameTool.Assistants.DesignPattern;
 using GameToolSample.GameDataScripts.Scripts;
+using GameToolSample.Scripts.Enum;
 using UnityEngine;
 
 namespace _GunMayHem.Gameplay
@@ -24,6 +27,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private bool isFreeze;
         [SerializeField] private int _maxJumps;
         [SerializeField] private Color _color;
+        [SerializeField] private GameObject stunObject;
         private List<CharacterControl> _listCharEnemy = new List<CharacterControl>();
 
 
@@ -59,6 +63,29 @@ namespace _GunMayHem.Gameplay
 
             _listCharEnemy = FindObjectsByType<CharacterControl>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)
                 .Where(control => control != this).ToList();
+            this.RegisterListener(EventID.Freeze, OnFreezeButton);
+        }
+
+        private void OnFreezeButton(Component arg1, object[] arg2)
+        {
+            if (!_isPlayer)
+            {
+                isFreeze = true;
+                stunObject.SetActive(true);
+                StartCoroutine(UnfreezeAfterDelay(5f));
+            }
+        }
+
+        private IEnumerator UnfreezeAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            isFreeze = false;
+            stunObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            this.RemoveListener(EventID.Freeze, OnFreezeButton);
         }
 
         private void Update()
@@ -117,7 +144,7 @@ namespace _GunMayHem.Gameplay
 
             UpdateBot();
         }
-        
+
 
         private void MoveDown()
         {
@@ -132,6 +159,11 @@ namespace _GunMayHem.Gameplay
         public void UpdateBot()
         {
             if (_testMode)
+            {
+                return;
+            }
+
+            if (isFreeze)
             {
                 return;
             }

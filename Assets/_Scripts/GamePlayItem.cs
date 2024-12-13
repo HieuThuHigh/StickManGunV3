@@ -2,6 +2,7 @@ using System;
 using _GunMayHem.Gameplay;
 using GameTool.Assistants.DesignPattern;
 using GameToolSample.GameDataScripts.Scripts;
+using GameToolSample.Scripts.Enum;
 using TMPro;
 using UnityEngine;
 using Button = UnityEngine.UI.Button;
@@ -80,6 +81,7 @@ public class GamePlayItem : MonoBehaviour
         else
         {
             GameData.Freeze -= 1;
+            this.PostEvent(EventID.Freeze);
         }
     }
 
