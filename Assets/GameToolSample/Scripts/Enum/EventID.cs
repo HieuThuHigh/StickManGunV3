@@ -17,6 +17,9 @@ namespace GameToolSample.Scripts.Enum
         Mute,
         Unmute,
         SafeAreaChange,
-        CheckLanguage
+        CheckLanguage,
+        Freeze,
+        Shield,
+        Jump
     }
 }

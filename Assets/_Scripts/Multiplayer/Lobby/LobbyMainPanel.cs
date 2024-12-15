@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using _GunMayHem.Gameplay;
 
-    public class LobbyMainPanel : MonoBehaviourPunCallbacks
+public class LobbyMainPanel : MonoBehaviourPunCallbacks
     {
         [Header("Login Panel")]
         public GameObject LoginPanel;
@@ -121,7 +122,7 @@ using Photon.Pun;
                 entry.GetComponent<PlayerListEntry>().Initialize(p.ActorNumber, p.NickName);
 
                 object isPlayerReady;
-                if (p.CustomProperties.TryGetValue(PlayerController.PLAYER_READY, out isPlayerReady))
+                if (p.CustomProperties.TryGetValue(character2.PLAYER_READY, out isPlayerReady))
                 {
                     entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
                 }
@@ -133,7 +134,7 @@ using Photon.Pun;
 
             Hashtable props = new Hashtable
             {
-                {PlayerController.PLAYER_LOADED_LEVEL, false}
+                {character2.PLAYER_LOADED_LEVEL, false}
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
@@ -193,7 +194,7 @@ using Photon.Pun;
             if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
             {
                 object isPlayerReady;
-                if (changedProps.TryGetValue(PlayerController.PLAYER_READY, out isPlayerReady))
+                if (changedProps.TryGetValue(character2.PLAYER_READY, out isPlayerReady))
                 {
                     entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
                 }
@@ -242,6 +243,7 @@ using Photon.Pun;
 
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
+
 
         public void OnJoinRandomRoomButtonClicked()
         {
@@ -300,7 +302,7 @@ using Photon.Pun;
             foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
             {
                 object isPlayerReady;
-                if (p.CustomProperties.TryGetValue(PlayerController.PLAYER_READY, out isPlayerReady))
+                if (p.CustomProperties.TryGetValue(character2.PLAYER_READY, out isPlayerReady))
                 {
                     if (!(bool)isPlayerReady)
                     {

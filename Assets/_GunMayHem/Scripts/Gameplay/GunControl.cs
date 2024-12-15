@@ -12,9 +12,10 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private TypeBullet _typeBullet;
         [SerializeField] private AnimatorController _animator;
 
-        [Header("CONFIG DATA_________________________")] [SerializeField]
+        [Header("CONFIG DATA_________________________")]
+        [SerializeField]
         private CharacterControl _character;
-
+        private character2 _character1;
         [SerializeField] private int _maxAmmo;
         [SerializeField] private float _timeShoot;
         [SerializeField] private bool _isInfiniteAmmo;
@@ -32,7 +33,6 @@ namespace _GunMayHem.Gameplay
             get => _character;
             set => _character = value;
         }
-
         public Transform PosFire => _posFire;
 
         public bool CanShoot => _canShoot;
@@ -56,6 +56,10 @@ namespace _GunMayHem.Gameplay
                     Shoot();
                 }
             }
+        }
+        public void ButtonShoot()
+        {
+            Shoot();
         }
 
         public void Shoot()
@@ -89,7 +93,7 @@ namespace _GunMayHem.Gameplay
             {
                 _ammo--;
             }
-            
+
             _animator.SetAnimation("shoot", true, onEnd: () =>
             {
                 _animator.SetAnimation("Empty");
