@@ -24,12 +24,17 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private float _jumpForce;
         [SerializeField] private bool _isPlayer;
         [SerializeField] public bool _testMode;
-        [SerializeField] private bool isFreeze;
         [SerializeField] private int _maxJumps;
         [SerializeField] private Color _color;
-        [SerializeField] private GameObject stunObject;
+
         private List<CharacterControl> _listCharEnemy = new List<CharacterControl>();
 
+        [SerializeField] private bool isFreeze;
+        [SerializeField] private GameObject stunObject;
+        [SerializeField] private bool isShield;
+        [SerializeField] private bool isJumping;
+        [SerializeField] private GameObject shieldObject;
+        [SerializeField] private GameObject jumpTextImage;
 
         //______________________________________________VARIABLE
 
@@ -56,14 +61,19 @@ namespace _GunMayHem.Gameplay
 
         private void Start()
         {
+            _maxJumps = 1; // Số lần nhảy mặc định
+            _currentJumps = 1; // Số lần nhảy hiện tại
+            
             ChangeSkinColor();
-
+            //_testMode = true;
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 
             _listCharEnemy = FindObjectsByType<CharacterControl>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)
                 .Where(control => control != this).ToList();
             this.RegisterListener(EventID.Freeze, OnFreezeButton);
+            this.RegisterListener(EventID.Shield, OnShieldButton);
+            this.RegisterListener(EventID.Jump, OnJumpButton);
         }
 
         private void OnFreezeButton(Component arg1, object[] arg2)
@@ -76,6 +86,28 @@ namespace _GunMayHem.Gameplay
             }
         }
 
+        private void OnShieldButton(Component arg1, object[] arg2)
+        {
+            if (_isPlayer)
+            {
+                isShield = true;
+                shieldObject.SetActive(true);
+                StartCoroutine(UnshieldAfterDelay(5f));
+            }
+        }
+        private void OnJumpButton(Component arg1, object[] arg2)
+        {
+            if (_isPlayer)
+            {
+                _maxJumps = 2; // Cho phép nhảy 2 lần
+                _currentJumps = 2; // Cập nhật số lần nhảy hiện tại
+                jumpTextImage.SetActive(true);
+
+                // Reset lại sau 10 giây
+                Invoke(nameof(ResetJumpLimit), 10f);
+            }
+        }
+
         private IEnumerator UnfreezeAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -83,20 +115,37 @@ namespace _GunMayHem.Gameplay
             stunObject.SetActive(false);
         }
 
+        private IEnumerator UnshieldAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            isShield = false;
+            shieldObject.SetActive(false);
+        }
+        private void ResetJumpLimit()
+        {
+            _maxJumps = 1; // Giới hạn nhảy về mặc định
+            _currentJumps = 1; // Số lần nhảy hiện tại về mặc định
+            jumpTextImage.SetActive(false);
+        }
+
         private void OnDestroy()
         {
             this.RemoveListener(EventID.Freeze, OnFreezeButton);
+            this.RemoveListener(EventID.Shield, OnFreezeButton);
         }
 
         private void Update()
         {
-            _nameTxt.rotation = Quaternion.identity;
+            _nameTxt.rotation = Quaternion.identity; // Giữ cố định tên
             _timeStun -= Time.deltaTime;
-            if (_isPlayer && Input.GetKeyDown(KeyCode.UpArrow))
+
+            // Nhảy
+            if (_isPlayer && Input.GetKeyDown(KeyCode.UpArrow) && _currentJumps > 0)
             {
                 Jump();
             }
 
+            // Kiểm tra chạm đất
             _isGrounded = false;
             _groundCurrent = null;
             if (_rigidbody.velocity.y <= 0.1f)
@@ -107,13 +156,14 @@ namespace _GunMayHem.Gameplay
                     if (raycastHit2D.collider)
                     {
                         _isGrounded = true;
-                        _currentJumps = _maxJumps;
+                        _currentJumps = _maxJumps; // Reset số lần nhảy khi chạm đất
                         _groundCurrent = raycastHit2D.collider;
                         break;
                     }
                 }
             }
 
+            // Kiểm tra thời gian rơi xuống
             if (!_groundCurrent)
             {
                 _currTimeCanDown = _maxTimeCanDown;
@@ -123,12 +173,13 @@ namespace _GunMayHem.Gameplay
                 _currTimeCanDown -= Time.deltaTime;
             }
 
-
+            // Di chuyển xuống
             if (_isPlayer && Input.GetKeyDown(KeyCode.DownArrow))
             {
                 MoveDown();
             }
 
+            // Di chuyển ngang
             if (_isPlayer && Input.GetKey(KeyCode.RightArrow))
             {
                 MoveRight();
@@ -144,6 +195,7 @@ namespace _GunMayHem.Gameplay
 
             UpdateBot();
         }
+
 
 
         private void MoveDown()
@@ -414,6 +466,10 @@ namespace _GunMayHem.Gameplay
 
         public void TakeDmg(Vector3 dmg)
         {
+            if (isShield)
+            {
+                return;
+            }
             if (_timeStun < 0)
             {
                 _timeStun = 0;
