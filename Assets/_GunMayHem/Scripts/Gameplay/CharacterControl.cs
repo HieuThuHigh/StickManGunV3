@@ -7,12 +7,16 @@ using DatdevUlts.Ults;
 using GameTool.Assistants.DesignPattern;
 using GameToolSample.GameDataScripts.Scripts;
 using GameToolSample.Scripts.Enum;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _GunMayHem.Gameplay
 {
     public class CharacterControl : MonoBehaviour
     {
+        public int textAmoutRandom; 
+        
         [SerializeField] private AnimatorController _animator;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
@@ -35,6 +39,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private bool isJumping;
         [SerializeField] private GameObject shieldObject;
         [SerializeField] private GameObject jumpTextImage;
+
 
         //______________________________________________VARIABLE
 
@@ -63,9 +68,9 @@ namespace _GunMayHem.Gameplay
         {
             _maxJumps = 1; // Số lần nhảy mặc định
             _currentJumps = 1; // Số lần nhảy hiện tại
-            
+
             ChangeSkinColor();
-            //_testMode = true;
+            _testMode = true;
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 
@@ -95,6 +100,7 @@ namespace _GunMayHem.Gameplay
                 StartCoroutine(UnshieldAfterDelay(5f));
             }
         }
+
         private void OnJumpButton(Component arg1, object[] arg2)
         {
             if (_isPlayer)
@@ -121,6 +127,7 @@ namespace _GunMayHem.Gameplay
             isShield = false;
             shieldObject.SetActive(false);
         }
+
         private void ResetJumpLimit()
         {
             _maxJumps = 1; // Giới hạn nhảy về mặc định
@@ -195,7 +202,6 @@ namespace _GunMayHem.Gameplay
 
             UpdateBot();
         }
-
 
 
         private void MoveDown()
@@ -470,6 +476,7 @@ namespace _GunMayHem.Gameplay
             {
                 return;
             }
+
             if (_timeStun < 0)
             {
                 _timeStun = 0;
@@ -495,10 +502,29 @@ namespace _GunMayHem.Gameplay
                 else
                 {
                     GameplayManager.Instance.Victory();
-                    GameData.Freeze += 1;
+                    
+                    // Tạo một số ngẫu nhiên từ 0 đến 2 để chọn một trong ba thuộc tính
+                    int randomAttribute = Random.Range(0, 3); // 0 = Freeze, 1 = Shield, 2 = Jump
+                    // Tạo số ngẫu nhiên từ 1 đến 3 cho số lượng
+                    int randomAmount = Random.Range(1, 4);
+                    VictoryReward.Instance.UIReward(randomAmount, randomAttribute);
+                    // Áp dụng giá trị cho thuộc tính được chọn
+                    switch (randomAttribute)
+                    {
+                        case 0:
+                            GameData.Freeze += randomAmount;
+                            break;
+                        case 1:
+                            GameData.Shield += randomAmount;
+                            break;
+                        case 2:
+                            GameData.Jump += randomAmount;
+                            break;
+                    }
                 }
             }
         }
+
 
         public void ChangeSkinColor()
         {
