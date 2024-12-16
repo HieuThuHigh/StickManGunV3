@@ -35,7 +35,7 @@ public class SoundManager : MonoBehaviour
             SoundOnIcon.enabled = true;
             SoundOffIcon.enabled = false;
         }else{
-            SoundOnIcon.enabled = true;
+            SoundOnIcon.enabled = false;
             SoundOffIcon.enabled = true;
         }
     }
