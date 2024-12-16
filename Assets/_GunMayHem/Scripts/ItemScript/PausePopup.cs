@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class PausePopup : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PausePopup : MonoBehaviour
     [SerializeField] private GameObject soundOnObj;
     [SerializeField] private GameObject soundOffObj;
     [SerializeField] private GameObject pausePopupObj;
+    private LobbyMainPanel lobbyMainPanel;
 
     private void Start()
     {
@@ -37,9 +39,31 @@ public class PausePopup : MonoBehaviour
         soundOffObj.SetActive(true);
     }
 
-    private void QuitEvent()
+    public void QuitEvent()
     {
-        SceneManager.LoadScene("SPL");
+        // Người chơi thoát khỏi phòng hiện tại
+        PhotonNetwork.LeaveRoom();
+        if (PhotonNetwork.IsConnected)
+        {
+            // Ngắt kết nối khỏi Photon khi bấm nút thoát
+            PhotonNetwork.Disconnect();
+        }
+
+        // Tìm đối tượng LobbyMainPanel trong scene
+        lobbyMainPanel = FindObjectOfType<LobbyMainPanel>();
+        // Reset lại các tiến trình multi (nếu cần)
+        // Gọi hàm ResetMultiPlayerState nếu tìm thấy LobbyMainPanel
+        if (lobbyMainPanel != null)
+        {
+            lobbyMainPanel.ResetMultiPlayerState();
+        }
+        else
+        {
+            Debug.LogWarning("LobbyMainPanel not found.");
+        }
+
+        // Quay lại Scene Home
+        SceneManager.LoadScene("Home");
         Time.timeScale = 1;
     }
 

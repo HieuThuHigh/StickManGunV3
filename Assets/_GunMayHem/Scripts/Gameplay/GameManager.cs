@@ -10,6 +10,8 @@ using GameToolSample.ObjectPool;
 using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 namespace _GunMayHem.Gameplay
 {
@@ -52,7 +54,15 @@ namespace _GunMayHem.Gameplay
 
             DropGift();
         }
-
+        public void homebutton()
+        {
+            if (PhotonNetwork.IsConnected)
+            {
+                // Ngắt kết nối khỏi Photon khi bấm nút thoát
+                PhotonNetwork.Disconnect();
+            }
+            SceneManager.LoadScene("Home");
+        }
         public void DropGift()
         {
             var posX = RandomUlts.Range(_boundLeftGift.position.x, _boundRightGift.position.x);

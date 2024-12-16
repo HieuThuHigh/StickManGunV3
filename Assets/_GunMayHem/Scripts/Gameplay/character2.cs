@@ -71,6 +71,7 @@ namespace _GunMayHem.Gameplay
             }
 
             ChangeSkinColor();
+           
 
             _layerMaskGround1 = LayerMask.GetMask("Ground");
             _layerMaskChar1 = LayerMask.GetMask("Player");
@@ -461,18 +462,25 @@ namespace _GunMayHem.Gameplay
             _rigidbody1.velocity = vector2;
             _currentJumps1--;
         }
-
-        private void SetAnimMove(string animName)
+        [PunRPC]
+        private void RPC_SetAnimMove(string animName)
         {
-            if (_isGrounded1 && _animator1.AnimName != animName && _animator1.AnimName != "FootJump")
+            if (_animator1.AnimName != animName && _animator1.AnimName != "FootJump")
             {
                 _animator1.SetAnimation(animName, true);
+            }
+        }
+        private void SetAnimMove(string animName)
+        {
+            if (photonView.IsMine)
+            {
+                photonView.RPC("RPC_SetAnimMove", RpcTarget.All, animName);
             }
         }
 
         public void TakeDmg(Vector3 dmg)
         {
-            
+
             if (_timeStun1 < 0)
             {
                 _timeStun1 = 0;
@@ -493,11 +501,11 @@ namespace _GunMayHem.Gameplay
                 Debug.LogError("DIE");
                 if (_isPlayer1)
                 {
-                    GameplayManager.Instance.Lose();
+                    GameManager.Instance.Lose();
                 }
                 else
                 {
-                    GameplayManager.Instance.Victory();
+                    GameManager.Instance.Victory();
                 }
             }
         }
