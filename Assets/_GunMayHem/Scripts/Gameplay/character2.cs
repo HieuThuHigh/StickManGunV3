@@ -472,6 +472,7 @@ namespace _GunMayHem.Gameplay
 
         public void TakeDmg(Vector3 dmg)
         {
+            
             if (_timeStun1 < 0)
             {
                 _timeStun1 = 0;

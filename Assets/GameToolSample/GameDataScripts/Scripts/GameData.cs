@@ -19,6 +19,16 @@ namespace GameToolSample.GameDataScripts.Scripts
             get => PlayerPrefs.GetInt("Freeze", 0);
             set => PlayerPrefs.SetInt("Freeze", value);
         }
+        public static int Jump
+        {
+            get => PlayerPrefs.GetInt("Jump", 0);
+            set => PlayerPrefs.SetInt("Jump", value);
+        }
+        public static int Shield
+        {
+            get => PlayerPrefs.GetInt("Shield", 0);
+            set => PlayerPrefs.SetInt("Shield", value);
+        }
         protected override void Awake()
         {
             base.Awake();
