@@ -5,6 +5,7 @@ using DatdevUlts.AnimationUtils;
 using DatdevUlts.Ults;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI; // Thêm thư viện để sử dụng Button
 
 namespace _GunMayHem.Gameplay
 {
@@ -37,6 +38,8 @@ namespace _GunMayHem.Gameplay
         private float _currTimeCanDown1 = 0.5f;
         private bool _isGrounded1;
         private Collider2D _groundCurrent1;
+        public bool isFacingRight = true;  // Kiểm tra hướng của nhân vật
+        public Button fireButton; // Nút bấm bắn súng
 
         // ___________________________________________BOT
         private GroundControl _groundWish1;
@@ -521,7 +524,7 @@ namespace _GunMayHem.Gameplay
         [ContextMenu("CHANGE GUN")]
         public void ChangeGun()
         {
-            ChangeGun(RandomUlts.Range(2, 4));
+            ChangeGun(RandomUlts.Range(6, 8));
         }
 
         public void ChangeGun(int index)
@@ -534,13 +537,38 @@ namespace _GunMayHem.Gameplay
         [PunRPC]
         private void RPC_ChangeGun(int index)
         {
+
             if (_gunControl1 != null)
             {
                 Destroy(_gunControl1.gameObject);
             }
+            else
+            {
+                Debug.LogWarning("_gunControl1 is null. Cannot destroy.");
+            }
 
-            _gunControl1 = Instantiate(Resources.Load<Gun2>($"Prefabs/Guns/{index}"), transform);
+            // Hủy bỏ sự kiện cũ nếu có
+            if (fireButton != null)
+            {
+                fireButton.onClick.RemoveAllListeners();
+            }
+
+            // Tạo súng mới bằng PhotonNetwork.Instantiate, nhưng không dùng transform trực tiếp. Ta sẽ set vị trí sau.
+            GameObject newGunObject = PhotonNetwork.Instantiate($"Prefabs/Guns/{index}", Vector3.zero, Quaternion.identity, 0);
+            _gunControl1 = newGunObject.GetComponent<Gun2>();
             _gunControl1.Character2 = this;
+
+            // Đặt parent là nhân vật, sau đó điều chỉnh vị trí và hướng của súng
+            _gunControl1.transform.SetParent(transform); // Gắn vào transform của nhân vật
+            _gunControl1.transform.localPosition = Vector3.zero; // Điều chỉnh lại vị trí tương đối so với nhân vật
+            _gunControl1.transform.localRotation = Quaternion.identity; // Điều chỉnh lại hướng của súng
+
+            // Đăng ký sự kiện bắn súng cho nút bắn với súng mới
+            if (fireButton != null)
+            {
+                fireButton.onClick.AddListener(() => _gunControl1.Shoot());
+            }
         }
+
     }
 }
