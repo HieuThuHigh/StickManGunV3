@@ -589,9 +589,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 75
-  m_LinearDrag: 0.5
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: e286db65fe270d340979f9af7227d446, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -668,7 +668,7 @@ MonoBehaviour:
   - {fileID: 3884166019298762290}
   - {fileID: 5128244277803792985}
   _nameTxt1: {fileID: 8308190983375232777}
-  _moveSpeed1: 300
+  _moveSpeed1: 3000
   _maxSpeedX1: 3
   _jumpForce1: 5
   _isPlayer1: 0
@@ -715,7 +715,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 4610374472002862827}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

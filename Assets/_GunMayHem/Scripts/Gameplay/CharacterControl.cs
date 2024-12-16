@@ -154,7 +154,7 @@ namespace _GunMayHem.Gameplay
         }
 
 //aaa
-        private void Update()
+        private void FixedUpdate()
         {
             if (_isMovingLeft)
             {
@@ -171,7 +171,7 @@ namespace _GunMayHem.Gameplay
             }
 
             _nameTxt.rotation = Quaternion.identity; // Giữ cố định tên
-            _timeStun -= Time.deltaTime;
+            _timeStun -= Time.fixedDeltaTime;
 
             // Nhảy
 
@@ -201,7 +201,7 @@ namespace _GunMayHem.Gameplay
             }
             else
             {
-                _currTimeCanDown -= Time.deltaTime;
+                _currTimeCanDown -= Time.fixedDeltaTime;
             }
 
             // Di chuyển xuống
