@@ -3,6 +3,9 @@ namespace GameToolSample.Audio
     public enum eMusicName
     {
         None,
+BG_Home,
+BG_Ingame,
+MusicMain,
     }
     public enum eSoundName
     {
@@ -10,5 +13,28 @@ namespace GameToolSample.Audio
         ButtonClick,
         CollectCoin,
         CollectDiamond,
+Tick,
+Lose,
+Victory,
+SuccessReward,
+Merge3Tiles,
+OpenChest,
+Clock5s,
+CoinChest,
+CoinShop,
+ExtraBox,
+Fail,
+Freeze,
+Lose1,
+Lose2Star,
+Lose3Fail,
+Mission,
+NewTiles,
+Return,
+StarWin,
+TouchTile,
+Win1,
+Win2,
+BoosterTime,
     }
 }
