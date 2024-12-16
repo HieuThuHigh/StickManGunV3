@@ -1,4 +1,6 @@
 ﻿using System;
+using GameTool.Audio.Scripts;
+using GameToolSample.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -19,17 +21,17 @@ public class SplController : MonoBehaviour
     [SerializeField] private GameObject customGamePopup;
     [SerializeField] private GameObject line;
     [SerializeField] private GameObject soundButton;
+    [SerializeField] private Button btnSoundButton;
     [FormerlySerializedAs("CampaignPlay")][SerializeField] private GameObject campaignPlay;
 
     private void Start()
     {
-        weaponLibButton.onClick.AddListener(WeaponLib);
+        //btnSoundButton.onClick.AddListener(SoundEvent);
         challengButton.onClick.AddListener(Challenge);
         customGameButton.onClick.AddListener(GameSetup);
-        weaponLibButton.onClick.AddListener(WeaponLib);
         creditButton.onClick.AddListener(CreditaEvent);
         compButton.onClick.AddListener(ComplainEvent);
-
+        AudioManager.Instance.PlayMusic(eMusicName.MusicMain);
     }
     void SoundEvent()
     {

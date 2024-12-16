@@ -10,13 +10,14 @@ using GameToolSample.Scripts.Enum;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI; // Thêm thư viện để sử dụng Button
 
 namespace _GunMayHem.Gameplay
 {
     public class CharacterControl : MonoBehaviour
     {
-        public int textAmoutRandom; 
-        
+        public int textAmoutRandom;
+
         [SerializeField] private AnimatorController _animator;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
@@ -52,6 +53,9 @@ namespace _GunMayHem.Gameplay
         private float _currTimeCanDown = 0.5f;
         private bool _isGrounded;
         private Collider2D _groundCurrent;
+        private bool _isMovingLeft = false;
+        private bool _isMovingRight = false;
+        public Button fireButton; // Nút bấm bắn súng
 
         // ___________________________________________BOT
         private GroundControl _groundWish;
@@ -143,14 +147,25 @@ namespace _GunMayHem.Gameplay
 
         private void Update()
         {
+            if (_isMovingLeft)
+            {
+                MoveLeft();
+            }
+
+            else if (_isMovingRight)
+            {
+                MoveRight();
+            }
+            else
+            {
+                Idle(); // Không di chuyển, chuyển về trạng thái Idle.
+            }
+
             _nameTxt.rotation = Quaternion.identity; // Giữ cố định tên
             _timeStun -= Time.deltaTime;
 
             // Nhảy
-            if (_isPlayer && Input.GetKeyDown(KeyCode.UpArrow) && _currentJumps > 0)
-            {
-                Jump();
-            }
+            
 
             // Kiểm tra chạm đất
             _isGrounded = false;
@@ -181,28 +196,48 @@ namespace _GunMayHem.Gameplay
             }
 
             // Di chuyển xuống
-            if (_isPlayer && Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                MoveDown();
-            }
+            
 
             // Di chuyển ngang
-            if (_isPlayer && Input.GetKey(KeyCode.RightArrow))
-            {
-                MoveRight();
-            }
-            else if (_isPlayer && Input.GetKey(KeyCode.LeftArrow))
-            {
-                MoveLeft();
-            }
-            else
-            {
-                Idle();
-            }
+            
 
             UpdateBot();
         }
 
+        public void StartMoveLeft()
+        {
+            _isMovingLeft = true;
+            SetAnimMove("FootMove");
+        }
+
+        public void StopMoveLeft()
+        {
+            _isMovingLeft = false;
+            Idle();
+        }
+
+
+        public void StartMoveRight()
+        {
+            _isMovingRight = true;
+            SetAnimMove("FootMove");
+        }
+
+        public void StopMoveRight()
+        {
+            _isMovingRight = false;
+            Idle();
+        }
+
+        public void downbutton()
+        {
+            MoveDown();
+        }
+
+        public void jumbbutton()
+        {
+            Jump();
+        }
 
         private void MoveDown()
         {
@@ -502,7 +537,7 @@ namespace _GunMayHem.Gameplay
                 else
                 {
                     GameplayManager.Instance.Victory();
-                    
+
                     // Tạo một số ngẫu nhiên từ 0 đến 2 để chọn một trong ba thuộc tính
                     int randomAttribute = Random.Range(0, 3); // 0 = Freeze, 1 = Shield, 2 = Jump
                     // Tạo số ngẫu nhiên từ 1 đến 3 cho số lượng
@@ -553,10 +588,21 @@ namespace _GunMayHem.Gameplay
 
         public void ChangeGun(int index)
         {
+            // Hủy bỏ sự kiện cũ nếu có
+            if (fireButton != null)
+            {
+                fireButton.onClick.RemoveAllListeners();
+            }
             Destroy(_gunControl.gameObject);
 
+            // Đăng ký sự kiện bắn súng cho nút bắn với súng mới
+            if (fireButton != null)
+            {
+                fireButton.onClick.AddListener(() => _gunControl.Shoot());
+            }
             _gunControl = Instantiate(Resources.Load<GunControl>($"Prefabs/Guns/{index}"), transform);
             _gunControl.Character = this;
+            
         }
     }
 }

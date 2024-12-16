@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +10,7 @@ public class PausePopup : MonoBehaviour
     [SerializeField] private Button soundOff;
     [SerializeField] private GameObject soundOnObj;
     [SerializeField] private GameObject soundOffObj;
+    [SerializeField] private GameObject pausePopupObj;
 
     private void Start()
     {
@@ -38,11 +36,13 @@ public class PausePopup : MonoBehaviour
     private void QuitEvent()
     {
         SceneManager.LoadScene("SPL");
+        Time.timeScale = 1;
     }
 
     private void ContinueEvent()
     {
         Time.timeScale = 1;
         CanvasController.Instance.pauseObject.SetActive(false);
+        pausePopupObj.SetActive(false);
     }
 }

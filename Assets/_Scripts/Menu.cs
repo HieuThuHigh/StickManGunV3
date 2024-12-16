@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class Menu : MonoBehaviour
         
     }
 
+    public void Thoat()
+    {
+        SceneManager.LoadScene("Home");
+    }
     // Hàm thoát game
     public void ExitGame()
     {
