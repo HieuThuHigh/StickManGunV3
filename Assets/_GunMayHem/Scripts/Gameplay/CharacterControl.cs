@@ -70,6 +70,8 @@ namespace _GunMayHem.Gameplay
 
         private void Start()
         {
+            
+
             _maxJumps = 1; // Số lần nhảy mặc định
             _currentJumps = 1; // Số lần nhảy hiện tại
 
