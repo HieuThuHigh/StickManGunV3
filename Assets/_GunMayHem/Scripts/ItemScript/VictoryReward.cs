@@ -31,7 +31,7 @@ public class VictoryReward : SingletonMonoBehaviour<VictoryReward>
         }
         else
         {
-            jumpObjectImage.SetActive(false);
+            jumpObjectImage.SetActive(true);
         }
     }
     

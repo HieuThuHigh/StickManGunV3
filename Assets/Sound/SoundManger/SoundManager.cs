@@ -30,6 +30,7 @@ public class SoundManager : MonoBehaviour
     {
         UpdateButtonIcon();
         AudioListener.pause = muted;
+        Debug.LogError(muted);
     }
     public void OnButtonPress(){
         if(muted == false){
