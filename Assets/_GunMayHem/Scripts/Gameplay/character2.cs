@@ -493,11 +493,11 @@ namespace _GunMayHem.Gameplay
                 Debug.LogError("DIE");
                 if (_isPlayer1)
                 {
-                    GameplayManager.Instance.Lose();
+                    GameManager.Instance.Lose();
                 }
                 else
                 {
-                    GameplayManager.Instance.Victory();
+                    GameManager.Instance.Victory();
                 }
             }
         }
