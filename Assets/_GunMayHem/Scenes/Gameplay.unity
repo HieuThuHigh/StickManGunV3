@@ -365,7 +365,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
 --- !u!1 &103339430
 GameObject:
@@ -1733,6 +1736,10 @@ PrefabInstance:
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _maxSpeedX
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: _moveSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
@@ -5006,6 +5013,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3333120797168110114, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f0d7e0380f5a5e248b46d2b1504cefef, type: 2}
+    - target: {fileID: 3333120797168110114, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -708512645201916032, guid: f0d7e0380f5a5e248b46d2b1504cefef, type: 2}
+    - target: {fileID: 3333120797168110114, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5025,6 +5044,10 @@ PrefabInstance:
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _maxSpeedX
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: _moveSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton
@@ -5047,6 +5070,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 919011556}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: playerNameText
+      value: 
+      objectReference: {fileID: 2558311448817129324}
+    - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: jumpObjectImage
       value: 
       objectReference: {fileID: 8092856868916320892}
@@ -5058,6 +5085,14 @@ PrefabInstance:
       propertyPath: shieldObjectImage
       value: 
       objectReference: {fileID: 7750067855431724107}
+    - target: {fileID: 7372225845314180809, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -708512645201916032, guid: f0d7e0380f5a5e248b46d2b1504cefef, type: 2}
+    - target: {fileID: 8308190983375232777, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.072
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5071,6 +5106,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 201893978888867982, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
   m_PrefabInstance: {fileID: 2558311448817129322}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2558311448817129324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3333120797168110114, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+  m_PrefabInstance: {fileID: 2558311448817129322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2686347014808058726
 MonoBehaviour:
   m_ObjectHideFlags: 0
