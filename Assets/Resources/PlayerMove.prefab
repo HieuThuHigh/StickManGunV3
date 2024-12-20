@@ -304,7 +304,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1988528906917518497
 MonoBehaviour:
@@ -1486,7 +1486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2704286793334481911, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2799840083643230749, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Name
@@ -1803,6 +1803,10 @@ PrefabInstance:
     - target: {fileID: 8805357740526369659, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820069197758012158, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 130
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

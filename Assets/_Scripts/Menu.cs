@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Photon.Pun;
 public class Menu : MonoBehaviour
 {
     public GameObject menuPanel; // Panel chứa các chức năng
@@ -43,6 +43,11 @@ public class Menu : MonoBehaviour
 
     public void Thoat()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            // Ngắt kết nối khỏi Photon khi bấm nút thoát
+            PhotonNetwork.Disconnect();
+        }
         SceneManager.LoadScene("Home");
     }
     // Hàm thoát game

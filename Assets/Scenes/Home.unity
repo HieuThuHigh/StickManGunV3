@@ -1702,10 +1702,10 @@ MonoBehaviour:
   mainRect: {fileID: 446248955}
   scaler: {fileID: 446248953}
   cam: {fileID: 651010451}
-  aspect: 1.7777778
+  aspect: 2.0555556
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 1.7777778
+  AspectCam: 2.0555556
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -4486,6 +4486,14 @@ PrefabInstance:
     - target: {fileID: 649364382579109713, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318231057893655787, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318231057893655787, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -126
       objectReference: {fileID: 0}
     - target: {fileID: 1853441092027104030, guid: 0c16e5a8aba835242a7ef22c310c923b, type: 3}
       propertyPath: m_AnchorMax.y
