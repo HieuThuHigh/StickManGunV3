@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 1952404456189708506}
   - component: {fileID: 5346790258387634252}
   - component: {fileID: 6783391987991782653}
-  - component: {fileID: 825886933248771872}
+  - component: {fileID: 5650225536232829273}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -587,23 +587,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5910d3d8f263740a15633e241429d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textAmoutRandom: 0
   _animator: {fileID: 8456682814034213181}
   _rigidbody: {fileID: 6783391987991782653}
-  _collider: {fileID: 825886933248771872}
+  _collider: {fileID: 5650225536232829273}
   _gunControl: {fileID: 2050090236115285079}
   _listPosCheckGround:
   - {fileID: 3884166019298762290}
   - {fileID: 5128244277803792985}
   _nameTxt: {fileID: 8308190983375232777}
-  _moveSpeed: 300
+  _moveSpeed: 3000
   _maxSpeedX: 3
-  _jumpForce: 5
+  _jumpForce: 10
   _isPlayer: 0
   _testMode: 0
-  isFreeze: 0
   _maxJumps: 2
   _color: {r: 0.93480337, g: 1, b: 0.21226418, a: 1}
+  isFreeze: 0
   stunObject: {fileID: 3061967137575746128}
+  isShield: 0
+  isJumping: 0
+  shieldObject: {fileID: 201893978888867982}
+  jumpTextImage: {fileID: 0}
+  fireButton: {fileID: 0}
 --- !u!50 &6783391987991782653
 Rigidbody2D:
   serializedVersion: 4
@@ -617,10 +623,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 75
-  m_LinearDrag: 0.5
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: e286db65fe270d340979f9af7227d446, type: 2}
+  m_GravityScale: 2
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -631,8 +637,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &825886933248771872
-BoxCollider2D:
+--- !u!70 &5650225536232829273
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -663,19 +669,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0024062395, y: 0.32070217}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.32525802, y: 0.7879192}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.00240624, y: 0.3207022}
+  m_Size: {x: 0.325258, y: 0.7879192}
+  m_Direction: 0
 --- !u!1 &5009515449240395687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1361,11 @@ PrefabInstance:
 --- !u!4 &201893978888572078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 0c780eb88b8d7494b88387a181d2ee75, type: 3}
+  m_PrefabInstance: {fileID: 201893978888967722}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &201893978888867982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 0c780eb88b8d7494b88387a181d2ee75, type: 3}
   m_PrefabInstance: {fileID: 201893978888967722}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3061967137575702966

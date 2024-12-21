@@ -16,7 +16,11 @@ public class PausePopup : MonoBehaviour
 
     private void Start()
     {
-        continueBtn.onClick.AddListener(ContinueEvent);
+        if (continueBtn)
+        {
+            continueBtn.onClick.AddListener(ContinueEvent);
+        }
+
         quitBtn.onClick.AddListener(QuitEvent);
         soundOn.onClick.AddListener(SoundOnEvent);
         soundOff.onClick.AddListener(SoundOffEvent);

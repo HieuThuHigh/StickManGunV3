@@ -100,7 +100,11 @@ namespace _GunMayHem.Gameplay
             if (_isPlayer)
             {
                 isShield = true;
-                shieldObject.SetActive(true);
+                if (shieldObject)
+                {
+                    shieldObject.SetActive(true);
+                }
+
                 StartCoroutine(UnshieldAfterDelay(5f));
             }
         }
@@ -111,7 +115,11 @@ namespace _GunMayHem.Gameplay
             {
                 _maxJumps = 2; // Cho phép nhảy 2 lần
                 _currentJumps = 2; // Cập nhật số lần nhảy hiện tại
-                jumpTextImage.SetActive(true);
+
+                if (jumpTextImage)
+                {
+                    jumpTextImage.SetActive(true);
+                }
 
                 // Reset lại sau 10 giây
                 Invoke(nameof(ResetJumpLimit), 10f);
@@ -144,8 +152,9 @@ namespace _GunMayHem.Gameplay
             this.RemoveListener(EventID.Freeze, OnFreezeButton);
             this.RemoveListener(EventID.Shield, OnFreezeButton);
         }
+
 //aaa
-        private void Update()
+        private void FixedUpdate()
         {
             if (_isMovingLeft)
             {
@@ -162,10 +171,10 @@ namespace _GunMayHem.Gameplay
             }
 
             _nameTxt.rotation = Quaternion.identity; // Giữ cố định tên
-            _timeStun -= Time.deltaTime;
+            _timeStun -= Time.fixedDeltaTime;
 
             // Nhảy
-            
+
 
             // Kiểm tra chạm đất
             _isGrounded = false;
@@ -192,14 +201,14 @@ namespace _GunMayHem.Gameplay
             }
             else
             {
-                _currTimeCanDown -= Time.deltaTime;
+                _currTimeCanDown -= Time.fixedDeltaTime;
             }
 
             // Di chuyển xuống
-            
+
 
             // Di chuyển ngang
-            
+
 
             UpdateBot();
         }
@@ -440,8 +449,13 @@ namespace _GunMayHem.Gameplay
                     TurnRight();
                 }
 
-                _gunControl.Shoot();
+                Shoot();
             }
+        }
+
+        public void Shoot()
+        {
+            _gunControl.Shoot();
         }
 
         private void Idle()
@@ -593,6 +607,7 @@ namespace _GunMayHem.Gameplay
             {
                 fireButton.onClick.RemoveAllListeners();
             }
+
             Destroy(_gunControl.gameObject);
 
             // Đăng ký sự kiện bắn súng cho nút bắn với súng mới
@@ -600,9 +615,9 @@ namespace _GunMayHem.Gameplay
             {
                 fireButton.onClick.AddListener(() => _gunControl.Shoot());
             }
+
             _gunControl = Instantiate(Resources.Load<GunControl>($"Prefabs/Guns/{index}"), transform);
             _gunControl.Character = this;
-            
         }
     }
 }
