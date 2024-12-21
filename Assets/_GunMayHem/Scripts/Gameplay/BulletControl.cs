@@ -11,6 +11,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private bool _isShotgun;
 
         private CharacterControl _shooter;
+        private character2 _shooter1;
         private int _dmg;
         private Vector3 _direction;
 
@@ -43,6 +44,15 @@ namespace _GunMayHem.Gameplay
             _rb2d.velocity = direction * speed;
             transform.right = direction;
         }
+        public void SetData(float speed, Vector3 direction, Vector3 pos, int dmg, character2 shooter1)
+        {
+            _shooter1 = shooter1;
+            _dmg = dmg;
+            _direction = direction;
+            transform.position = pos;
+            _rb2d.velocity = direction * speed;
+            transform.right = direction;
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -57,6 +67,19 @@ namespace _GunMayHem.Gameplay
                 characterControl.TakeDmg(_direction * _dmg);
                 gameObject.SetActive(false);
             }
+            // character2
+            if (!other.attachedRigidbody)
+            {
+                return;
+            }
+
+            var Character2 = other.attachedRigidbody.GetComponent<character2>();
+            if (Character2 && Character2 != _shooter)
+            {
+                Character2.TakeDmg(_direction * _dmg);
+                gameObject.SetActive(false);
+            }
         }
+
     }
 }

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using TMPro; // Thêm thư viện để sử dụng TMP_Text
+using TMPro;
 
 public class namechange : MonoBehaviour
 {
     [Header("Input Field & Text UI Elements")]
-    public TMP_InputField playerNameInputField; // Nhập tên người chơi
-    public TMP_Text playerNameText;             // Hiển thị tên người chơi (TMP_Text)
+    public TMP_InputField playerNameInputField;
+    public TMP_Text playerNameText;             
 
     void Start()
     {

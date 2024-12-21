@@ -12,7 +12,7 @@ namespace GameTool.Editor
         [MenuItem("MyTools/Clear Data", priority = 0)]
         private static void ClearData()
         {
-            PlayerPrefs.DeleteAll();
+            UnityEngine.PlayerPrefs.DeleteAll();
             ClearJsonData();
         }
 
@@ -25,7 +25,7 @@ namespace GameTool.Editor
         [MenuItem("MyTools/Clear PlayerPrefs", priority = 2)]
         private static void ClearPlayerPrefs()
         {
-            PlayerPrefs.DeleteAll();
+            UnityEngine.PlayerPrefs.DeleteAll();
         }
 
         [MenuItem("MyTools/OpenNextScene &1")]

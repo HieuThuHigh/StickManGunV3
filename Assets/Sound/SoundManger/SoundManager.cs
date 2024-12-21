@@ -1,4 +1,4 @@
-
+using GameToolSample.GameDataScripts.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,43 +6,46 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] Image SoundOnIcon;
     [SerializeField] Image SoundOffIcon;
-    private bool muted = false;
+    [SerializeField] private Image Line;
+
+    private bool muted
+    {
+        get
+        {
+            return GameData.isMusic == 0;
+        }
+        set
+        {
+            if (value)
+            {
+                GameData.isMusic = 0;
+            }
+            else
+            {
+                GameData.isMusic = 1;
+            }
+        }
+    }
     void Start()
     {
-        if(!PlayerPrefs.HasKey("muted")){
-            PlayerPrefs.SetInt("muted", 0);
-            Load();
-        }else{
-            Load();
-        }
         UpdateButtonIcon();
         AudioListener.pause = muted;
-
     }
     public void OnButtonPress(){
         if(muted == false){
             muted = true;
-            AudioListener.pause = true;
+            AudioListener.pause = muted;
         }else{
             muted = false;
-            AudioListener.pause = false;
+            AudioListener.pause = muted;
         }
-        Save();
         UpdateButtonIcon();
     }
     private void UpdateButtonIcon(){
         if(muted == false){
-            SoundOnIcon.enabled = true;
-            SoundOffIcon.enabled = false;
+            Line.gameObject.SetActive(false);
         }else{
-            SoundOnIcon.enabled = true;
-            SoundOffIcon.enabled = true;
+            Line.gameObject.SetActive(true);
         }
-    }
-    private void Load(){
-        muted = PlayerPrefs.GetInt("muted")== 1;
-    }
-    private void Save(){
-        PlayerPrefs.SetInt("muted",muted? 1 : 0);
     }
 }
