@@ -2886,10 +2886,10 @@ MonoBehaviour:
   mainRect: {fileID: 1465109190}
   scaler: {fileID: 1465109192}
   cam: {fileID: 553410504}
-  aspect: 1.7777778
+  aspect: 2.1111112
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 1.7777778
+  AspectCam: 2.1111112
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -3078,10 +3078,10 @@ MonoBehaviour:
   mainRect: {fileID: 1521217250}
   scaler: {fileID: 1521217252}
   cam: {fileID: 553410504}
-  aspect: 1.7777778
+  aspect: 2.1111112
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 1.7777778
+  AspectCam: 2.1111112
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -5197,6 +5197,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2558311448817129326}
   m_SourcePrefab: {fileID: 100100000, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
 --- !u!1 &2558311448817129323 stripped
 GameObject:
@@ -5208,12 +5211,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3333120797168110114, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
   m_PrefabInstance: {fileID: 2558311448817129322}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2558311448817129325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2558311448817129325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+  m_PrefabInstance: {fileID: 2558311448817129322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2558311448817129326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558311448817129325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1ea11f18aa279469aa969719264925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameInputField: {fileID: 0}
+  playerNameText: {fileID: 2558311448817129324}
 --- !u!114 &2686347014808058726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6041,6 +6063,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3958808393034091152, guid: 5583343531a4924489a2c771e9d45830, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958808393034091152, guid: 5583343531a4924489a2c771e9d45830, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958808393034091152, guid: 5583343531a4924489a2c771e9d45830, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3958808393034091152, guid: 5583343531a4924489a2c771e9d45830, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7202,10 +7236,10 @@ MonoBehaviour:
   mainRect: {fileID: 4804920987481700753}
   scaler: {fileID: 248543280918848552}
   cam: {fileID: 553410504}
-  aspect: 1.7777778
+  aspect: 2.1111112
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 1.7777778
+  AspectCam: 2.1111112
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
