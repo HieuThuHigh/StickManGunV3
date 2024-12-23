@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 553410505}
   - component: {fileID: 553410504}
   - component: {fileID: 553410503}
+  - component: {fileID: 553410506}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1066,6 +1067,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &553410506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553410502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66499937eb850dd4694aa86bd7f25b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2558311448817129327}
+  start: -4.5
+  end: 5
+  top: 3.5
+  bot: -1
 --- !u!1 &669833146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,7 +3675,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
   m_PrefabInstance: {fileID: 2558311448817129322}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2558311448817129327}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb5910d3d8f263740a15633e241429d5, type: 3}
@@ -5196,10 +5214,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 0}
+      addedObject: {fileID: 2558311448817129326}
     - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2558311448817129326}
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
 --- !u!1 &2558311448817129323 stripped
 GameObject:
@@ -5236,6 +5254,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameInputField: {fileID: 0}
   playerNameText: {fileID: 2558311448817129324}
+--- !u!1 &2558311448817129327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+  m_PrefabInstance: {fileID: 2558311448817129322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2686347014808058726
 MonoBehaviour:
   m_ObjectHideFlags: 0

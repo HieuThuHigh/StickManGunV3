@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
   m_PrefabInstance: {fileID: 418805549}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 418805554}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb5910d3d8f263740a15633e241429d5, type: 3}
@@ -1292,6 +1292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e39be459835445518dc8f3fba82d83e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &418805554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+  m_PrefabInstance: {fileID: 418805549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463826726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1308,7 @@ GameObject:
   - component: {fileID: 463826729}
   - component: {fileID: 463826728}
   - component: {fileID: 463826727}
+  - component: {fileID: 463826730}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1353,7 +1359,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1378,12 +1384,29 @@ Transform:
   m_GameObject: {fileID: 463826726}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 4.57, y: -1.08, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463826730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463826726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66499937eb850dd4694aa86bd7f25b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 418805554}
+  start: -4.5
+  end: 5
+  top: 3.5
+  bot: -1
 --- !u!1 &501164128
 GameObject:
   m_ObjectHideFlags: 0
