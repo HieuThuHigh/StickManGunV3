@@ -74,7 +74,7 @@ namespace _GunMayHem.Gameplay
             _currentJumps = 1; // Số lần nhảy hiện tại
 
             ChangeSkinColor();
-            _testMode = true;
+            // _testMode = true;
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 
@@ -153,7 +153,7 @@ namespace _GunMayHem.Gameplay
             this.RemoveListener(EventID.Shield, OnFreezeButton);
         }
 
-//aaa
+        
         private void FixedUpdate()
         {
             if (_isMovingLeft)
@@ -170,11 +170,12 @@ namespace _GunMayHem.Gameplay
                 Idle(); // Không di chuyển, chuyển về trạng thái Idle.
             }
 
+             UpdateBot();
+          
             _nameTxt.rotation = Quaternion.identity; // Giữ cố định tên
             _timeStun -= Time.fixedDeltaTime;
 
             // Nhảy
-
 
             // Kiểm tra chạm đất
             _isGrounded = false;
@@ -204,13 +205,7 @@ namespace _GunMayHem.Gameplay
                 _currTimeCanDown -= Time.fixedDeltaTime;
             }
 
-            // Di chuyển xuống
 
-
-            // Di chuyển ngang
-
-
-            UpdateBot();
         }
 
         public void StartMoveLeft()
@@ -469,9 +464,9 @@ namespace _GunMayHem.Gameplay
             {
                 _rigidbody.AddForce(Vector2.left * _moveSpeed);
             }
-
             TurnLeft();
             SetAnimMove("FootMove");
+
         }
 
         private void TurnLeft()
