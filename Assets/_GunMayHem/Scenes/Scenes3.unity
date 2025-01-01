@@ -538,10 +538,10 @@ MonoBehaviour:
   mainRect: {fileID: 7191520}
   scaler: {fileID: 7191522}
   cam: {fileID: 264852535}
-  aspect: 2.0555556
+  aspect: 1.7777778
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 2.0555556
+  AspectCam: 1.7777778
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -857,10 +857,10 @@ MonoBehaviour:
   mainRect: {fileID: 44277461}
   scaler: {fileID: 44277464}
   cam: {fileID: 264852535}
-  aspect: 2.0555556
+  aspect: 1.7777778
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 2.0555556
+  AspectCam: 1.7777778
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -1631,7 +1631,8 @@ PrefabInstance:
       value: MAP3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8459159329373434291, guid: 36b674dda6b81904ca312b165524da4d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36b674dda6b81904ca312b165524da4d, type: 3}
@@ -3198,11 +3199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _maxSpeedX
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 300
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
@@ -4385,11 +4386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _maxSpeedX
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 300
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton

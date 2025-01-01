@@ -26,9 +26,9 @@ public class BackButtonController : MonoBehaviour
             backButton.onClick.AddListener(() => { menuOff.SetActive(false); });
         }
 
-        if (PlayButton)
-        {
-            PlayButton.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("Gameplay"); });
-        }
+        // if (PlayButton)
+        // {
+        //     PlayButton.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("Gameplay"); });
+        // }
     }
 }
