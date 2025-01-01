@@ -32,6 +32,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private int _maxJumps;
         [SerializeField] private Color _color;
 
+
         private List<CharacterControl> _listCharEnemy = new List<CharacterControl>();
 
         [SerializeField] private bool isFreeze;
@@ -74,7 +75,7 @@ namespace _GunMayHem.Gameplay
             _currentJumps = 1; // Số lần nhảy hiện tại
 
             ChangeSkinColor();
-             _testMode = true;
+            // _testMode = true;
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 

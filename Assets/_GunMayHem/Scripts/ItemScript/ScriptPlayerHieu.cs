@@ -48,6 +48,7 @@ public class ScriptPlayerHieu : MonoBehaviour
                 return; // Thoát khỏi hàm sau khi load scene
             }
         }
+        
 
         Debug.LogError("Please choose a map before playing!"); // Hiển thị lỗi nếu chưa chọn map
     }
@@ -85,7 +86,12 @@ public class ScriptPlayerHieu : MonoBehaviour
         {
             playerImages[i].SetActive(i == activeIndex);
         }
+
+        // Lưu chỉ số Player được chọn vào PlayerPrefs
+        PlayerPrefs.SetInt("SelectedPlayer", activeIndex);
+        PlayerPrefs.Save();
     }
+
 
     private void HideAllPlayerImages()
     {
