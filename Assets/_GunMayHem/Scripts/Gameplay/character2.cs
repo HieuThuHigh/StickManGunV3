@@ -80,7 +80,7 @@ namespace _GunMayHem.Gameplay
                 .Where(control => control != this).ToList();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             // Kiểm tra xem người chơi có sở hữu nhân vật này không
             if (!photonView.IsMine) return;

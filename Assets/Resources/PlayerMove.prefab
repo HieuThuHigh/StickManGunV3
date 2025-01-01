@@ -361,10 +361,10 @@ MonoBehaviour:
   mainRect: {fileID: 3479612154200051803}
   scaler: {fileID: 1988528906917518497}
   cam: {fileID: 0}
-  aspect: 1.7777778
+  aspect: 2.0555556
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 1.7777778
+  AspectCam: 2.0555556
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -918,6 +918,10 @@ PrefabInstance:
       value: 0.93333334
       objectReference: {fileID: 0}
     - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
+      propertyPath: _isPlayer1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
       propertyPath: fireButton
       value: 
       objectReference: {fileID: 1209609408720353743}
@@ -925,6 +929,18 @@ PrefabInstance:
       propertyPath: photonView
       value: 
       objectReference: {fileID: 5051633435805556167}
+    - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
+      propertyPath: _jumpForce1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
+      propertyPath: _maxSpeedX1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
+      propertyPath: _moveSpeed1
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
       propertyPath: _gunControl1
       value: 
@@ -1674,7 +1690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6904910579348736652, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: aspect
-      value: 1.7777778
+      value: 2.0555556
       objectReference: {fileID: 0}
     - target: {fileID: 6956948143337746574, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_Color.b
