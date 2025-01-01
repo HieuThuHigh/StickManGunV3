@@ -74,7 +74,7 @@ namespace _GunMayHem.Gameplay
             _currentJumps = 1; // Số lần nhảy hiện tại
 
             ChangeSkinColor();
-            // _testMode = true;
+             _testMode = true;
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 

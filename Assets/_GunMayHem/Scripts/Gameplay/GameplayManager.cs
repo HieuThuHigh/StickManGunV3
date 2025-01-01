@@ -38,7 +38,7 @@ namespace _GunMayHem.Gameplay
 
             foreach (var button in _listBtnHome)
             {
-                button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("SPL"); });
+                button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("Home"); });
             }
 
             foreach (var button in _listBtnReplay)

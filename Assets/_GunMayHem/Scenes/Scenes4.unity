@@ -679,7 +679,8 @@ PrefabInstance:
       value: MAP4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1313584820358994408, guid: 91289bce83b780a47a3c8875237af91a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91289bce83b780a47a3c8875237af91a, type: 3}
@@ -1902,10 +1903,10 @@ MonoBehaviour:
   mainRect: {fileID: 597720775}
   scaler: {fileID: 597720778}
   cam: {fileID: 463826728}
-  aspect: 2.0555556
+  aspect: 1.7777778
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 2.0555556
+  AspectCam: 1.7777778
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
@@ -4750,10 +4751,10 @@ MonoBehaviour:
   mainRect: {fileID: 2028191318}
   scaler: {fileID: 2028191320}
   cam: {fileID: 463826728}
-  aspect: 2.0555556
+  aspect: 1.7777778
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 2.0555556
+  AspectCam: 1.7777778
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
