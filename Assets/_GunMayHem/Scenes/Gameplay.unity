@@ -985,6 +985,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 040adc79c727de745b4058045730b2d3, type: 3}
+--- !u!1 &465083960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6467418417004442575, guid: 5583343531a4924489a2c771e9d45830, type: 3}
+  m_PrefabInstance: {fileID: 6131817571560741108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &553410502
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,6 +4925,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3958808393034091152, guid: 5583343531a4924489a2c771e9d45830, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008683769854604045, guid: 5583343531a4924489a2c771e9d45830, type: 3}
+      propertyPath: pausePopupObj
+      value: 
+      objectReference: {fileID: 465083960}
+    - target: {fileID: 6467418417004442575, guid: 5583343531a4924489a2c771e9d45830, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7670974407082581010, guid: 5583343531a4924489a2c771e9d45830, type: 3}
