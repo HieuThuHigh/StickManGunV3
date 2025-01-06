@@ -17,6 +17,8 @@ public class ScriptPlayerHieu : MonoBehaviour
     [SerializeField] private Button chooseMapButton;
     [SerializeField] private GameObject chooseMapGameobject;
     [SerializeField] private Button playButton;
+    
+    
     private void Start()
     {
         PlayerFunction();

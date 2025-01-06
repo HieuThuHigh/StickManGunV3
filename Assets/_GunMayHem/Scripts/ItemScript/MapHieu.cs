@@ -11,7 +11,7 @@ public class MapHieu : MonoBehaviour
 
         if (selectedPlayerIndex >= 0 && selectedPlayerIndex < players.Length)
         {
-            // Bật Player tương ứng
+            // Bật map tương ứng
             for (int i = 0; i < players.Length; i++)
             {
                 players[i].SetActive(i == selectedPlayerIndex);
