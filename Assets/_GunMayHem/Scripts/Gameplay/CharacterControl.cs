@@ -7,12 +7,17 @@ using DatdevUlts.Ults;
 using GameTool.Assistants.DesignPattern;
 using GameToolSample.GameDataScripts.Scripts;
 using GameToolSample.Scripts.Enum;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using UnityEngine.UI; // Thêm thư viện để sử dụng Button
 
 namespace _GunMayHem.Gameplay
 {
     public class CharacterControl : MonoBehaviour
     {
+        public int textAmoutRandom;
+
         [SerializeField] private AnimatorController _animator;
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private Collider2D _collider;
@@ -27,6 +32,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private int _maxJumps;
         [SerializeField] private Color _color;
 
+
         private List<CharacterControl> _listCharEnemy = new List<CharacterControl>();
 
         [SerializeField] private bool isFreeze;
@@ -35,6 +41,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private bool isJumping;
         [SerializeField] private GameObject shieldObject;
         [SerializeField] private GameObject jumpTextImage;
+
 
         //______________________________________________VARIABLE
 
@@ -47,6 +54,9 @@ namespace _GunMayHem.Gameplay
         private float _currTimeCanDown = 0.5f;
         private bool _isGrounded;
         private Collider2D _groundCurrent;
+        private bool _isMovingLeft = false;
+        private bool _isMovingRight = false;
+        public Button fireButton; // Nút bấm bắn súng
 
         // ___________________________________________BOT
         private GroundControl _groundWish;
@@ -63,9 +73,9 @@ namespace _GunMayHem.Gameplay
         {
             _maxJumps = 1; // Số lần nhảy mặc định
             _currentJumps = 1; // Số lần nhảy hiện tại
-            
+
             ChangeSkinColor();
-            //_testMode = true;
+            // _testMode = true;
             _layerMaskGround = LayerMask.GetMask("Ground");
             _layerMaskChar = LayerMask.GetMask("Player");
 
@@ -91,17 +101,26 @@ namespace _GunMayHem.Gameplay
             if (_isPlayer)
             {
                 isShield = true;
-                shieldObject.SetActive(true);
+                if (shieldObject)
+                {
+                    shieldObject.SetActive(true);
+                }
+
                 StartCoroutine(UnshieldAfterDelay(5f));
             }
         }
+
         private void OnJumpButton(Component arg1, object[] arg2)
         {
             if (_isPlayer)
             {
                 _maxJumps = 2; // Cho phép nhảy 2 lần
                 _currentJumps = 2; // Cập nhật số lần nhảy hiện tại
-                jumpTextImage.SetActive(true);
+
+                if (jumpTextImage)
+                {
+                    jumpTextImage.SetActive(true);
+                }
 
                 // Reset lại sau 10 giây
                 Invoke(nameof(ResetJumpLimit), 10f);
@@ -121,6 +140,7 @@ namespace _GunMayHem.Gameplay
             isShield = false;
             shieldObject.SetActive(false);
         }
+
         private void ResetJumpLimit()
         {
             _maxJumps = 1; // Giới hạn nhảy về mặc định
@@ -134,16 +154,29 @@ namespace _GunMayHem.Gameplay
             this.RemoveListener(EventID.Shield, OnFreezeButton);
         }
 
-        private void Update()
+        
+        private void FixedUpdate()
         {
+            if (_isMovingLeft)
+            {
+                MoveLeft();
+            }
+
+            else if (_isMovingRight)
+            {
+                MoveRight();
+            }
+            else
+            {
+                Idle(); // Không di chuyển, chuyển về trạng thái Idle.
+            }
+
+             UpdateBot();
+          
             _nameTxt.rotation = Quaternion.identity; // Giữ cố định tên
-            _timeStun -= Time.deltaTime;
+            _timeStun -= Time.fixedDeltaTime;
 
             // Nhảy
-            if (_isPlayer && Input.GetKeyDown(KeyCode.UpArrow) && _currentJumps > 0)
-            {
-                Jump();
-            }
 
             // Kiểm tra chạm đất
             _isGrounded = false;
@@ -170,33 +203,46 @@ namespace _GunMayHem.Gameplay
             }
             else
             {
-                _currTimeCanDown -= Time.deltaTime;
+                _currTimeCanDown -= Time.fixedDeltaTime;
             }
 
-            // Di chuyển xuống
-            if (_isPlayer && Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                MoveDown();
-            }
 
-            // Di chuyển ngang
-            if (_isPlayer && Input.GetKey(KeyCode.RightArrow))
-            {
-                MoveRight();
-            }
-            else if (_isPlayer && Input.GetKey(KeyCode.LeftArrow))
-            {
-                MoveLeft();
-            }
-            else
-            {
-                Idle();
-            }
+        }
 
-            UpdateBot();
+        public void StartMoveLeft()
+        {
+            _isMovingLeft = true;
+            SetAnimMove("FootMove");
+        }
+
+        public void StopMoveLeft()
+        {
+            _isMovingLeft = false;
+            Idle();
         }
 
 
+        public void StartMoveRight()
+        {
+            _isMovingRight = true;
+            SetAnimMove("FootMove");
+        }
+
+        public void StopMoveRight()
+        {
+            _isMovingRight = false;
+            Idle();
+        }
+
+        public void downbutton()
+        {
+            MoveDown();
+        }
+
+        public void jumbbutton()
+        {
+            Jump();
+        }
 
         private void MoveDown()
         {
@@ -399,8 +445,13 @@ namespace _GunMayHem.Gameplay
                     TurnRight();
                 }
 
-                _gunControl.Shoot();
+                Shoot();
             }
+        }
+
+        public void Shoot()
+        {
+            _gunControl.Shoot();
         }
 
         private void Idle()
@@ -414,9 +465,9 @@ namespace _GunMayHem.Gameplay
             {
                 _rigidbody.AddForce(Vector2.left * _moveSpeed);
             }
-
             TurnLeft();
             SetAnimMove("FootMove");
+
         }
 
         private void TurnLeft()
@@ -470,6 +521,7 @@ namespace _GunMayHem.Gameplay
             {
                 return;
             }
+
             if (_timeStun < 0)
             {
                 _timeStun = 0;
@@ -495,10 +547,29 @@ namespace _GunMayHem.Gameplay
                 else
                 {
                     GameplayManager.Instance.Victory();
-                    GameData.Freeze += 1;
+
+                    // Tạo một số ngẫu nhiên từ 0 đến 2 để chọn một trong ba thuộc tính
+                    int randomAttribute = Random.Range(0, 3); // 0 = Freeze, 1 = Shield, 2 = Jump
+                    // Tạo số ngẫu nhiên từ 1 đến 3 cho số lượng
+                    int randomAmount = Random.Range(1, 4);
+                    VictoryReward.Instance.UIReward(randomAmount, randomAttribute);
+                    // Áp dụng giá trị cho thuộc tính được chọn
+                    switch (randomAttribute)
+                    {
+                        case 0:
+                            GameData.Freeze += randomAmount;
+                            break;
+                        case 1:
+                            GameData.Shield += randomAmount;
+                            break;
+                        case 2:
+                            GameData.Jump += randomAmount;
+                            break;
+                    }
                 }
             }
         }
+
 
         public void ChangeSkinColor()
         {
@@ -527,7 +598,19 @@ namespace _GunMayHem.Gameplay
 
         public void ChangeGun(int index)
         {
+            // Hủy bỏ sự kiện cũ nếu có
+            if (fireButton != null)
+            {
+                fireButton.onClick.RemoveAllListeners();
+            }
+
             Destroy(_gunControl.gameObject);
+
+            // Đăng ký sự kiện bắn súng cho nút bắn với súng mới
+            if (fireButton != null)
+            {
+                fireButton.onClick.AddListener(() => _gunControl.Shoot());
+            }
 
             _gunControl = Instantiate(Resources.Load<GunControl>($"Prefabs/Guns/{index}"), transform);
             _gunControl.Character = this;

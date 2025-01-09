@@ -16,7 +16,7 @@ public class ShieldController : MonoBehaviour
     
     private void Start()
     {
-        UpdateUI();
+        UpdateUIShield();
         shieldButton.onClick.AddListener(OnFreezeButtonClicked);
     }
     
@@ -34,10 +34,10 @@ public class ShieldController : MonoBehaviour
         }
 
         Debug.LogError("check bang");
-        UpdateUI();
+        UpdateUIShield();
     }
 
-    void UpdateUI()
+    public void UpdateUIShield()
     {
         shieldText.text = GameData.Shield.ToString();
         if (GameData.Shield != _previousShieldValue)

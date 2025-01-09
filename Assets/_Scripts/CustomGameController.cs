@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CustomGameController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI feezeCountText;
+    [SerializeField] private TextMeshProUGUI freezeCountText;
+    [SerializeField] private TextMeshProUGUI shieldCountText;
+    [SerializeField] private TextMeshProUGUI jumpCountText;
 
     private void Update()
     {
-        feezeCountText.text = GameData.Freeze.ToString();
+        freezeCountText.text = GameData.Freeze.ToString();
+        shieldCountText.text = GameData.Shield.ToString();
+        jumpCountText.text = GameData.Jump.ToString();
     }
 }

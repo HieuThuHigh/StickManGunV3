@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using DatdevUlts.Ults;
 using GameTool.Assistants.DesignPattern;
+using GameTool.Audio.Scripts;
 using GameTool.ObjectPool.Scripts;
+using GameToolSample.Audio;
 using GameToolSample.ObjectPool;
 using GameToolSample.Scripts.LoadScene;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 namespace _GunMayHem.Gameplay
 {
@@ -29,6 +33,8 @@ namespace _GunMayHem.Gameplay
 
         protected override void Awake()
         {
+            AudioManager.Instance.PlayMusic(eMusicName.MusicMain);
+
             base.Awake();
             _listGroundControls =
                 FindObjectsByType<GroundControl>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
@@ -48,7 +54,15 @@ namespace _GunMayHem.Gameplay
 
             DropGift();
         }
-
+        public void homebutton()
+        {
+            if (PhotonNetwork.IsConnected)
+            {
+                // Ngắt kết nối khỏi Photon khi bấm nút thoát
+                PhotonNetwork.Disconnect();
+            }
+            SceneManager.LoadScene("Home");
+        }
         public void DropGift()
         {
             var posX = RandomUlts.Range(_boundLeftGift.position.x, _boundRightGift.position.x);

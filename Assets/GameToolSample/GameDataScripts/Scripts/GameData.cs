@@ -19,6 +19,15 @@ namespace GameToolSample.GameDataScripts.Scripts
             get => PlayerPrefs.GetInt("Freeze", 0);
             set => PlayerPrefs.SetInt("Freeze", value);
         }
+        public static int isMusic
+        {
+            get => PlayerPrefs.GetInt("music", 0);
+            set
+            {
+                PlayerPrefs.SetInt("music", value);
+            }
+        }
+
         public static int Jump
         {
             get => PlayerPrefs.GetInt("Jump", 0);

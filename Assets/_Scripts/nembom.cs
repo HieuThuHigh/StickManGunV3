@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Để sử dụng UI Text
-using Photon.Pun; // Thêm Photon PUN
+using Photon.Pun;
+using _GunMayHem.Gameplay; // Thêm Photon PUN
 
 public class Nembom : MonoBehaviourPun
 {
@@ -10,7 +11,7 @@ public class Nembom : MonoBehaviourPun
     public Transform throwPoint; // Vị trí ném bom (tay nhân vật hoặc vị trí gần nhân vật)
     public float throwForce = 10f; // Lực ném bom
     public float offset = 1f; // Khoảng cách ném bom cách nhân vật
-    private PlayerController playerController; // Biến theo dõi hướng của nhân vật
+    private character2 playerController; // Biến theo dõi hướng của nhân vật
     public int maxBombs; // Số bom tối đa
     private int currentBombs; // Số bom hiện tại
     public Text bombCountText; // UI để hiển thị số bom còn lại
@@ -21,7 +22,7 @@ public class Nembom : MonoBehaviourPun
         UpdateBombCountUI(); // Cập nhật UI
 
         // Tìm kiếm component PlayerController trên đối tượng của nhân vật
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<character2>();
 
         // Kiểm tra xem playerController có null không, nếu có, in ra cảnh báo
         if (playerController == null)

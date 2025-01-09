@@ -28,14 +28,14 @@ RectTransform:
   m_GameObject: {fileID: 112795710783132843}
   m_LocalRotation: {x: -0, y: -0, z: -0.7059934, w: 0.70821846}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0295938, y: 7.009158, z: 1.3199922}
+  m_LocalScale: {x: 0.7384041, y: 5.0268283, z: 0.946672}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8805357740526369659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.82}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 468, y: -112}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -347, y: 237.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1032424333826980571
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -120,9 +120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Jump
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
+        m_MethodName: jumbbutton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -160,14 +160,14 @@ RectTransform:
   m_GameObject: {fileID: 754008166795928933}
   m_LocalRotation: {x: -0, y: -0, z: 0.70655835, w: 0.7076548}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9759324, y: 7.1572356, z: 1.8073827}
+  m_LocalScale: {x: 0.7344184, y: 5.3860345, z: 1.3601097}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8805357740526369659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.911}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 454.99875, y: -353.99924}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -347, y: 67}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4158938926173747445
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -252,9 +252,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: JumpDown
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
+        m_MethodName: downbutton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3960016219049355059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -292,15 +292,15 @@ RectTransform:
   m_GameObject: {fileID: 2704286793334481911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.424787, y: 6.669883, z: 1.5657}
+  m_LocalScale: {x: 1.0520627, y: 4.925041, z: 1.1561129}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1624865914117988829}
   m_Father: {fileID: 8805357740526369659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 783, y: -77}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -188, y: 365}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3482002730130220590
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7610762, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -385,9 +385,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7541572778442009018, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Nembom, Assembly-CSharp
         m_MethodName: OnThrowBombButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Bomb, Assembly-CSharp
+        m_MethodName: PlayAudioAfterDelay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -408,6 +420,8 @@ GameObject:
   - component: {fileID: 8805357740526369659}
   - component: {fileID: 3087024637257577288}
   - component: {fileID: 1651584306965331211}
+  - component: {fileID: 4781814347922874111}
+  - component: {fileID: 6904910579348736652}
   m_Layer: 5
   m_Name: nutbam
   m_TagString: Untagged
@@ -481,6 +495,96 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4781814347922874111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799840083643230749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 1
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &6904910579348736652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799840083643230749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3390b1ec8f975824682c403a39632452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRect: {fileID: 8805357740526369659}
+  scaler: {fileID: 4781814347922874111}
+  cam: {fileID: 0}
+  aspect: 1.7786666
+  refAspect: 1.7777778
+  fatCanvas: 0
+  AspectCam: 1.7786666
+  changeCamSize: 0
+  changeCanvasScaler: 0
+  Resolutions:
+  - Name: Square Phone
+    AspectCam: 1
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 1
+  - Name: Fold 2 5G Tablet
+    AspectCam: 1.2488688
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 1
+  - Name: Ipad
+    AspectCam: 1.3339844
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 1
+  - Name: Iphone 7
+    AspectCam: 1.7777778
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 0.5
+  - Name: Iphone XS Max
+    AspectCam: 2.1662223
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 0.3
+  - Name: Redmi Note 10s
+    AspectCam: 2.2222223
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 0.2
+  - Name: Z Flip 3
+    AspectCam: 2.4444444
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 0.2
+  - Name: Fold2 5G Phone
+    AspectCam: 2.76875
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 0
+  - Name: Long Phone
+    AspectCam: 3
+    CamSize: 5
+    PerspectiveSize: 60
+    Match: 0
 --- !u!1 &3087935267281425908
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +746,6 @@ GameObject:
   - component: {fileID: 9121947669220755956}
   - component: {fileID: 2155634333149559661}
   - component: {fileID: 472614000466621025}
-  - component: {fileID: 2469388236225988658}
   - component: {fileID: 453122624885918066}
   m_Layer: 5
   m_Name: Button (Legacy)
@@ -660,14 +763,14 @@ RectTransform:
   m_GameObject: {fileID: 5877173378160989010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.741752, y: 8.458168, z: 1.569146}
+  m_LocalScale: {x: 1.125973, y: 5.4678674, z: 1.0143901}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8805357740526369659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -795, y: -350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 250, y: 109.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2155634333149559661
@@ -691,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -708,50 +811,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2469388236225988658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5877173378160989010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 472614000466621025}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &453122624885918066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,8 +828,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
           m_MethodName: StartMoveLeft
           m_Mode: 1
           m_Arguments:
@@ -785,8 +844,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
           m_MethodName: StopMoveLeft
           m_Mode: 1
           m_Arguments:
@@ -825,15 +884,15 @@ RectTransform:
   m_GameObject: {fileID: 7000889566188018332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6576, y: 7.0342293, z: 1.6576}
+  m_LocalScale: {x: 1.1652431, y: 4.9448524, z: 1.1652431}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7730119168694013916}
   m_Father: {fileID: 8805357740526369659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 764.99, y: -335.01}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -167, y: 148}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4795382257607039222
@@ -857,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -918,21 +977,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6662858937139147089, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-        m_TargetAssemblyTypeName: GunController, Assembly-CSharp
-        m_MethodName: OnShootButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6662858937139147089, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
-        m_TargetAssemblyTypeName: GunController, Assembly-CSharp
-        m_MethodName: Reload
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
+        m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -961,7 +1008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7509629315549809534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1080,7 +1127,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+        - m_Target: {fileID: 5849378447693393929, guid: 36459615ebedef6499f22e386f0cd3d5, type: 3}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StartMoveRight
           m_Mode: 1
@@ -1096,7 +1143,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1754440936547010690, guid: 52efef69efc7b8f4d9b98ed2686c5fbe, type: 3}
+        - m_Target: {fileID: 5849378447693393929, guid: 36459615ebedef6499f22e386f0cd3d5, type: 3}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
           m_MethodName: StopMoveRight
           m_Mode: 1
@@ -1119,7 +1166,6 @@ GameObject:
   - component: {fileID: 6828320526980616427}
   - component: {fileID: 4884934921539847054}
   - component: {fileID: 5241262273284363950}
-  - component: {fileID: 4851183051158222337}
   - component: {fileID: 1650073768808709459}
   m_Layer: 5
   m_Name: Button (Legacy) (1)
@@ -1135,16 +1181,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9021356044465423890}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.9999979, w: -0.002039213}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.741752, y: 8.458168, z: 1.569146}
+  m_LocalScale: {x: 1.1012576, y: 5.3478456, z: 0.9921239}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8805357740526369659}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -444, y: -350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.234}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 480, y: 109.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4884934921539847054
@@ -1168,7 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.75888014, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1185,50 +1231,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4851183051158222337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9021356044465423890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5241262273284363950}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1650073768808709459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,7 +1249,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
           m_MethodName: StartMoveRight
           m_Mode: 1
           m_Arguments:
@@ -1263,7 +1265,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_TargetAssemblyTypeName: _GunMayHem.Gameplay.CharacterControl, Assembly-CSharp
           m_MethodName: StopMoveRight
           m_Mode: 1
           m_Arguments:

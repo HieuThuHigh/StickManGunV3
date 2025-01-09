@@ -91,7 +91,7 @@ public class AlHealth : MonoBehaviour
 
         if (remainingBots.Length == 0)
         {
-            gameManager.TriggerWinGame();  // Gọi phương thức từ GameManager khi tất cả bot bị tiêu diệt
+            // gameManager.TriggerWinGame();  // Gọi phương thức từ GameManager khi tất cả bot bị tiêu diệt
         }
     }
 }

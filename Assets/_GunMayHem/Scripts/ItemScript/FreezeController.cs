@@ -28,7 +28,10 @@ public class FreezeController : MonoBehaviour
     private void TestEvent()
     {
         GameData.Freeze += 1;
+        GameData.Shield += 1;
+        GameData.Jump += 1;
         UpdateUI();
+        
     }
 
     private void CancleEvent()

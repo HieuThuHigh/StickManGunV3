@@ -20,7 +20,7 @@ public class DoubleJumpController : MonoBehaviour
 
     private void Start()
     {
-        UpdateUI();
+        UpdateUIDoubleJump();
         jumpButton.onClick.AddListener(OnFreezeButtonClicked);
     }
 
@@ -39,10 +39,10 @@ public class DoubleJumpController : MonoBehaviour
         }
 
         Debug.LogError("check bang");
-        UpdateUI();
+        UpdateUIDoubleJump();
     }
 
-    void UpdateUI()
+    public void UpdateUIDoubleJump()
     {
         jumpText.text = GameData.Jump.ToString();
         if (GameData.Jump != _previousJumpValue)
