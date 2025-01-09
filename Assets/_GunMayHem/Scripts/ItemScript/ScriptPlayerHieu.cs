@@ -46,6 +46,18 @@ public class ScriptPlayerHieu : MonoBehaviour
                     case 3:
                         SceneManager.LoadScene("Scenes4");
                         break;
+                    case 4:
+                        SceneManager.LoadScene("Scenes5");
+                        break;
+                    case 5:
+                        SceneManager.LoadScene("Scenes6");
+                        break;
+                    case 6:
+                        SceneManager.LoadScene("Scenes7");
+                        break;
+                    case 7:
+                        SceneManager.LoadScene("Scenes8");
+                        break;
                 }
                 return; // Thoát khỏi hàm sau khi load scene
             }
