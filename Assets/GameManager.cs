@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        LoadMap();
+        // LoadMap();
         LoadPlayer();
         SpawnBots();
         timeRemaining = gameDuration;

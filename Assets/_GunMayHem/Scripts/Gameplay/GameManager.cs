@@ -12,10 +12,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
 
 namespace _GunMayHem.Gameplay
 {
-    public class GameManager : SingletonMonoBehaviour<GameManager>
+    public class GameManager : SingletonMonoBehaviour<GameManager>, IPunObservable
     {
         [SerializeField] private GameObject _victory;
         [SerializeField] private GameObject _lose;
@@ -30,6 +31,7 @@ namespace _GunMayHem.Gameplay
         public List<Transform> ListPos => _listPos;
 
         private bool _ended;
+        private bool _isPlayerDead;
 
         protected override void Awake()
         {
@@ -52,26 +54,63 @@ namespace _GunMayHem.Gameplay
                 button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadCurrentScene(); });
             }
 
-            DropGift();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                DropGift();
+            }
         }
+
         public void homebutton()
         {
             if (PhotonNetwork.IsConnected)
             {
-                // Ngắt kết nối khỏi Photon khi bấm nút thoát
                 PhotonNetwork.Disconnect();
             }
             SceneManager.LoadScene("Home");
         }
+
         public void DropGift()
         {
-            var posX = RandomUlts.Range(_boundLeftGift.position.x, _boundRightGift.position.x);
+            if (!PhotonNetwork.IsMasterClient) return;
 
+            var posX = RandomUlts.Range(_boundLeftGift.position.x, _boundRightGift.position.x);
             var pos = new Vector2(posX, 20);
 
-            PoolingManager.Instance.GetObject(ePrefabPool.Gift, position: pos).Disable(10f);
+            // Đồng bộ sự kiện rơi quà
+            PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("RPC_DropGift", RpcTarget.All, pos);
 
             this.DelayedCall(5f, DropGift);
+        }
+
+        [PunRPC]
+        private void RPC_DropGift(Vector2 pos)
+        {
+            PoolingManager.Instance.GetObject(ePrefabPool.Gift, position: pos).Disable(10f);
+        }
+
+        public void PlayerDied(bool isLocalPlayer)
+        {
+            if (_ended)
+            {
+                return;
+            }
+
+            PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("RPC_PlayerDied", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber, isLocalPlayer);
+        }
+
+        [PunRPC]
+        private void RPC_PlayerDied(int actorNumber, bool isLocalPlayer)
+        {
+            if (isLocalPlayer)
+            {
+                Lose();
+            }
+            else if (PhotonNetwork.PlayerList.Length == 2) // Chỉ còn 1 người chơi
+            {
+                Victory();
+            }
         }
 
         public void Victory()
@@ -96,6 +135,18 @@ namespace _GunMayHem.Gameplay
             _ended = true;
 
             _lose.gameObject.SetActive(true);
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(_ended);
+            }
+            else
+            {
+                _ended = (bool)stream.ReceiveNext();
+            }
         }
     }
 }

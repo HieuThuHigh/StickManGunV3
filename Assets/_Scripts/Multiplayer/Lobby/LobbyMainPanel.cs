@@ -20,7 +20,7 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
     public GameObject CreateRoomPanel;
 
     public InputField RoomNameInputField;
-    public InputField MaxPlayersInputField;
+    // public InputField MaxPlayersInputField;
 
     [Header("Join Random Room Panel")]
     public GameObject JoinRandomRoomPanel;
@@ -33,10 +33,10 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
 
     [Header("Inside Room Panel")]
     public GameObject InsideRoomPanel;
-
+    public GameObject PlayerView;
     public Button StartGameButton;
     public GameObject PlayerListEntryPrefab;
-
+    private string selectedScene;
 
     // Prefab của nhân vật
     [Header("Player Prefab")]
@@ -101,7 +101,7 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
     {
         string roomName = "Room " + Random.Range(1000, 10000);
 
-        RoomOptions options = new RoomOptions { MaxPlayers = 8 };
+        RoomOptions options = new RoomOptions { MaxPlayers = 2 };
 
         PhotonNetwork.CreateRoom(roomName, options, null);
     }
@@ -157,7 +157,7 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
         foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)
         {
             GameObject entry = Instantiate(PlayerListEntryPrefab);
-            entry.transform.SetParent(InsideRoomPanel.transform);
+            entry.transform.SetParent(PlayerView.transform);
             entry.transform.localScale = Vector3.one;
             entry.GetComponent<PlayerListEntry>().Initialize(p.ActorNumber, p.NickName);
 
@@ -198,7 +198,7 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         GameObject entry = Instantiate(PlayerListEntryPrefab);
-        entry.transform.SetParent(InsideRoomPanel.transform);
+        entry.transform.SetParent(PlayerView.transform);
         entry.transform.localScale = Vector3.one;
         entry.GetComponent<PlayerListEntry>().Initialize(newPlayer.ActorNumber, newPlayer.NickName);
 
@@ -275,11 +275,7 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
         string roomName = RoomNameInputField.text;
         roomName = (roomName.Equals(string.Empty)) ? "Room " + Random.Range(1000, 10000) : roomName;
 
-        byte maxPlayers;
-        byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-        maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 8);
-
-        RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = 10000 };
+        RoomOptions options = new RoomOptions { MaxPlayers = 2, PlayerTtl = 10000 };
 
         PhotonNetwork.CreateRoom(roomName, options, null);
     }
@@ -322,15 +318,71 @@ public class LobbyMainPanel : MonoBehaviourPunCallbacks
         SetActivePanel(RoomListPanel.name);
     }
 
-    public void OnStartGameButtonClicked()
+    public override void OnEnable()
     {
-        PhotonNetwork.CurrentRoom.IsOpen = false;
-        PhotonNetwork.CurrentRoom.IsVisible = false;
-
-        PhotonNetwork.LoadLevel("Level1");
+        base.OnEnable();  // Gọi OnEnable() của lớp cha
+        MapMulti.MapSelectedEvent += OnMapSelected;
     }
 
+    public override void OnDisable()
+    {
+        base.OnDisable();  // Gọi OnDisable() của lớp cha
+        MapMulti.MapSelectedEvent -= OnMapSelected;
+    }
 
+    private void Start()
+    {
+        StartGameButton.onClick.AddListener(OnPlayButtonClicked);
+        StartGameButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+    }
+
+    // Nhận map được chọn từ MapMulti
+    private void OnMapSelected(int mapIndex)
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            Debug.LogWarning("Chỉ chủ phòng mới được chọn map!");
+            return;
+        }
+
+        switch (mapIndex)
+        {
+            case 0: selectedScene = "Level1"; break;
+            case 1: selectedScene = "Level2"; break;
+            case 2: selectedScene = "Level3"; break;
+            case 3: selectedScene = "Level4"; break;
+            default: Debug.LogError("Map không hợp lệ!"); return;
+        }
+
+        // Lưu map vào Room Properties
+        Hashtable properties = new Hashtable
+        {
+            { "SelectedScene", selectedScene }
+        };
+        PhotonNetwork.CurrentRoom.SetCustomProperties(properties);
+
+        Debug.Log("Đã chọn map: " + selectedScene);
+    }
+
+    private void OnPlayButtonClicked()
+    {
+        if (selectedScene == null)
+        {
+            Debug.LogWarning("Vui lòng chọn map trước khi chơi!");
+            return;
+        }
+
+        PhotonNetwork.LoadLevel(selectedScene);
+    }
+
+    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+    {
+        if (propertiesThatChanged.ContainsKey("SelectedScene"))
+        {
+            selectedScene = (string)propertiesThatChanged["SelectedScene"];
+            Debug.Log("Map đã được cập nhật: " + selectedScene);
+        }
+    }
 
     private bool CheckPlayersReady()
     {

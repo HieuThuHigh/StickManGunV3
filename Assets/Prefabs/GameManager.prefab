@@ -365,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9027915968491454955}
   - component: {fileID: 7771983345542943820}
+  - component: {fileID: 646563175576595647}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -410,6 +411,27 @@ MonoBehaviour:
   gameDuration: 186.5
   timeText: {fileID: 2624098186681564810}
   restartButton: {fileID: 0}
+--- !u!114 &646563175576595647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280929947856343386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025706db169e71a4ba64c58496086665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _victory: {fileID: 0}
+  _lose: {fileID: 0}
+  _listBtnHome:
+  - {fileID: 0}
+  - {fileID: 0}
+  _listBtnReplay:
+  - {fileID: 0}
+  _boundLeftGift: {fileID: 0}
+  _boundRightGift: {fileID: 0}
 --- !u!1 &1725512008242896519
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +497,7 @@ MonoBehaviour:
   soundOff: {fileID: 892033119444751692}
   soundOnObj: {fileID: 8881645626697492001}
   soundOffObj: {fileID: 2661415688512740013}
+  pausePopupObj: {fileID: 0}
 --- !u!1 &2086084264095796560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,6 +2071,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9027915968491454955}
     m_Modifications:
+    - target: {fileID: 731096919745518195, guid: 2e5aff128cbda924a957d82272c89c98, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1918166717577520482, guid: 2e5aff128cbda924a957d82272c89c98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.009578682
@@ -2087,6 +2114,10 @@ PrefabInstance:
     - target: {fileID: 1918166717577520482, guid: 2e5aff128cbda924a957d82272c89c98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057369592815228931, guid: 2e5aff128cbda924a957d82272c89c98, type: 3}
+      propertyPath: cam
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3279060893243097223, guid: 2e5aff128cbda924a957d82272c89c98, type: 3}
       propertyPath: m_IsActive
