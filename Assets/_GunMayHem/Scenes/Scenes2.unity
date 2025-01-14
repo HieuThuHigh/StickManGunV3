@@ -1283,6 +1283,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 391417703}
+    - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
 --- !u!1 &391417700 stripped
 GameObject:
@@ -1317,6 +1320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1ea11f18aa279469aa969719264925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameInputField: {fileID: 0}
+  playerNameText: {fileID: 391417702}
 --- !u!1 &391417704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
@@ -2027,6 +2032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1ea11f18aa279469aa969719264925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameInputField: {fileID: 0}
+  playerNameText: {fileID: 720123377}
 --- !u!1 &720123379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
@@ -4038,6 +4045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1ea11f18aa279469aa969719264925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameInputField: {fileID: 0}
+  playerNameText: {fileID: 1301313775}
 --- !u!1 &1301313777 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
@@ -4452,6 +4461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1ea11f18aa279469aa969719264925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameInputField: {fileID: 0}
+  playerNameText: {fileID: 1341172044}
 --- !u!1 &1341172046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
@@ -5078,6 +5089,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1426413415}
+    - targetCorrespondingSourceObject: {fileID: 5646743377037438365, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
 --- !u!1 &1426413412 stripped
 GameObject:
@@ -5112,6 +5126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1ea11f18aa279469aa969719264925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameInputField: {fileID: 0}
+  playerNameText: {fileID: 1426413414}
 --- !u!1 &1426413416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936430041983620666, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
@@ -8711,10 +8727,10 @@ MonoBehaviour:
   mainRect: {fileID: 4804920987481700753}
   scaler: {fileID: 248543280918848552}
   cam: {fileID: 411881279}
-  aspect: 1.7777778
+  aspect: 2.1111112
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 1.7777778
+  AspectCam: 2.1111112
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:
