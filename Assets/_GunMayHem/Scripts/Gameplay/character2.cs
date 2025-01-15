@@ -509,17 +509,42 @@ namespace _GunMayHem.Gameplay
             if (other.CompareTag("Die"))
             {
                 Debug.LogError("DIE");
+
                 if (photonView.IsMine)
                 {
-                    GameManager.Instance.Lose();                 // Người chơi này thua
-                    photonView.RPC("NotifyVictory", RpcTarget.Others);  // Thông báo người chơi khác thắng
+                    // Hiển thị thông báo thua cho chính người chơi này
+                    photonView.RPC("NotifyLose", RpcTarget.All, photonView.Owner.ActorNumber);
+
+                    // Gửi thông báo thắng cho người chơi còn lại
+                    foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
+                    {
+                        if (player.ActorNumber != photonView.Owner.ActorNumber)
+                        {
+                            photonView.RPC("NotifyVictory", RpcTarget.All, player.ActorNumber);
+                        }
+                    }
                 }
             }
         }
+
         [PunRPC]
-        public void NotifyVictory()
+        private void NotifyVictory(int playerActorNumber)
         {
-            GameManager.Instance.Victory();  // Hiện thông báo thắng cho người chơi còn lại
+            if (PhotonNetwork.LocalPlayer.ActorNumber == playerActorNumber)
+            {
+                Debug.Log("YOU WIN!");
+                GameManager.Instance.Victory();
+            }
+        }
+
+        [PunRPC]
+        private void NotifyLose(int playerActorNumber)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == playerActorNumber)
+            {
+                Debug.Log("YOU LOSE!");
+                GameManager.Instance.Lose();
+            }
         }
         public void ChangeSkinColor()
         {
@@ -551,9 +576,9 @@ namespace _GunMayHem.Gameplay
 
         public void ChangeGun(int index)
         {
-            if (photonView.IsMine)
+            if (photonView.IsMine)  // Chỉ đổi súng trên client của người chơi này
             {
-                photonView.RPC("RPC_ChangeGun", RpcTarget.All, index);
+                photonView.RPC("RPC_ChangeGun", RpcTarget.AllBuffered, index);  // Gửi RPC tới tất cả các client để đồng bộ
             }
         }
         [PunRPC]
@@ -562,7 +587,8 @@ namespace _GunMayHem.Gameplay
 
             if (_gunControl1 != null)
             {
-                Destroy(_gunControl1.gameObject);
+                PhotonNetwork.Destroy(_gunControl1.gameObject);
+                _gunControl1 = null;  // Đặt lại _gunControl1 để tránh các lỗi sau
             }
             else
             {
@@ -574,7 +600,6 @@ namespace _GunMayHem.Gameplay
             {
                 fireButton.onClick.RemoveAllListeners();
             }
-
             // Tạo súng mới bằng PhotonNetwork.Instantiate, nhưng không dùng transform trực tiếp. Ta sẽ set vị trí sau.
             GameObject newGunObject = PhotonNetwork.Instantiate($"Prefabs/Guns/{index}", Vector3.zero, Quaternion.identity, 0);
             _gunControl1 = newGunObject.GetComponent<Gun2>();

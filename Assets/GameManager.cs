@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         // LoadMap();
         LoadPlayer();
-        SpawnBots();
+        // SpawnBots();
         timeRemaining = gameDuration;
         gameActive = true;
 

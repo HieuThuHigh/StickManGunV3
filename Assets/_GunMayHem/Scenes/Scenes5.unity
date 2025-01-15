@@ -297,6 +297,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2799840083643230749, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
   m_PrefabInstance: {fileID: 1735342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735344 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
+  m_PrefabInstance: {fileID: 1735342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &35708272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,12 +1269,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 5000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1735344}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
       value: 
@@ -2300,12 +2311,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 5000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 895817249}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
       value: 
@@ -2911,6 +2922,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2799840083643230749, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
   m_PrefabInstance: {fileID: 895817247}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &895817249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
+  m_PrefabInstance: {fileID: 895817247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &919011556 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4936582793731063714, guid: 5583343531a4924489a2c771e9d45830, type: 3}
@@ -3077,7 +3099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 5000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
@@ -3391,6 +3413,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2799840083643230749, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
   m_PrefabInstance: {fileID: 1032895454}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1032895456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
+  m_PrefabInstance: {fileID: 1032895454}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1050601807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,6 +3696,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2799840083643230749, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
   m_PrefabInstance: {fileID: 1057680922}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1057680924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
+  m_PrefabInstance: {fileID: 1057680922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1070384347
 GameObject:
   m_ObjectHideFlags: 0
@@ -4121,12 +4165,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 5000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1032895456}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
       value: 
@@ -4563,12 +4607,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 5000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1548432392}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
       value: 
@@ -5005,12 +5049,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: _moveSpeed
-      value: 5000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: fireButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1057680924}
     - target: {fileID: 5346790258387634252, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: freezeText
       value: 
@@ -5467,6 +5511,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2799840083643230749, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
   m_PrefabInstance: {fileID: 1548432390}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1548432392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
+  m_PrefabInstance: {fileID: 1548432390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1566672948
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,10 +9228,10 @@ MonoBehaviour:
   mainRect: {fileID: 4804920987481700753}
   scaler: {fileID: 248543280918848552}
   cam: {fileID: 411881279}
-  aspect: 2.1111112
+  aspect: 2.0555556
   refAspect: 1.7777778
   fatCanvas: 0
-  AspectCam: 2.1111112
+  AspectCam: 2.0555556
   changeCamSize: 0
   changeCanvasScaler: 0
   Resolutions:

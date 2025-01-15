@@ -22,9 +22,8 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private Transform _boundRightGift;
         private List<GroundControl> _listGroundControls = new List<GroundControl>();
         private List<Transform> _listPos = new List<Transform>();
-
         private PhotonView _photonView;
-        private bool _ended;
+        private bool _ended = false;
 
         public List<GroundControl> ListGroundControls => _listGroundControls;
         public List<Transform> ListPos => _listPos;
@@ -83,34 +82,35 @@ namespace _GunMayHem.Gameplay
             this.DelayedCall(5f, DropGift);
         }
 
-        [PunRPC]
-        private void ShowVictory()
+       public void Victory()
+    {
+        if (_ended) return;
+        _ended = true;
+
+        if (_victory != null)
         {
             _victory.SetActive(true);
         }
+        else
+        {
+            Debug.LogError("Victory UI chưa được gán.");
+        }
+    }
 
-        [PunRPC]
-        private void ShowLose()
+    public void Lose()
+    {
+        if (_ended) return;
+        _ended = true;
+
+        if (_lose != null)
         {
             _lose.SetActive(true);
         }
-
-        public void Victory()
+        else
         {
-            if (_ended) return;
-            _ended = true;
-
-            _photonView.RPC("ShowVictory", RpcTarget.All);
+            Debug.LogError("Lose UI chưa được gán.");
         }
-
-        public void Lose()
-        {
-            if (_ended) return;
-            _ended = true;
-
-            _photonView.RPC("ShowLose", RpcTarget.All);
-        }
-
+    }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             // Đồng bộ dữ liệu nếu cần thiết
