@@ -8,67 +8,60 @@ public class CamMulti : MonoBehaviour
     private GameObject player; // Đối tượng player mà camera sẽ theo dõi
     public float start, end, top, bot;
 
-    void Start()
-    {
-        // Tìm đúng đối tượng player thuộc về client này
-        foreach (var obj in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            var photonView = obj.GetComponent<PhotonView>();
-            if (photonView != null && photonView.IsMine)
-            {
-                player = obj;
-                break;
-            }
-        }
+    private Vector3 lastPlayerPosition; // Lưu vị trí trước đó của player
 
-        if (player == null)
+    IEnumerator FindPlayer()
+    {
+        while (player == null)
         {
-            Debug.LogError("Không tìm thấy Player thuộc về client này!");
+            foreach (var obj in FindObjectsOfType<PhotonView>())
+            {
+                if (obj.IsMine && obj.CompareTag("Player"))
+                {
+                    player = obj.gameObject;
+                    lastPlayerPosition = player.transform.position;
+                    yield break;
+                }
+            }
+            yield return null; // Đợi frame tiếp theo
         }
     }
+
+    void Start()
+    {
+        if (!PhotonNetwork.IsConnected)
+        {
+            Debug.LogError("Chưa kết nối tới Photon!");
+            return;
+        }
+
+        StartCoroutine(FindPlayer());
+    }
+
 
     void Update()
     {
         if (player == null) return; // Không có player thì không làm gì
 
+        // Chỉ cập nhật vị trí camera nếu player di chuyển
+        if (player.transform.position != lastPlayerPosition)
+        {
+            lastPlayerPosition = player.transform.position;
+            UpdateCameraPosition();
+        }
+    }
+
+    void UpdateCameraPosition()
+    {
         var playerX = player.transform.position.x;
         var playerY = player.transform.position.y;
-        var camX = transform.position.x;
-        var camY = transform.position.y;
-        var camZ = transform.position.z;
 
-        if (playerX > start && playerX < end)
-        {
-            camX = playerX;
-        }
-        else
-        {
-            if (playerX < start)
-            {
-                camX = start;
-            }
-            if (playerX > end)
-            {
-                camX = end;
-            }
-        }
+        // Giới hạn vị trí camera theo các giá trị start, end, top, bot
+        float camX = Mathf.Clamp(playerX, start, end);
+        float camY = Mathf.Clamp(playerY, bot, top);
+        float camZ = transform.position.z; // Z không thay đổi
 
-        if (playerY > bot && playerY < top)
-        {
-            camY = playerY;
-        }
-        else
-        {
-            if (playerY < bot)
-            {
-                camY = bot;
-            }
-            if (playerY > top)
-            {
-                camY = top;
-            }
-        }
-
+        // Cập nhật vị trí camera
         transform.position = new Vector3(camX, camY, camZ);
     }
 }

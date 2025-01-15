@@ -6,6 +6,7 @@ using DatdevUlts.Ults;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI; // Thêm thư viện để sử dụng Button
+using TMPro;
 
 namespace _GunMayHem.Gameplay
 {
@@ -24,6 +25,7 @@ namespace _GunMayHem.Gameplay
         [SerializeField] private bool _testMode1;
         [SerializeField] private int _maxJumps1;
         [SerializeField] private Color _color1;
+        [SerializeField] private TMP_Text _playerNameText;
         private List<character2> _listCharEnemy1 = new List<character2>();
 
 
@@ -69,9 +71,17 @@ namespace _GunMayHem.Gameplay
             {
                 controlButtons.SetActive(true);
             }
-
+            // tên nv
+            if (photonView.IsMine)
+            {
+                _playerNameText.text = "You";
+            }
+            else
+            {
+                _playerNameText.text = "Competitor";
+            }
             ChangeSkinColor();
-           
+
 
             _layerMaskGround1 = LayerMask.GetMask("Ground");
             _layerMaskChar1 = LayerMask.GetMask("Player");
@@ -499,17 +509,18 @@ namespace _GunMayHem.Gameplay
             if (other.CompareTag("Die"))
             {
                 Debug.LogError("DIE");
-                if (_isPlayer1)
+                if (photonView.IsMine)
                 {
-                    GameManager.Instance.Lose();
-                }
-                else
-                {
-                    GameManager.Instance.Victory();
+                    GameManager.Instance.Lose();                 // Người chơi này thua
+                    photonView.RPC("NotifyVictory", RpcTarget.Others);  // Thông báo người chơi khác thắng
                 }
             }
         }
-
+        [PunRPC]
+        public void NotifyVictory()
+        {
+            GameManager.Instance.Victory();  // Hiện thông báo thắng cho người chơi còn lại
+        }
         public void ChangeSkinColor()
         {
             var collect = GetComponentsInChildren<SpriteRenderer>()
@@ -524,8 +535,11 @@ namespace _GunMayHem.Gameplay
         {
             if (other.gameObject.CompareTag("Gift"))
             {
-                other.gameObject.SetActive(false);
-                ChangeGun();
+                if (photonView.IsMine)   // Chỉ người chơi này mới đổi súng
+                {
+                    other.gameObject.SetActive(false);  // Ẩn hộp quà
+                    ChangeGun();  // Đổi súng
+                }
             }
         }
 

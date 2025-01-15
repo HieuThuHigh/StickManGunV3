@@ -943,7 +943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
       propertyPath: _moveSpeed1
-      value: 5000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
       propertyPath: _gunControl1
@@ -953,6 +953,10 @@ PrefabInstance:
       propertyPath: controlButtons
       value: 
       objectReference: {fileID: 8299374248289319650}
+    - target: {fileID: 5330715267204475093, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
+      propertyPath: _playerNameText
+      value: 
+      objectReference: {fileID: 8854603997867921572}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1056,6 +1060,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2535906149659864638, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
   m_PrefabInstance: {fileID: 6097945194249312902}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8854603997867921572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3333120797168110114, guid: 9267f964144bee4418885f6e929adb1c, type: 3}
+  m_PrefabInstance: {fileID: 6097945194249312902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6194221148393918719
 PrefabInstance:
   m_ObjectHideFlags: 0

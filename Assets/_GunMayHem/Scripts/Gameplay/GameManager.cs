@@ -1,21 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DatdevUlts.Ults;
 using GameTool.Assistants.DesignPattern;
-using GameTool.Audio.Scripts;
 using GameTool.ObjectPool.Scripts;
-using GameToolSample.Audio;
 using GameToolSample.ObjectPool;
 using GameToolSample.Scripts.LoadScene;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using Photon.Pun;
-using Photon.Realtime;
 
 namespace _GunMayHem.Gameplay
 {
+    [RequireComponent(typeof(PhotonView))]
     public class GameManager : SingletonMonoBehaviour<GameManager>, IPunObservable
     {
         [SerializeField] private GameObject _victory;
@@ -27,31 +23,42 @@ namespace _GunMayHem.Gameplay
         private List<GroundControl> _listGroundControls = new List<GroundControl>();
         private List<Transform> _listPos = new List<Transform>();
 
+        private PhotonView _photonView;
+        private bool _ended;
+
         public List<GroundControl> ListGroundControls => _listGroundControls;
         public List<Transform> ListPos => _listPos;
 
-        private bool _ended;
-        private bool _isPlayerDead;
-
         protected override void Awake()
         {
-            AudioManager.Instance.PlayMusic(eMusicName.MusicMain);
-
             base.Awake();
-            _listGroundControls =
-                FindObjectsByType<GroundControl>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
+            _photonView = GetComponent<PhotonView>();
 
-            _listPos.AddRange(ListGroundControls.Select(control => control.LeftPoint).ToList());
-            _listPos.AddRange(ListGroundControls.Select(control => control.RightPoint).ToList());
+            _listGroundControls = FindObjectsOfType<GroundControl>().ToList();
+
+            _listPos.AddRange(_listGroundControls.Select(control => control.LeftPoint));
+            _listPos.AddRange(_listGroundControls.Select(control => control.RightPoint));
 
             foreach (var button in _listBtnHome)
             {
-                button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadSceneWithName("Home"); });
+                button.onClick.AddListener(() =>
+                {
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        PhotonNetwork.LoadLevel("Home");
+                    }
+                });
             }
 
             foreach (var button in _listBtnReplay)
             {
-                button.onClick.AddListener(() => { SceneLoadManager.Instance.LoadCurrentScene(); });
+                button.onClick.AddListener(() =>
+                {
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        PhotonNetwork.LoadLevel(PhotonNetwork.CurrentRoom.Name);
+                    }
+                });
             }
 
             if (PhotonNetwork.IsMasterClient)
@@ -60,93 +67,53 @@ namespace _GunMayHem.Gameplay
             }
         }
 
-        public void homebutton()
+        [PunRPC]
+        private void SpawnGift(Vector2 pos)
         {
-            if (PhotonNetwork.IsConnected)
-            {
-                PhotonNetwork.Disconnect();
-            }
-            SceneManager.LoadScene("Home");
+            PoolingManager.Instance.GetObject(ePrefabPool.Gift, position: pos).Disable(10f);
         }
 
         public void DropGift()
         {
-            if (!PhotonNetwork.IsMasterClient) return;
-
             var posX = RandomUlts.Range(_boundLeftGift.position.x, _boundRightGift.position.x);
             var pos = new Vector2(posX, 20);
 
-            // Đồng bộ sự kiện rơi quà
-            PhotonView photonView = PhotonView.Get(this);
-            photonView.RPC("RPC_DropGift", RpcTarget.All, pos);
+            _photonView.RPC("SpawnGift", RpcTarget.All, pos);
 
             this.DelayedCall(5f, DropGift);
         }
 
         [PunRPC]
-        private void RPC_DropGift(Vector2 pos)
+        private void ShowVictory()
         {
-            PoolingManager.Instance.GetObject(ePrefabPool.Gift, position: pos).Disable(10f);
-        }
-
-        public void PlayerDied(bool isLocalPlayer)
-        {
-            if (_ended)
-            {
-                return;
-            }
-
-            PhotonView photonView = PhotonView.Get(this);
-            photonView.RPC("RPC_PlayerDied", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber, isLocalPlayer);
+            _victory.SetActive(true);
         }
 
         [PunRPC]
-        private void RPC_PlayerDied(int actorNumber, bool isLocalPlayer)
+        private void ShowLose()
         {
-            if (isLocalPlayer)
-            {
-                Lose();
-            }
-            else if (PhotonNetwork.PlayerList.Length == 2) // Chỉ còn 1 người chơi
-            {
-                Victory();
-            }
+            _lose.SetActive(true);
         }
 
         public void Victory()
         {
-            if (_ended)
-            {
-                return;
-            }
-
+            if (_ended) return;
             _ended = true;
 
-            _victory.gameObject.SetActive(true);
+            _photonView.RPC("ShowVictory", RpcTarget.All);
         }
 
         public void Lose()
         {
-            if (_ended)
-            {
-                return;
-            }
-
+            if (_ended) return;
             _ended = true;
 
-            _lose.gameObject.SetActive(true);
+            _photonView.RPC("ShowLose", RpcTarget.All);
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(_ended);
-            }
-            else
-            {
-                _ended = (bool)stream.ReceiveNext();
-            }
+            // Đồng bộ dữ liệu nếu cần thiết
         }
     }
 }

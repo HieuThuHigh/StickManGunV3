@@ -45,17 +45,17 @@ namespace _GunMayHem.Gameplay
 
         private void Update()
         {
-            if (_character1.IsPlayer && photonView.IsMine)
-            {
-                if (Input.GetKeyDown(KeyCode.J))
-                {
-                    Shoot();
-                }
-                else if (_isHold && Input.GetKey(KeyCode.J))
-                {
-                    Shoot();
-                }
-            }
+            // if (_character1.IsPlayer && photonView.IsMine)
+            // {
+            //     if (Input.GetKeyDown(KeyCode.J))
+            //     {
+            //         Shoot();
+            //     }
+            //     else if (_isHold && Input.GetKey(KeyCode.J))
+            //     {
+            //         Shoot();
+            //     }
+            // }
         }
 
         public void ButtonShoot()
