@@ -743,10 +743,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1341172046}
-  start: -11
-  end: 13
-  top: 3.5
-  bot: -2.3
+  start: -9
+  end: 2
+  top: 8
+  bot: -2.5
 --- !u!81 &104812290
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1691,10 +1691,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1426413416}
-  start: -11
-  end: 13
-  top: 3.5
-  bot: -2.3
+  start: -9
+  end: 2
+  top: 8
+  bot: -2.5
 --- !u!81 &411881278
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1763,7 +1763,7 @@ Transform:
   m_GameObject: {fileID: 411881276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.2, z: -10}
+  m_LocalPosition: {x: -0.14, y: 0.15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1801,10 +1801,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 720123379}
-  start: -11
-  end: 13
-  top: 3.5
-  bot: -2.3
+  start: -9
+  end: 2
+  top: 8
+  bot: -2.5
 --- !u!81 &450376718
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1873,7 +1873,7 @@ Transform:
   m_GameObject: {fileID: 450376716}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.2, z: -10}
+  m_LocalPosition: {x: 1.87, y: 1.55, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2301,7 +2301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2535906149659864638, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.114
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: 2535906149659864638, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3925,10 +3925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 391417704}
-  start: -11
-  end: 13
-  top: 3.5
-  bot: -2.3
+  start: -9
+  end: 2
+  top: 8
+  bot: -2.5
 --- !u!81 &1135606547
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4331,7 +4331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2535906149659864638, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.114
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 2535906149659864638, guid: 25e7f0d7f24d0b340a48396b2f7b4b0d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5095,10 +5095,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1301313777}
-  start: -11
-  end: 13
-  top: 3.5
-  bot: -2.3
+  start: -9
+  end: 2
+  top: 8
+  bot: -2.5
 --- !u!81 &1355447790
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5791,7 +5791,7 @@ PrefabInstance:
       objectReference: {fileID: 46633239}
     - target: {fileID: 4989757531988715824, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: jumbbutton
+      value: Shoot
       objectReference: {fileID: 0}
     - target: {fileID: 5086563711047644233, guid: 61946006df2939d4cadebad510d8c99f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
