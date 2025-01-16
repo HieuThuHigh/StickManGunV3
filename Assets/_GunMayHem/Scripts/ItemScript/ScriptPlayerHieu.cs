@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameTool.Assistants.DesignPattern;
+using GameToolSample.GameDataScripts.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScriptPlayerHieu : MonoBehaviour
+public class ScriptPlayerHieu : SingletonMonoBehaviour<ScriptPlayerHieu>
 {
     [SerializeField] private Button[] playerButtons;
     [SerializeField] private GameObject[] playerImages;
@@ -17,13 +19,21 @@ public class ScriptPlayerHieu : MonoBehaviour
     [SerializeField] private Button chooseMapButton;
     [SerializeField] private GameObject chooseMapGameobject;
     [SerializeField] private Button playButton;
-    
+    [SerializeField] private Button buttonCong;
     
     private void Start()
     {
         PlayerFunction();
         MapFunction();
         playButton.onClick.AddListener(PlayEvent);
+        buttonCong.onClick.AddListener(BUttonCongEvent);
+    }
+
+    private void BUttonCongEvent()
+    {
+        GameData.Freeze++;
+        GameData.Jump++;
+        GameData.Shield++;
     }
 
     private void PlayEvent()
@@ -58,13 +68,24 @@ public class ScriptPlayerHieu : MonoBehaviour
                     case 7:
                         SceneManager.LoadScene("Scenes8");
                         break;
+                    case 8:
+                        SceneManager.LoadScene("Scenes9");
+                        break;
+                    case 9:
+                        SceneManager.LoadScene("Scenes10");
+                        break;
+                    case 10:
+                        SceneManager.LoadScene("Scenes11");
+                        break;
+                    case 11:
+                        SceneManager.LoadScene("Scenes12");
+                        break;
                 }
                 return; // Thoát khỏi hàm sau khi load scene
             }
         }
         
 
-        Debug.LogError("Please choose a map before playing!"); // Hiển thị lỗi nếu chưa chọn map
     }
 
 
@@ -117,7 +138,6 @@ public class ScriptPlayerHieu : MonoBehaviour
     
     private void ChooseMap()
     {
-        Debug.LogError("nguu");
         chooseMapGameobject.SetActive(true);
     }
 
